@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ProductsService } from '../../service/products.service';
+import { ShoppingCartItem } from '../../model/ShoppingCartItem';
+import { ShoppingCartService } from '../../service/shopping-cart.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +16,14 @@ import { ProductsService } from '../../service/products.service';
 })
 export class HomeComponent { 
 
-  constructor(private productsService: ProductsService) {}
+  count = 0;
+
+  constructor(private productsService: ProductsService, private cartService: ShoppingCartService) {}
+
+  addToShoppingCart() {
+    this.count++;
+    let cartItem = new ShoppingCartItem(this.count);
+    this.cartService.addItemToCart(cartItem); 
+  }
 
 }
