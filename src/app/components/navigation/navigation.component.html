@@ -1,24 +1,39 @@
 <nav class="navigation row">
-  @if(!isPhone) {
+  @if(!isPhone && !isTablet) {
     <ul class="navigation-menu">
-      <li>Pocetna</li>
-      <li class="active">Torbe</li>
-      <li>Novcanici</li>
-      <li>Zene</li>
-      <li>Muskarci</li>
+      <li>POČETNA</li>
+      <li><samp class="line"></samp></li>
+      <li class="active">TORBE</li>
+      <li>NOVČANICI</li>
+      <li><samp class="line"></samp></li>
+      <li>ŽENE</li>
+      <li>MUSKARCI</li>
     </ul>
   } @else {
     <div class="hamburger-menu">
-      <dota-icon iconPath="./assets/images/icons/shopping-cart.svg?v=2" altText="Shopping cart"></dota-icon>
+      <dota-icon (click)="toggleDropdown()" iconPath="./assets/images/icons/hamburger-menu.svg?v=4" altText="Shopping cart"></dota-icon>
+      <div *ngIf="isDropdownOpen" class="dropdown-menu">
+        <ul>
+          <li>MENI</li>
+          <hr class="menu-line">
+          <li><a href="#">POČETNA</a></li>
+          <li><a class="active" href="#">TORBE</a></li>
+          <li><a href="#">NOVČANICI</a></li>
+          <li><a href="#">ŽENE</a></li>
+          <li><a href="#">MUŠKARCI</a></li>
+        </ul>
+      </div>
     </div>
+
+    
   }
   
   <div class="logo">
-    <img src="./../../../assets/images/logo/logo.svg" alt="logo image">
+    <img src="./assets/images/logo/main-logo.svg?v=2" alt="logo image">
   </div>
   <div class="shopping-cart">
     <div class="cart">
-      <dota-icon iconPath="./assets/images/icons/shopping-cart.svg?v=2" altText="Shopping cart"></dota-icon>
+      <dota-icon iconPath="./assets/images/icons/shopping-cart.svg" altText="Shopping cart"></dota-icon>
       <span *ngIf="count() > 0" class="badge">{{ count() }}</span>
     </div>
   </div>
