@@ -1,0 +1,174 @@
+:host {
+  display: block;
+}
+
+.banner {
+  position: relative;
+  margin-top: 100px;
+  width: 100vw;
+  height: 550px;
+  max-height: 550px;
+  background-image: url("../../../assets/images/banners/banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 1;
+  left: 1;
+  padding: 120px 0 120px 90px;
+}
+
+.banner-text-h1 {
+  color: #FFF;
+  font-family: 'Mulish', 'sans-serif';
+  font-size: 68px;
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: 100 !important;
+}
+
+.dota-new-collection-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 49px;
+  text-align: center;
+  background-color: #EBEBEB;
+  border-radius: 35px;
+
+  .dota-button-text {
+    color: #FF8438;
+    font-family: Mulish;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+}
+
+.dota-new-collection-button-phone {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 30px;
+  text-align: center;
+  background-color: rgba(235, 235, 235, 0.45);
+  border-radius: 15px;
+  margin: 10px 20px;
+
+  .dota-button-text {
+    color: white;
+    font-family: Mulish;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+}
+
+@media screen and (min-width: 768px ) and (max-width: 1200px)  {
+  .banner { 
+    height: 300px;
+    margin-top: 80px;
+  }
+
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 1;
+    left: 1;
+    padding: 40px 0 35px 20px;
+  }
+  
+  .banner-text-h1 {
+    font-size: 48px;
+  }
+
+  .dota-new-collection-button-phone {
+    width: 200px;
+    height: 50px;
+    background-color: rgba(235, 235, 235, 0.45);
+    border-radius: 40px;
+    margin: 20px 45px;
+  
+    .dota-button-text {
+      font-size: 20px !important;
+    }
+  
+  }
+
+}
+
+@media screen and (min-width: 482px) and (max-width: 767px )  { 
+  .banner { 
+    height: 222px;
+    margin-top: 50px;
+  }
+
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 1;
+    left: 1;
+    padding: 40px 0 35px 20px;
+  }
+  
+  .banner-text-h1 {
+    font-size: 28px;
+  }
+
+  .dota-new-collection-button-phone {
+    width: 150px;
+    height: 35px;
+    background-color: rgba(235, 235, 235, 0.45);
+    border-radius: 20px;
+    margin: 15px 30px;
+  
+    .dota-button-text {
+      font-size: 16px !important;
+    }
+  
+  }
+  
+}
+
+
+@media screen and (max-width: 480px) {
+  .banner { 
+    height: 122px;
+    margin-top: 50px;
+  }
+
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 1;
+    left: 1;
+    padding: 10px 0 35px 20px;
+  }
+  
+  .banner-text-h1 {
+    font-size: 24px;
+  }
+  
+}

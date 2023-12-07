@@ -13,6 +13,7 @@
   height: 100px;
   display: flex;
   align-items: center;
+  background-color: white;
   fill: #fff;
   filter: drop-shadow(0px 10px 50px rgba(0, 0, 0, 0.05));
 
@@ -105,14 +106,10 @@
 }
 
 .dropdown-menu {
-  position: absolute;
+  position: fixed;
   min-width: 273px;
   top: 2;
   margin-top: 20px;
-  fill: #FFF;
-  stroke-width: 1px;
-  stroke: #E5E6E8;
-  filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.10));
   border: 1px solid #E5E6E8;
   background-color: white;
 
