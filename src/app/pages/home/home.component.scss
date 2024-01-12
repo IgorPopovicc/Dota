@@ -122,7 +122,7 @@
   
   .banner {
     width: 100vw;
-    height: 100vh;
+    height: 100vh !important;
     margin-top: 50px !important;
     max-height: 550px;
     background-image: url("../../../assets/images/banners/banner-mobile.jpeg");
@@ -164,7 +164,7 @@
   .banner {
     margin-top: 40px;
     width: 100vw;
-    height: 100vh;
+    height: 100vh !important;
     max-height: 550px;
     background-image: url("../../../assets/images/banners/banner-mobile.jpeg");
     background-repeat: no-repeat;
