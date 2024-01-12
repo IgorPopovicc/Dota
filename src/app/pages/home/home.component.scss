@@ -28,6 +28,7 @@
   font-size: 68px;
   font-style: normal;
   line-height: normal;
+  font-weight: 500;
   text-transform: uppercase;
 }
 
@@ -47,7 +48,7 @@
 
   .dota-button-text {
     color: #FF8438;
-    font-family: Mulish;
+    font-family: 'Mulish', 'sans-serif';
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
@@ -73,7 +74,7 @@
 
   .dota-button-text {
     color: white;
-    font-family: Mulish;
+    font-family: 'Mulish', 'sans-serif';
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -118,9 +119,15 @@
 }
 
 @media screen and (min-width: 482px) and (max-width: 767px )  { 
-  .banner { 
-    height: 222px;
-    margin-top: 50px;
+  
+  .banner {
+    width: 100vw;
+    height: 90vh;
+    margin-top: 50px !important;
+    max-height: 550px;
+    background-image: url("../../../assets/images/banners/banner-mobile.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .banner-content {
@@ -153,9 +160,16 @@
 
 
 @media screen and (max-width: 480px) {
-  .banner { 
-    height: 122px;
-    margin-top: 50px;
+
+  .banner {
+    margin-top: 40px;
+    width: 100vw;
+    height: 90vh;
+    max-height: 550px;
+    background-image: url("../../../assets/images/banners/banner-mobile.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
 
   .banner-content {
@@ -169,6 +183,19 @@
   
   .banner-text-h1 {
     font-size: 24px;
+  }
+
+  .dota-new-collection-button-phone {
+    width: 150px;
+    height: 35px;
+    background-color: rgba(235, 235, 235, 0.45);
+    border-radius: 20px;
+    margin: 15px 30px;
+  
+    .dota-button-text {
+      font-size: 16px !important;
+    }
+  
   }
   
 }

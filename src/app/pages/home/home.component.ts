@@ -3,16 +3,18 @@ import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core'
 import { ProductsService } from '../../service/products.service';
 import { ShoppingCartItem } from '../../model/ShoppingCartItem';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
+import { ProductComponent } from "../../components/product/product.component";
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-home',
+    standalone: true,
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        ProductComponent
+    ]
 })
 export class HomeComponent { 
   
