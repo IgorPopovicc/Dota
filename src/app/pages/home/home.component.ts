@@ -37,14 +37,16 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.checkScreenSize();
-    this.products.push(this.getProductsForHomePage());
+    for(let i = 0; i < 3; i++) {
+      this.products.push(this.getProductsForHomePage());
+    }
   }
 
   checkScreenSize(): void {
     if (typeof window !== 'undefined') {
       const screenWidth = window.innerWidth;
       this.isPhone = screenWidth <= 480;
-      this.isTablet = screenWidth > 480 && screenWidth <= 1200;
+      this.isTablet = screenWidth > 480 && screenWidth <= 884;
     }
   }
 

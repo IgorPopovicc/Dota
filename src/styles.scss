@@ -7,6 +7,15 @@ body {
     background-color: rgb(196, 115, 196);
 }
 
+.main-title {
+  color: #000C22;
+  font-family: 'Mulish', 'sans-serif';
+  font-size: 46px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 .section {
   width: 100%;
   box-sizing: border-box;
@@ -44,24 +53,27 @@ body {
 }
 
 .container-fluid {
-  padding-right: 50px;
-  padding-left: 50px;  
+  padding-right: 5%;
+  padding-left: 5%;  
   margin-right: auto;
   margin-left: auto;
 }
 
 
 @media screen and (min-width: 768px ) and (max-width: 1200px)  {
-
-
+  .main-title {
+    font-size: 36px !important;
+  }
 }
 
 @media screen and (min-width: 482px) and (max-width: 767px )  { 
-
   .section {
     padding: 0 20px; 
   }
   
+  .main-title {
+    font-size: 32px !important;
+  }
 }
 
 
@@ -75,10 +87,14 @@ body {
   }
   
   .container-fluid {
-    padding-right: 20px;
-    padding-left: 20px;  
+    padding-right: 15px;
+    padding-left: 15px;  
     margin-right: auto;
     margin-left: auto;
+  }
+
+  .main-title {
+    font-size: 26px !important;
   }
   
 }

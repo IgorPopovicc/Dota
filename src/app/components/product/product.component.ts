@@ -9,7 +9,7 @@ import { Product } from '../../model/Product';
     CommonModule,
   ],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css',
+  styleUrl: './product.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductComponent implements OnInit { 
