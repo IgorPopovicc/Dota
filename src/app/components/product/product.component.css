@@ -43,7 +43,7 @@
       padding: 0;
       margin: 10px 0 0 15px;
       color: #000C22;
-      font-family: Mulish;
+      font-family: 'Mulish', 'sans-serif';
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
@@ -54,7 +54,7 @@
       padding: 0;
       margin: 0 0 0 15px;
       color: #000C22;
-      font-family: Mulish;
+      font-family: 'Mulish', 'sans-serif';
       font-size: 24px;
       font-style: normal;
       font-weight: 500;
@@ -90,7 +90,7 @@
 
     .value {
       color: #000c229d;
-      font-family: Mulish;
+      font-family: 'Mulish', 'sans-serif';
       font-size: 16px;
       font-style: normal;
       font-weight: 500; /* 262.5% */
@@ -136,7 +136,6 @@
       .bag-type {
         margin: 5px 0 0 5px !important;
         color: #000C22;
-        font-family: Mulish;
         font-size: 8px;
         font-style: normal;
         font-weight: 400;
@@ -146,7 +145,6 @@
       .bag-name {
         margin: 0 0 0 5px !important;
         color: #000C22;
-        font-family: Mulish;
         font-size: 13px;
         font-style: normal;
         font-weight: 400;
@@ -181,7 +179,6 @@
   
       .value {
         color: #000C22;
-        font-family: Mulish;
         font-size: 10px;
         font-style: normal;
         font-weight: 500;
