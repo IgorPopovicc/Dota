@@ -4,6 +4,7 @@ import { ProductsService } from '../../service/products.service';
 import { ShoppingCartItem } from '../../model/ShoppingCartItem';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
 import { ProductComponent } from "../../components/product/product.component";
+import { Product } from '../../model/Product';
 
 @Component({
     selector: 'app-home',
@@ -22,6 +23,7 @@ export class HomeComponent {
   public isPhone: boolean = false;
   public isTablet: boolean = false;
   public isDropdownOpen: boolean = false;
+  public products: Array<Product>;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -29,10 +31,13 @@ export class HomeComponent {
   }
 
 
-  constructor(private productsService: ProductsService, private cartService: ShoppingCartService) {}
+  constructor(private productsService: ProductsService, private cartService: ShoppingCartService) {
+    this.products = new Array<Product>;
+  }
 
   ngOnInit(): void {
     this.checkScreenSize();
+    this.products.push(this.getProductsForHomePage());
   }
 
   checkScreenSize(): void {
@@ -47,6 +52,21 @@ export class HomeComponent {
     this.count++;
     let cartItem = new ShoppingCartItem(this.count);
     this.cartService.addItemToCart(cartItem); 
+  }
+
+  getProductsForHomePage() {
+    let product: Product = {
+      id: "1",
+      name: "MOONLIGHT",
+      imagesDisplay: {
+        imageDisplay1: "./assets/images/products/bags/test-product/product1.png"
+      },
+      price: 2000,
+      type: "mini bag",
+      color: "#000000",
+      quantity: 5
+    };
+    return product;
   }
 
 }

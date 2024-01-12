@@ -38,10 +38,15 @@
       line-height: normal;
       text-transform: uppercase;
       margin: 0 10px;
+      cursor: pointer;
 
       .line {
         border: 1px solid #EEE;
         font-size: 12px;
+      }
+
+      &:hover {
+        color: #ff8438;
       }
     }
   }
@@ -67,6 +72,7 @@
     flex-shrink: 0;
     max-width: 33%;
     padding-right: 40px;
+    cursor: pointer;
 
     .cart {
       background-color: rgba(0, 0, 0, 0.06);
@@ -87,7 +93,7 @@
       background-color: #FF8438;
       color: white;
       border-radius: 50%;
-      padding: 5px 10px;
+      padding: 7px 10px;
       font-weight: bold;
       margin-left: -20px;
       margin-top: -5px;
@@ -104,6 +110,7 @@
   flex: 1;
   display: flex;
   justify-content: start;
+  cursor: pointer;
 }
 
 .dropdown-menu {
@@ -130,12 +137,37 @@
     li {
       list-style: none;
       padding: 16px 0 17px 11px;
+      cursor: pointer;
+
       a {
         text-decoration: none;
         color: #797979;
       }
     }
   }
+}
+
+@media screen and (min-width: 1201px ) and (max-width: 1500px)  {
+  .navigation-menu {
+    li {
+      font-size: 14px !important;
+      margin: 0 8px !important;
+    }
+  }
+
+  .logo {
+    img {
+      width: 150px !important;
+      height: auto !important;
+    }
+  }
+
+  .shopping-cart {
+    .badge {
+      font-size: 14px !important;
+    }
+  }
+  
 }
 
 

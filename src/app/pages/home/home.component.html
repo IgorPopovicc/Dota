@@ -22,5 +22,14 @@
     }
 </div>
 <br><br>
-<dota-product></dota-product>
+<section class="container-fluid bags">
+    <h1 class="title">Torbice</h1>
+    @for (product of products; track product.id) {
+        <dota-product [product]="product"></dota-product>
+    } @empty {
+        Empty list of users
+    }
+</section>
+
+
 <br><br>

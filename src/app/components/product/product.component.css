@@ -3,13 +3,13 @@
 }
 
 .product {
-  margin-left: 50px;
   display: relative;
   height: 600px;
   width: 325px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .product-image {
@@ -112,7 +112,6 @@
 
 @media screen and (max-width: 480px) {
   .product {
-    margin-left: 20px !important;
     width: 150px;
     height: 250px;
   }
@@ -132,7 +131,6 @@
   
     .product-main-details {
 
-  
       .bag-type {
         margin: 5px 0 0 5px !important;
         color: #000C22;

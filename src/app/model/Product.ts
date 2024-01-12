@@ -6,10 +6,11 @@ export class Product {
     isNewCollection?: boolean;
     imagesDisplay: ProductImages;
     color?: string;
+    type: string;
 }
 
 export class ProductImages {
     imageDisplay1: string;
-    imageDIsplay2: string;
-    imageDIsplay3: string;
+    imageDIsplay2?: string;
+    imageDIsplay3?: string;
 }
