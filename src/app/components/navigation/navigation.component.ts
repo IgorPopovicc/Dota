@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   HostListener,
   OnInit,
   signal,
@@ -22,7 +23,8 @@ import { ShoppingCartService } from '../../service/shopping-cart.service';
 export class NavigationComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
-    private cartService: ShoppingCartService
+    private cartService: ShoppingCartService,
+    private elRef: ElementRef
   ) {}
 
   public isPhone: boolean = false;
@@ -30,6 +32,22 @@ export class NavigationComponent implements OnInit {
   public isDropdownOpen: boolean = false;
 
   public count = signal(0);
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: Event): void {
+    if(this.isPhone || this.isTablet) {
+      const hamburgerMenu = this.elRef.nativeElement;
+      const dropdownMenu = hamburgerMenu.querySelector('.dropdown-menu');
+
+      if (!hamburgerMenu.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        this.closeDropdown();
+      }
+    }
+  }
+
+  private closeDropdown(): void {
+    this.isDropdownOpen = false;
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
