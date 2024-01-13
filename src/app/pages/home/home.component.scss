@@ -95,18 +95,18 @@
   justify-content: space-between;
 
   .dota-product-xl, .all-bags {
-    flex: 0 1 calc(25% - 16px);
-    margin-right: 16px;
+    flex: 0 1 calc(25%);
+    margin-right: 12px;
   }
 
   .dota-product-l {
-    flex: 0 1 calc(33% - 16px);
-    margin-right: 16px;
+    flex: 0 1 calc(33%);
+    margin-right: 8px;
   }
 
   .dota-product-s, .all-bags {
-    flex: 0 1 calc(45% - 8px);
-    margin-right: 16px;
+    flex: 0 1 calc(45%);
+    margin-right: 8px;
   }
 
   .all-bags:last-child {
