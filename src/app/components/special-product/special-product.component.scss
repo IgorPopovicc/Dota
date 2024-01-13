@@ -1,0 +1,230 @@
+:host {
+  display: block;
+}
+
+.full-screen-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-image: url('./../../../assets/images/banners/special-item-banner.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.dark-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.component-details {
+  position: absolute;
+  top: 5%;
+  right: 25%;
+  padding: 20px;
+  color: white;
+  max-width: 600px;
+  max-height: 500px;
+
+  .special-product-title {
+    color: #FFF;
+    text-align: right;
+    font-family: 'Mulish', 'sans-serif';
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  .special-product-description {
+    color: #FFF;
+    text-align: right;
+    font-family: 'Mulish', 'sans-serif';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.dota-product {
+  position: absolute;
+  z-index: 1;
+  margin-top: 3%;
+  margin-left: 10%;
+  width: 350px;
+  height: 550px;
+  background-color: white;
+  border: 10px solid white;
+}
+
+@media screen and (min-width: 1201px ) and (max-width: 1500px)  {
+  .dota-product {
+    margin-top: 3%;
+    margin-left: 5%;
+    width: 300px !important;
+    height: 500px !important;
+  }
+
+  .component-details {
+    max-width: 450px !important;
+    max-height: 500px !important;
+    right: 20% !important;
+  
+    .special-product-title {
+      font-size: 42px !important;
+    }
+  
+    .special-product-description {
+      font-size: 21px !important  ;
+    }
+  }
+  
+}
+
+@media screen and (min-width: 884px ) and (max-width: 1200px)  {
+  .full-screen-container {
+    height: 400px !important;
+  }
+
+  .dota-product {
+    margin-top: 5% !important;
+    margin-left: 10%;
+    width: 250px !important;
+    height: 425px !important;
+  }
+
+  .component-details {
+    max-width: 300px !important;
+    max-height: 400px !important;
+    right: 20% !important;
+    top: 10% !important;
+  
+    .special-product-title {
+      font-size: 28px !important;
+    }
+  
+    .special-product-description {
+      font-size: 16px !important  ;
+    }
+  }
+}
+
+@media screen and (min-width: 728px) and (max-width: 884px ) {
+  .full-screen-container {
+    height: 300px !important;
+  }
+
+  .dota-product {
+    margin-top: 5% !important;
+    margin-left: 10%;
+    width: 200px !important;
+    height: 350px !important;
+  }
+
+  .component-details {
+    max-width: 280px !important;
+    max-height: 300px !important;
+    right: 20% !important;
+    top: 10% !important;
+  
+    .special-product-title {
+      font-size: 24px !important;
+    }
+  
+    .special-product-description {
+      font-size: 16px !important  ;
+    }
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 728px )  { 
+  .full-screen-container {
+    height: 300px !important;
+  }
+
+
+  .dota-product {
+    margin-top: 4% !important;
+    margin-left: 10%;
+    width: 180px !important;
+    height: 320px !important;
+    border: 5px solid white !important;
+  }
+
+  .component-details {
+    max-width: 210px !important;
+    max-height: 280px !important;
+    right: 2% !important;
+    top: 8% !important;
+  
+    .special-product-title {
+      font-size: 20px !important;
+    }
+  
+    .special-product-description {
+      font-size: 14px !important  ;
+    }
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 480px) {
+  .full-screen-container {
+    height: 250px !important;
+  }
+
+  .dota-product {
+    margin-top: 4% !important;
+    margin-left: 4% !important;
+    width: 150px !important;
+    height: 280px !important;
+    border: 5px solid white !important;
+  }
+
+  .component-details {
+    max-width: 190px !important;
+    max-height: 250px !important;
+    right: 0 !important;
+    top: 8% !important;
+  
+    .special-product-title {
+      font-size: 18px !important;
+    }
+  
+    .special-product-description {
+      font-size: 12px !important  ;
+    }
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .full-screen-container {
+    height: 250px !important;
+  }
+
+  .dota-product {
+    margin-top: 4% !important;
+    margin-left: 4% !important;
+    width: 150px !important;
+    height: 280px !important;
+    border: 5px solid white !important;
+  }
+
+  .component-details {
+    max-width: 160px !important;
+    max-height: 250px !important;
+    right: 0 !important;
+    top: 8% !important;
+  
+    .special-product-title {
+      font-size: 16px !important;
+    }
+  
+    .special-product-description {
+      font-size: 12px !important  ;
+    }
+  }
+}

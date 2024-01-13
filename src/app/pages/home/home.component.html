@@ -141,4 +141,39 @@
         </div>
     }
 </section>
-<br><br>
+<br><br><br><br>
+<section class="container">
+    <special-product></special-product>
+</section>
+<br><br><br><br>
+<section class="container-fluid">
+    @if(!isPhone && !isTablet){
+        <div class="ideas-for-stylish">
+            <div class="stylish-text">
+                <h1 class="stylish-normal">Ideas for</h1>
+                <h1 class="stylish-custom">Stylish</h1>
+                <h1 class="stylish-normal">Fun</h1>
+            </div>
+            <div class="stylish-image">
+                <img src="./assets/images/presentation-images/mix-the-colors.png" alt="" srcset="">
+            </div>
+            <div class="stylish-image">
+                <img src="./assets/images/presentation-images/silver-bold.png" alt="">
+            </div>
+        </div>
+    } @else {
+        <div class="ideas-for-stylish-sm">
+            <div class="stylish-text-sm">
+                <h1 class="stylish-normal-sm">Ideas for <span class="stylish-custom-sm">Stylish</span> Fun</h1>
+            </div>
+            <div class="stylish-image-sm">
+                <div class="image-sm">
+                    <img src="./assets/images/presentation-images/mix-the-colors.png" alt="" srcset="">
+                </div>
+                <div class="image-sm">
+                    <img src="./assets/images/presentation-images/silver-bold.png" alt="">
+                </div>
+            </div>
+        </div>
+    }
+</section>

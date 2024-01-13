@@ -5,6 +5,7 @@ import { ShoppingCartItem } from '../../model/ShoppingCartItem';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
 import { ProductComponent } from "../../components/product/product.component";
 import { Product } from '../../model/Product';
+import { SpecialProductComponent } from "../../components/special-product/special-product.component";
 
 @Component({
     selector: 'app-home',
@@ -14,7 +15,8 @@ import { Product } from '../../model/Product';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        ProductComponent
+        ProductComponent,
+        SpecialProductComponent
     ]
 })
 export class HomeComponent { 

@@ -47,10 +47,10 @@ body {
 }
 
 .container {
-  padding-right: 20px;
-  padding-left: 20px;  
-  margin-right: auto;
-  margin-left: auto;
+  padding-right: 0;
+  padding-left: 0;  
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .container-fluid {
@@ -79,13 +79,6 @@ body {
 
 
 @media screen and (max-width: 480px) {
-
-  .container {
-    padding-right: 10px;
-    padding-left: 10px;  
-    margin-right: auto;
-    margin-left: auto;
-  }
   
   .container-fluid {
     padding-right: 20px;
