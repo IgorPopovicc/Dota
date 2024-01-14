@@ -30,7 +30,6 @@ export class NavigationComponent implements OnInit {
   public isPhone: boolean = false;
   public isTablet: boolean = false;
   public isDropdownOpen: boolean = false;
-
   public count = signal(0);
 
   @HostListener('document:click', ['$event'])
