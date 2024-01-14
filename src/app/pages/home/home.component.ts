@@ -48,7 +48,7 @@ export class HomeComponent {
     if (typeof window !== 'undefined') {
       const screenWidth = window.innerWidth;
       this.isPhone = screenWidth <= 480;
-      this.isTablet = screenWidth > 480 && screenWidth <= 884;
+      this.isTablet = screenWidth >= 481 && screenWidth <= 884;
     }
   }
 

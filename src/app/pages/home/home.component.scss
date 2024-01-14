@@ -5,7 +5,7 @@
 .banner {
   position: relative;
   margin-top: 100px;
-  width: 100vw;
+  width: 100%;
   height: 550px;
   max-height: 550px;
   background-image: url("../../../assets/images/banners/banner.png");
@@ -175,7 +175,9 @@
       height: 100%;
       overflow: hidden;
       cursor: pointer;
-      justify-content: space-between;
+      display: flex;
+      justify-content: center;
+      align-items: center;
   
       img {
         width: 100%;
@@ -365,15 +367,18 @@
 }
 
 @media screen and (min-width: 481px) and (max-width: 767px )  { 
+  .bags-section {
+    max-height: 464px !important;
+  }
   
   .banner {
-    width: 100vw;
     height: 100vh !important;
     margin-top: 50px !important;
-    max-height: 550px;
+    max-height: 550px !important;
     background-image: url("../../../assets/images/banners/banner-mobile.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
   }
 
   .banner-content {
@@ -429,6 +434,9 @@
 
 
 @media screen and (max-width: 480px) {
+  .bags-section {
+    max-height: 340px !important;
+  }
 
   .banner {
     margin-top: 40px;
@@ -468,8 +476,8 @@
   }
 
   .show-all-bags {
-    height: 40% !important;
-    width: 97% !important;
+    height: 50% !important;
+    width: 100% !important;
 
     .title {
       font-size: 14px !important;
@@ -483,7 +491,7 @@
   } 
 
   .all-bags-image {
-    height: 55% !important;
+    height: 45% !important;
     justify-content: space-between !important;
 
     .all-bags-image-item {
@@ -519,6 +527,9 @@
 }
 
 @media screen and (min-width: 360px) and (max-width: 400px) {
+  .bags-section {
+    max-height: 340px !important;
+  }
   .ideas-for-stylish-sm {
     .stylish-text-sm {
       .stylish-normal-sm{
