@@ -35,7 +35,7 @@ export class NavigationComponent implements OnInit {
 
   @HostListener('document:click', ['$event'])
   onClick(event: Event): void {
-    if(this.isPhone || this.isTablet) {
+    if((this.isPhone || this.isTablet) && this.isDropdownOpen === true) {
       const hamburgerMenu = this.elRef.nativeElement;
       const dropdownMenu = hamburgerMenu.querySelector('.dropdown-menu');
 
