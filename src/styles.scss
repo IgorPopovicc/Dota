@@ -5,7 +5,11 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(196, 115, 196);
+    background-image: url("./assets/images/background/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(155, 107, 233);
 }
 
 .main-title {

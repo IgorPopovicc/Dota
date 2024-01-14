@@ -1,0 +1,63 @@
+<footer class="container-fluid">
+    @if(!isPhone && !isTablet){
+        <section class="footer">
+            <div class="top-section">
+                <div class="footer-logo">
+                    <img src="./../../../assets/images/logo/footer-logo.png" alt="Dota logo">
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li class="link">Pomoć i podrška</li>
+                        <li class="link">Povraćaji</li>
+                        <li class="link">Dostava i plaćanja</li>
+                        <li class="link">Kontakt</li>
+                    </ul>
+                </div>
+                <div class="email-title">
+                    <h1>Pošaljite nam svoj mejl kako biste bili u korak sa novostima!</h1>
+                </div>
+            </div>
+            <div class="middle-section">
+                <div class="email-input-container">
+                    <input type="email" id="emailInput" placeholder="Tvoj e-mail">
+                    <span id="sendText">Pošalji</span>
+                </div>              
+            </div>
+            <div class="bottom-section">
+                <img class="icon" src="./assets/images/icons/instagram.svg" alt="Instagram">
+                <img class="icon" src="./assets/images/icons/tiktok.svg" alt="Tiktok">
+                <h3 class="policy">Uslovi i politika</h3>
+            </div>
+        </section>
+    } @else {
+        <section class="footer">
+            <div class="email-title-sm">
+                <h1>Pošaljite nam svoj mejl kako biste bili u korak sa novostima!</h1>
+            </div>
+            <div class="middle-section-sm">
+                <div class="email-input-container">
+                    <input type="email" id="emailInput" placeholder="Tvoj e-mail">
+                    <span id="sendText">Pošalji</span>
+                </div>              
+            </div>
+            <div class="footer-links-sm">
+                <ul>
+                    <li class="link">Pomoć i podrška</li>
+                    <li class="link">Povraćaji</li>
+                    <li class="link">Dostava i plaćanja</li>
+                    <li class="link">Kontakt</li>
+                </ul>
+            </div>
+            
+            <div class="bottom-section">
+                <div class="icons">
+                    <img class="icon" src="./assets/images/icons/instagram.svg" alt="Instagram">
+                    <img class="icon" src="./assets/images/icons/tiktok.svg" alt="Tiktok">
+                </div>
+                <div class="footer-logo">
+                    <img src="./../../../assets/images/logo/footer-logo.png" alt="Dota logo">
+                </div>
+            </div>
+        </section>
+    }
+</footer>
