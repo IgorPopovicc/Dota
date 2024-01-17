@@ -19,9 +19,11 @@
             </div>
             <div class="middle-section">
                 <div class="email-input-container">
-                    <input type="email" id="emailInput" placeholder="Tvoj e-mail">
-                    <span id="sendText">Pošalji</span>
-                </div>              
+                    <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
+                        <input type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
+                        <span id="sendText" (click)="sendEmail()">Pošalji</span>
+                    </form>
+                </div>           
             </div>
             <div class="bottom-section">
                 <img class="icon" src="./assets/images/icons/instagram.svg" alt="Instagram">
@@ -36,10 +38,12 @@
             </div>
             <div class="middle-section-sm">
                 <div class="email-input-container">
-                    <input type="email" id="emailInput" placeholder="Tvoj e-mail">
-                    <span id="sendText">Pošalji</span>
-                </div>              
-            </div>
+                    <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
+                        <input type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
+                        <span id="sendText" (click)="sendEmail()">Pošalji</span>
+                    </form>
+                </div>
+            </div>            
             <div class="footer-links-sm">
                 <ul>
                     <li class="link">Pomoć i podrška</li>
