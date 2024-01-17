@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() { 
     setTimeout(() => {
       this.loadingService.hide();
-    }, 3000);
+    }, 0);
   }
 
   checkScreenSize(): void {

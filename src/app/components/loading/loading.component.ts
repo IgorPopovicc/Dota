@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { LoadingService } from '../../service/loading.service';
 
 @Component({
