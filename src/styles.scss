@@ -11,6 +11,10 @@ body {
     background-position: center;
 }
 
+body.loading-active {
+  overflow: hidden;
+}
+
 .main-title {
   color: #000C22;
   font-family: 'Mulish', 'sans-serif';

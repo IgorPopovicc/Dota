@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
 import { ProductsService } from '../../service/products.service';
 import { ShoppingCartItem } from '../../model/ShoppingCartItem';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
 import { ProductComponent } from "../../components/product/product.component";
 import { Product } from '../../model/Product';
 import { SpecialProductComponent } from "../../components/special-product/special-product.component";
+import { LoadingComponent } from "../../components/loading/loading.component";
+import { LoadingService } from '../../service/loading.service';
 
 @Component({
     selector: 'app-home',
@@ -16,10 +18,11 @@ import { SpecialProductComponent } from "../../components/special-product/specia
     imports: [
         CommonModule,
         ProductComponent,
-        SpecialProductComponent
+        SpecialProductComponent,
+        LoadingComponent
     ]
 })
-export class HomeComponent { 
+export class HomeComponent implements OnInit, AfterViewInit { 
   
   public count = 0;
   public isPhone: boolean = false;
@@ -33,15 +36,24 @@ export class HomeComponent {
   }
 
 
-  constructor(private productsService: ProductsService, private cartService: ShoppingCartService) {
+  constructor(private productsService: ProductsService, 
+              private cartService: ShoppingCartService,
+              private loadingService: LoadingService) {
     this.products = new Array<Product>;
   }
 
   ngOnInit(): void {
+    this.loadingService.show();
     this.checkScreenSize();
     for(let i = 0; i < 3; i++) {
       this.products.push(this.getProductsForHomePage());
     }
+  }
+
+  ngAfterViewInit() { 
+    setTimeout(() => {
+      this.loadingService.hide();
+    }, 2000);
   }
 
   checkScreenSize(): void {
