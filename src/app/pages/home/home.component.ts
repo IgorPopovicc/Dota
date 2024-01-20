@@ -8,6 +8,7 @@ import { Product } from '../../model/Product';
 import { SpecialProductComponent } from "../../components/special-product/special-product.component";
 import { LoadingComponent } from "../../components/loading/loading.component";
 import { LoadingService } from '../../service/loading.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -38,7 +39,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   constructor(private productsService: ProductsService, 
               private cartService: ShoppingCartService,
-              private loadingService: LoadingService) {
+              private loadingService: LoadingService,
+              private router: Router) {
     this.products = new Array<Product>;
   }
 
@@ -53,7 +55,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() { 
     setTimeout(() => {
       this.loadingService.hide();
-    }, 0);
+    }, 2000);
   }
 
   checkScreenSize(): void {
@@ -83,6 +85,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       quantity: 5
     };
     return product;
+  }
+
+  openProductDetails(product: Product) {
+    this.router.navigate(["product-details"],  { state: { product } } );
   }
 
 }

@@ -1,5 +1,5 @@
 <dota-loading></dota-loading>
-<div class="banner"> 
+<section class="banner"> 
     <div class="banner-dark-wrapper">
         <div class="banner-content">
             <h1 class="banner-text-h1">NOVA <span class="bold">DOTA <br>KOLEKCIJA</span></h1>
@@ -23,7 +23,7 @@
             </div>
         }
     </div>
-</div>
+</section>
 <br><br>
 <section class="container-fluid">
     <h1 class="main-title" *ngIf="!isPhone">Torbe</h1>
@@ -31,7 +31,7 @@
         @if(!isPhone && !isTablet) {
             @for (product of products; track product.id; let index = $index) {
                 @if(index <= 2) {
-                    <dota-product class="dota-product-xl" [product]="product"></dota-product>
+                    <dota-product (click)="openProductDetails(product)" class="dota-product-xl" [product]="product"></dota-product>
                 }
             } @empty {
                 Empty list of users
@@ -149,6 +149,7 @@
     <special-product></special-product>
 </section>
 <br><br><br><br>
+<!-- OVDE IDE SLIDER -->
 <section class="container-fluid">
     @if(!isPhone && !isTablet){
         <div class="ideas-for-stylish">
@@ -180,4 +181,5 @@
         </div>
     }
 </section>
+<!-- OVDE SE ZAVRSAVA SLIDER -->
 <br><br><br><br>
