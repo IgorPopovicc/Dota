@@ -85,7 +85,7 @@
         } @if(!isTablet && isPhone){
             @for (product of products; track product.id; let index = $index) {
                 @if(index < 1) {
-                    <dota-product class="dota-product-s" [product]="product"></dota-product>
+                    <dota-product (click)="openProductDetails(product)" class="dota-product-s" [product]="product"></dota-product>
                 }
             } @empty {
                 Empty list of users
