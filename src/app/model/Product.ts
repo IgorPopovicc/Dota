@@ -11,6 +11,6 @@ export class Product {
 
 export class ProductImages {
     imageDisplay1: string;
-    imageDIsplay2?: string;
-    imageDIsplay3?: string;
+    imageDisplay2?: string;
+    imageDisplay3?: string;
 }

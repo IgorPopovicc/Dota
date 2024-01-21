@@ -77,7 +77,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       id: "1",
       name: "MOONLIGHT",
       imagesDisplay: {
-        imageDisplay1: "./assets/images/products/bags/test-product/product1.png"
+        imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
+        imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
+        imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
       },
       price: 2000,
       type: "mini bag",
