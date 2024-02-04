@@ -154,15 +154,24 @@
         
         .flex {
             flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
         }
     
 
         h1 {
+            margin: 5% auto !important;
+            text-align: center !important;
             font-size: 24px !important;
         }
 
         form {
-            width: 70%;
+            width: 65%;
+            margin: 0 !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             .add-to-bag-button {  
                 span {
                   font-size: 16px !important;
@@ -171,7 +180,8 @@
         }
 
         .info {
-            width: 100%;
+            width: 90%;
+            margin: auto;
             text-align: center;
             font-size: 14px !important;
         }
