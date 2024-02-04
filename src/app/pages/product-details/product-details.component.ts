@@ -5,6 +5,7 @@ import { Product, ShoppingCartItem } from '../../model/Product';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { ProductComponent } from '../../components/product/product.component';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
+import { PromotionDialogComponent } from '../../components/promotion-dialog/promotion-dialog.component';
 
 @Component({
   selector: 'product-details',
@@ -12,7 +13,8 @@ import { ShoppingCartService } from '../../service/shopping-cart.service';
   imports: [
     CommonModule,
     GalleryModule,
-    ProductComponent
+    ProductComponent,
+    PromotionDialogComponent
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
@@ -30,6 +32,7 @@ export class ProductDetailsComponent implements OnInit {
   isPhone: boolean = false;
   isTablet: boolean = false;
   products: Array<Product>;
+  displayPromotion: boolean = false;
 
   constructor(private router: Router, private shoppingCartService: ShoppingCartService) {
     let item = this.router.getCurrentNavigation().extras.state;
@@ -45,6 +48,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.displayPromotion = true;
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         window.scrollTo(0, 0);
@@ -74,6 +78,10 @@ export class ProductDetailsComponent implements OnInit {
 
   addToBag() {
     this.shoppingCartService.addItemToCart(new ShoppingCartItem(this.product, 1));
+  }
+
+  handleClose() {
+    this.displayPromotion = false;
   }
 
 }

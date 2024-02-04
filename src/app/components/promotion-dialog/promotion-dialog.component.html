@@ -1,0 +1,30 @@
+<section class="promotion-section">
+  <div class="promotion-dialog">
+    <section class="close-button">
+      <svg (click)="closePromotionDialog()" width="15" height="15" xmlns="http://www.w3.org/2000/svg">
+        <image href="./../../../assets/images/icons/Close.svg" height="15" width="15" />
+      </svg> 
+    </section>
+    <section class="text-section">
+      <div class="text">
+        <h4>{{ description }}</h4>
+      </div>
+    </section>
+    <section class="footer">
+      <div class="price">
+        <span class="old-price">{{ oldPrice }}</span>
+        <span class="new-price">{{ newPrice }}</span>
+        <span class="value">rsd</span>
+      </div>
+      <div class="button-section">
+        <div class="button">
+          <span>{{ buttonText }}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+              <path d="M0.000978281 6.00098H15.001" stroke="#000000" stroke-width="1.5"/>
+              <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#000000" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>  
+    </section>
+  </div>
+</section>

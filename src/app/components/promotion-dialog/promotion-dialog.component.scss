@@ -1,0 +1,299 @@
+.promotion-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000c22a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+
+    .promotion-dialog {
+        width: 40%;
+        height: fit-content;
+        background-color: white;
+        background-image: url(./../../../assets/images/background/promotion-background.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0;
+        transform: scale(0);
+        animation: fadeInAndScale 0.8s ease forwards;
+
+        .close-button {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+
+            svg {
+                margin: 30px;
+            }
+        }
+
+        .text-section {
+            width: 100%;
+            height: fit-content;
+            text-align: end;
+            display: flex;
+            justify-content: end;
+            .text {
+                width: 60%;
+                padding-right: 30px;
+
+                h4 {
+                    font-family: 'Mulish', 'sans-serif';
+                    font-size: 40px;
+                    font-weight: 500;
+                    letter-spacing: 0px;
+                    text-align: right;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            
+            .price {
+                position: relative;
+                margin-left: 6%;
+
+                .old-price {
+                    position: absolute;
+                    top: -20px;
+                    left: -20px;
+                    font-family: Inter;
+                    font-size: 40px;
+                    font-style: italic;
+                    font-weight: 400;
+                    letter-spacing: 0px;
+                    text-align: left;
+                    color: #000c227a;
+                    text-decoration-line: line-through;
+                }
+
+                .new-price {
+                    font-family: 'Mulish', 'sans-serif';
+                    font-size: 80px;
+                    font-weight: 700;
+                    line-height: 122px;
+                    letter-spacing: 0px;
+                    text-align: left;
+                    color: #FF8438;
+                    ;
+                }
+
+                .value {
+                    font-family: Mulish;
+                    font-size: 28px;
+                    font-weight: 500;
+                    line-height: 42px;
+                    letter-spacing: 0px;
+                    text-align: left;  
+                    color: #000c227a;
+                    text-transform: uppercase; 
+                }
+            }
+
+            .button-section {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                margin-right: 30px;
+                .button {
+                    margin-top: 10px;
+                    padding: 15px 0;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 278px;
+                    height: 10px;
+                    background-color: #f9f9f9b9;
+                    ;
+                    border-radius: 30px;
+        
+                    span {
+                      margin-left: 15px;
+                      color: #000000;
+                      font-family: 'Mulish', 'sans-serif';
+                      font-size: 12px;
+                      font-style: normal;
+                      line-height: normal;
+                      text-transform: uppercase;
+                    }
+        
+                    svg {
+                        margin-right: 15px;
+                    }
+                  }
+            }         
+        }
+    }
+}
+
+@keyframes fadeInAndScale {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media screen and (min-width: 1201px ) and (max-width: 1580px)  { 
+    .promotion-dialog {
+        width: 60% !important;
+        height: fit-content !important;
+     }
+}
+
+@media screen and (min-width: 886px ) and (max-width: 1200px)  { 
+    .promotion-dialog {
+        width: 70% !important;
+        height: fit-content !important;
+     }
+}
+
+@media screen and (min-width: 768px ) and (max-width: 885px)  { 
+    .promotion-dialog {
+        width: 80% !important;
+        height: fit-content !important;
+     }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px )  { 
+    .promotion-dialog {
+        width: 90% !important;
+        height: fit-content !important;
+
+        .close-button {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+
+            svg {
+                margin-bottom: 0px !important;
+            }
+        }
+
+        .text-section {
+            .text {
+                width: 65% !important;
+                h4 {
+                    font-size: 30px !important;
+                }
+            }
+        }
+
+        .footer {
+            .price {
+                .old-price {
+                    top: 0px !important;
+                    left: 0px !important;
+                    font-size: 30px !important;
+                }
+
+                .new-price {
+                    font-size: 60px !important;
+                    line-height: 120px !important;
+                }
+            }
+
+            .button-section {
+                .button {
+                    padding: 10px 0 !important;
+                    width: 180px !important;
+        
+                    span {
+                      margin-left: 15px;
+                      color: #000000;
+                      font-family: 'Mulish', 'sans-serif';
+                      font-size: 12px;
+                      font-style: normal;
+                      line-height: normal;
+                      text-transform: uppercase;
+                    }
+        
+                    svg {
+                        margin-right: 15px;
+                    }
+                  }
+            }         
+        }
+    }
+}
+
+@media screen and (max-width: 481px)  { 
+    .promotion-dialog {
+        width: 90% !important;
+        height: fit-content !important;
+
+        .close-button {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+            
+            svg {
+                margin: 30px 15px 0 0px !important;
+            }
+        }
+
+        .text-section {
+            .text {
+                padding-right: 15px !important;
+                width: 80% !important;
+                h4 {
+                    font-size: 26px !important;
+                }
+            }
+        }
+
+        .footer {
+            .price {
+                .old-price {
+                    top: 0px !important;
+                    left: 0px !important;
+                    font-size: 26px !important;
+                }
+
+                .new-price {
+                    font-size: 40px !important;
+                    line-height: 100px !important;
+                }
+
+                .value {
+                    font-size: 18px !important;
+                }
+            }
+
+            .button-section {
+                margin-right: 15px !important;
+                .button {
+                    padding: 10px 0 !important;
+                    width: 140px !important;
+        
+                    span {
+                      margin-left: 10px !important;
+                      color: #000000;
+                      font-family: 'Mulish', 'sans-serif';
+                      font-size: 10px !important;
+                      font-style: normal;
+                      line-height: normal;
+                      text-transform: uppercase;
+                    }
+        
+                    svg {
+                        margin-right: 15px;
+                    }
+                  }
+            }         
+        }
+    }
+}
