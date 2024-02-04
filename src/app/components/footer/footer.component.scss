@@ -53,6 +53,7 @@
           font-weight: 400;
           line-height: 24px;
           text-transform: uppercase;
+          cursor: pointer
         }
 
       }
@@ -89,8 +90,8 @@
     #emailInput {
       border: none;
       border-bottom: 1px solid #000;
-      background-color: rgba(255, 255, 255, 0); /* Providan background */
-      width: 90%; /* Prilagodite širinu prema potrebi */
+      background-color: rgba(255, 255, 255, 0); 
+      width: 90%; 
 
       font-family: 'Mulish', 'sans-serif';
       font-size: 18px;
@@ -119,7 +120,7 @@
     }
     
     #emailInput:focus + #sendLabel {
-      color: #007bff; /* Promeni boju teksta kada je input u fokusu */
+      color: #007bff; 
     }
 
   }
@@ -176,7 +177,7 @@
   #emailInput {
     border: none;
     border-bottom: 1px solid #000;
-    background-color: rgba(255, 255, 255, 0); /* Providan background */
+    background-color: rgba(255, 255, 255, 0); 
     width: 90%;
 
     font-family: 'Mulish', 'sans-serif';
