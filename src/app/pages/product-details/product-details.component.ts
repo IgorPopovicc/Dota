@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Product } from '../../model/Product';
+import { NavigationEnd, Router } from '@angular/router';
+import { Product, ShoppingCartItem } from '../../model/Product';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { ProductComponent } from '../../components/product/product.component';
+import { ShoppingCartService } from '../../service/shopping-cart.service';
 
 @Component({
   selector: 'product-details',
@@ -30,7 +31,7 @@ export class ProductDetailsComponent implements OnInit {
   isTablet: boolean = false;
   products: Array<Product>;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private shoppingCartService: ShoppingCartService) {
     let item = this.router.getCurrentNavigation().extras.state;
     if(item && item['product']) {
       this.product = item['product'];
@@ -44,6 +45,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
+    });
     this.checkScreenSize();
     if(this.product) {
       this.images = [
@@ -63,7 +69,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   openProductDetails(product: Product) {
-    this.router.navigate(["product-details"],  { state: { product } } );
+    this.router.navigate(["product-details", product.id],  { state: { product } } );
+  }
+
+  addToBag() {
+    this.shoppingCartService.addItemToCart(new ShoppingCartItem(this.product, 1));
   }
 
 }

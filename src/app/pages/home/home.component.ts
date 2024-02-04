@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
 import { ProductsService } from '../../service/products.service';
-import { ShoppingCartItem } from '../../model/ShoppingCartItem';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
 import { ProductComponent } from "../../components/product/product.component";
 import { Product } from '../../model/Product';
 import { SpecialProductComponent } from "../../components/special-product/special-product.component";
 import { LoadingComponent } from "../../components/loading/loading.component";
 import { LoadingService } from '../../service/loading.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -45,6 +44,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
+    });
     this.loadingService.show();
     this.checkScreenSize();
     for(let i = 0; i < 3; i++) {
@@ -66,12 +70,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
-  addToShoppingCart() {
-    this.count++;
-    let cartItem = new ShoppingCartItem(this.count);
-    this.cartService.addItemToCart(cartItem); 
-  }
-
   getProductsForHomePage() {
     let product: Product = {
       id: "1",
@@ -90,7 +88,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   openProductDetails(product: Product) {
-    this.router.navigate(["product-details"],  { state: { product } } );
+    this.router.navigate(["product-details", product.id],  { state: { product } } );
   }
 
 }

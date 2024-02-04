@@ -7,35 +7,35 @@
                 <div class="second title">Količina</div>
                 <div class="third title">Cena</div>
             </div> 
-            @for (product of products; track $index) {
+            @for (item of cart; track $index) {
                 <div class="cart-item-product">
                     <span class="remove-item">x</span>
                     <div class="first">
                         <div class="cart-item-details">
                             <div class="cart-item-image">
-                                <img [src]="product.imagesDisplay.imageDisplay1" alt="product image">
+                                <img [src]="item.product.imagesDisplay.imageDisplay1" alt="product image">
                             </div>
                             <div class="product-detail">
-                                <p class="bag-type">{{ product.type }}</p>
-                                <h3 class="bag-name">{{ product.name }}</h3>
-                                <div class="color-box" [ngStyle]="{'background-color': product.color}"></div>
+                                <p class="bag-type">{{ item.product.type }}</p>
+                                <h3 class="bag-name">{{ item.product.name }}</h3>
+                                <div class="color-box" [ngStyle]="{'background-color': item.product.color}"></div>
                             </div>
                         </div>
                     </div>
                     <div class="second">
                         <div class="cart-item-number">
-                            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                            <svg (click)="removeItem(item)" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
                                 <image href="./../../../assets/images/icons/Minus.svg" height="40" width="40" />
                             </svg>
-                            <p class="item-number">3</p>
-                            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                            <p class="item-number">{{ item.bagQuantity }}</p>
+                            <svg (click)="addItem(item)" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
                                 <image href="./../../../assets/images/icons/Plus.svg" height="40" width="40" />
                             </svg>                                                   
                         </div>
                     </div>
                     <div class="third">
                         <div class="cart-item-price">
-                            <p class="price">{{product.price}}<span class="value">rsd</span></p>
+                            <p class="price">{{ item.product.price }}<span class="value">rsd</span></p>
                         </div>
                     </div>
                 </div> 
@@ -61,7 +61,7 @@
                     <p class="price">{{ totalPrice }}<span class="value">rsd</span></p>
                 </div>
                 <h3 class="delivery-fee">+ troškovi dostave</h3>
-                <div (click)="addItemsToBag()" class="add-to-bag-button">
+                <div class="add-to-bag-button">
                     <span>Poruči</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
                         <path d="M0.000978281 6.00098H15.001" stroke="#ffffff" stroke-width="1.5"/>

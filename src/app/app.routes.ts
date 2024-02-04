@@ -6,6 +6,6 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 export const routes: Routes = [
     { path: '', component: HomeComponent, data: { scrollPositionRestoration: 'top' } },
     { path: 'home', component: HomeComponent, data: { scrollPositionRestoration: 'top' } },
-    { path: 'product-details', component: ProductDetailsComponent, data: { scrollPositionRestoration: 'top' } },
+    { path: 'product-details/:productId', component: ProductDetailsComponent, data: { scrollPositionRestoration: 'top' } },
     { path: 'shopping-cart', component: ShoppingCartComponent, data: { scrollPositionRestoration: 'top' } }
 ];

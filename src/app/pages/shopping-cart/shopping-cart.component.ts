@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductComponent } from "../../components/product/product.component";
 import { CommonModule } from "@angular/common";
-import { Product } from "../../model/Product";
+import { ShoppingCartItem } from "../../model/Product";
+import { ShoppingCartService } from "../../service/shopping-cart.service";
+import { Subscription } from "rxjs";
+import { NavigationEnd, Router } from "@angular/router";
 
 @Component({
     selector: 'shopping-cart',
@@ -15,37 +18,39 @@ import { Product } from "../../model/Product";
 })
 export class ShoppingCartComponent implements OnInit {
 
-    public products: Array<Product>;
+    public cart: ShoppingCartItem[] = [];
     public totalPrice: number = 0;
+    private cartSubscription: Subscription;
+  
+    constructor(private shoppingCartService: ShoppingCartService, private router: Router) { }
+  
+    ngOnInit(): void {    
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd) {
+              window.scrollTo(0, 0);
+            }
+        });
+
+        this.cart = this.shoppingCartService.getCartItems();
+        this.totalPrice = this.shoppingCartService.totalPrice.value;
     
-    constructor() {
-        this.products = new Array<Product>;
+        this.cartSubscription = this.shoppingCartService.cartItemsChanged.subscribe(items => {
+            this.cart = items;
+            this.totalPrice = this.shoppingCartService.totalPrice.value;
+        });
+    }
+  
+    ngOnDestroy(): void {
+        this.cartSubscription.unsubscribe();
     }
 
-    ngOnInit(): void {
-       
+    addItem(item: ShoppingCartItem) {
+        this.shoppingCartService.addItemQuantity(item);
     }
 
-    getProductsForHomePage() {
-        let product: Product = {
-          id: "1",
-          name: "MOONLIGHT",
-          imagesDisplay: {
-            imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
-            imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
-            imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
-          },
-          price: 2000,
-          type: "mini bag",
-          color: "#000000",
-          quantity: 5
-        };
-        return product;
+    removeItem(item: ShoppingCartItem) {
+        this.shoppingCartService.removeItemQuantity(item);
     }
-
-    addItemsToBag() {
-        this.products.push(this.getProductsForHomePage());
-        this.totalPrice += this.getProductsForHomePage().price
-    }
+  
 
 }
