@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
 import { EmailService } from '../../service/email.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'dota-footer',
@@ -18,9 +19,15 @@ export class FooterComponent {
   public isPhone: boolean = false;
   public isTablet: boolean = false;
   public emailForm: FormGroup;
+  public isContact = true;
+  public isContactRoute: boolean = false;
 
-  constructor(private fb: FormBuilder, private emailService: EmailService) {
-
+  constructor(private fb: FormBuilder, private emailService: EmailService, private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isContactRoute = (event.url === '/contact');
+      }
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -29,6 +36,7 @@ export class FooterComponent {
   }
 
   ngOnInit(): void {
+    this.isContactRoute = this.router.url === '/contact'; 
     this.checkScreenSize();
     this.emailForm = this.fb.group({
       userEmail: ['', [Validators.required, Validators.email]]
@@ -60,6 +68,10 @@ export class FooterComponent {
       console.error('Invalid email address');
       // Dodajte logiku za prikazivanje korisniku poruke o neispravnoj e-mail adresi
     }
+  }
+
+  openCOntact() {
+    this.router.navigate(['/contact']);
   }
 
 }

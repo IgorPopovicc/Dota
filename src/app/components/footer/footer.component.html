@@ -1,4 +1,4 @@
-<footer class="container-fluid">
+<footer class="container-fluid" [ngClass]="{ 'white' : isContactRoute }">
     @if(!isPhone && !isTablet){
         <section class="footer">
             <div class="top-section">
@@ -20,7 +20,7 @@
             <div class="middle-section">
                 <div class="email-input-container">
                     <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
-                        <input type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
+                        <input [ngClass]="{ 'white' : isContactRoute }" type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
                         <span id="sendText" (click)="sendEmail()">Pošalji</span>
                     </form>
                 </div>           
@@ -39,7 +39,7 @@
             <div class="middle-section-sm">
                 <div class="email-input-container">
                     <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
-                        <input type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
+                        <input [ngClass]="{ 'white' : isContactRoute }" type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
                         <span id="sendText" (click)="sendEmail()">Pošalji</span>
                     </form>
                 </div>
@@ -49,7 +49,7 @@
                     <li class="link">Pomoć i podrška</li>
                     <li class="link">Povraćaji</li>
                     <li class="link">Dostava i plaćanja</li>
-                    <li class="link">Kontakt</li>
+                    <li (click)="openCOntact()" class="link">Kontakt</li>
                 </ul>
             </div>
             

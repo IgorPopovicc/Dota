@@ -1,15 +1,15 @@
 <section class="product">
     <div class="product-image">
-        <img [src]="displayImage" alt="Dota product">
+        <img [src]="product.imagesDisplay.imageDisplay1" alt="Dota product">
     </div>
     <div class="product-details">
         <div class="product-main-details">
-            <p class="bag-type">{{ type }}</p>
-            <h3 class="bag-name">{{ name }}</h3>
-            <div class="color-box"></div>
+            <p class="bag-type">{{ product.type }}</p>
+            <h3 class="bag-name">{{ product.name }}</h3>
+            <div class="color-box" [ngStyle]="{'background-color': product.color}"></div>
         </div>
         <div class="product-price">
-            <span class="price">{{ price }}</span>
+            <span class="price">{{ product.price }}</span>
             <span class="value">RSD</span>
         </div>
     </div>

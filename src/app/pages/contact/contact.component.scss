@@ -1,0 +1,179 @@
+.contact {
+    display: flex;
+    padding-top: 120px;
+    height: 100vh;
+    justify-content: flex-end;
+}
+
+.form {
+    position: relative;
+    margin-top: 2%;
+    margin-right: 5%;
+    width: 60%;
+    height: fit-content;
+    background-color: #ffffffb6;
+    height: fit-content;
+
+    .flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    form {
+        width: 50%;
+        margin: 0 0 10% 10%;
+        .custom-input {
+            width: 100%; 
+            height: 30px; 
+            border: 1px solid black; 
+            border-radius: 5px; 
+            padding: 10px; 
+            background-color: transparent; 
+            margin-bottom: 10px;
+          }
+          
+          .custom-input:focus {
+            outline: none; 
+          }
+          
+          .custom-input::placeholder {
+            color: black; 
+          }
+          
+          .custom-input::placeholder::before {
+            font-size: 18px; 
+            color: black; 
+            opacity: 1; 
+          }
+
+          .custom-textarea {
+            margin-top: 5%;
+            width: 100%;
+            height: 200px; 
+            border: 1px solid black; 
+            border-radius: 5px;
+            padding: 10px; 
+            background-color: transparent; 
+            resize: vertical; 
+          }
+          
+          .custom-textarea:focus {
+            outline: none; 
+          }
+          
+          .custom-textarea::placeholder {
+            color: black; 
+          }
+
+          .add-to-bag-button {
+            margin-top: 30px;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #FF8438;
+            border-radius: 30px;
+
+            span {
+              margin-left: 10px;
+              color: #FFF;
+              font-family: 'Mulish', 'sans-serif';
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              text-transform: uppercase;
+            }
+          }
+          
+    }
+
+    h1 {
+        font-family:  'Mulish', 'sans-serif';
+        font-size: 46px;
+        font-weight: 500;
+        line-height: 64px;
+        letter-spacing: 0px;
+        text-align: left;
+        text-transform: uppercase;
+        margin: 10% 0 5% 10%;
+    }
+
+    .info {
+        width: 20%;
+        margin-right: 10%;
+        font-size: 18px;
+        font-family: 'Mulish', 'sans-serif';
+        font-weight: 500;
+        line-height: 22px;
+        letter-spacing: 0px;
+        text-align: left;
+        text-transform: uppercase;
+    }
+}
+
+@media screen and (min-width: 884px ) and (max-width: 1200px)  { 
+    .form {
+        width: 80% !important;
+        height: fit-content !important;
+    }
+}
+
+@media screen and (min-width: 481px ) and (max-width: 883px)  { 
+    .form {
+        width: 90% !important;
+        height: fit-content !important;
+
+        h1 {
+            font-size: 28px !important;
+        }
+
+        form {
+            .add-to-bag-button {  
+                span {
+                  font-size: 16px !important;
+                }
+              }
+        }
+
+        .info {
+            font-size: 14px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 480px)  { 
+    .form {
+        width: 90% !important;
+        height: fit-content !important;
+        margin-top: 0 !important;
+        margin: auto;
+        
+        .flex {
+            flex-direction: column !important;
+        }
+    
+
+        h1 {
+            font-size: 24px !important;
+        }
+
+        form {
+            width: 70%;
+            .add-to-bag-button {  
+                span {
+                  font-size: 16px !important;
+                }
+              }
+        }
+
+        .info {
+            width: 100%;
+            text-align: center;
+            font-size: 14px !important;
+        }
+    }
+}

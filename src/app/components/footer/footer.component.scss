@@ -2,6 +2,11 @@
   display: block;
 }
 
+.white {
+  color: white !important;
+  border-color: white !important;
+}
+
 .footer {
   border: 1px solid rgba(0, 0, 0, 0.1);
   stroke-width: 1px;
@@ -9,7 +14,7 @@
   flex-direction: column;
   height: fit-content;
   width: 100%;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
 
   .top-section {
     display: flex;
@@ -42,7 +47,6 @@
 
         .link {
           list-style: none;
-          color: #000;
           font-family: 'Mulish', 'sans-serif';
           font-size: 18px;
           font-style: normal;
@@ -60,7 +64,6 @@
 
       h1 {
         margin: 0;
-        color: #000;
         font-family: 'Mulish', 'sans-serif';
         font-size: 26px;
         font-style: normal;
@@ -89,7 +92,6 @@
       background-color: rgba(255, 255, 255, 0); /* Providan background */
       width: 90%; /* Prilagodite širinu prema potrebi */
 
-      color: black;
       font-family: 'Mulish', 'sans-serif';
       font-size: 18px;
       font-style: normal;
@@ -107,7 +109,6 @@
       right: 10%;
       bottom: 0;
       padding: 5px;
-      color: #000;
       font-family: 'Mulish', 'sans-serif';
       font-size: 18px;
       font-style: normal;
@@ -136,7 +137,6 @@
 
     .policy {
       margin-left: 50px;
-      color: black;
       font-family: 'Mulish', 'sans-serif';
       font-size: 16px;
       font-style: normal;
@@ -151,7 +151,6 @@
   h1 {
     margin: 0;
     padding: 20px;
-    color: #000;
     font-family: 'Mulish', 'sans-serif';
     font-size: 22px;
     font-style: normal;
@@ -180,7 +179,6 @@
     background-color: rgba(255, 255, 255, 0); /* Providan background */
     width: 90%;
 
-    color: black;
     font-family: 'Mulish', 'sans-serif';
     font-size: 18px;
     font-style: normal;
@@ -198,7 +196,6 @@
     right: 10%;
     bottom: 0;
     padding: 5px;
-    color: #000;
     font-family: 'Mulish', 'sans-serif';
     font-size: 18px;
     font-style: normal;
@@ -230,13 +227,13 @@
 
     .link {
       list-style: none;
-      color: #000;
       font-family: 'Mulish', 'sans-serif';
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
       line-height: 24px;
       text-transform: uppercase;
+      cursor: pointer;
     }
 
   }
