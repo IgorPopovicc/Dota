@@ -11,6 +11,7 @@ import {
 import { IconComponent } from '../icon/icon.component';
 import { ProductsService } from '../../service/products.service';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dota-navigation',
@@ -22,10 +23,11 @@ import { ShoppingCartService } from '../../service/shopping-cart.service';
 })
 export class NavigationComponent implements OnInit {
   constructor(
-    private productsService: ProductsService,
-    private cartService: ShoppingCartService,
-    private elRef: ElementRef
-  ) {}
+      private productsService: ProductsService,
+      private cartService: ShoppingCartService,
+      private elRef: ElementRef, 
+      private router: Router
+    ) {}
 
   public isPhone: boolean = false;
   public isTablet: boolean = false;
@@ -78,6 +80,14 @@ export class NavigationComponent implements OnInit {
 
   onClickOutside(): void {
     this.isDropdownOpen = false;
+  }
+
+  openShoppingCart() {
+    this.router.navigate(['/shopping-cart']);
+  }
+
+  openHomePage() {
+    this.router.navigate(['/home']);
   }
 
 }
