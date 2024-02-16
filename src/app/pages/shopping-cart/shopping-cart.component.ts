@@ -52,5 +52,8 @@ export class ShoppingCartComponent implements OnInit {
         this.shoppingCartService.removeItemQuantity(item);
     }
   
+    openOrderDetails() {
+        this.router.navigate(["order-details"]);
+    }
 
 }

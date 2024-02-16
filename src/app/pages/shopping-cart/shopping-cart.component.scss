@@ -1,5 +1,6 @@
 .shopping-cart {
-    margin: 150px 0 100px 0;
+    padding-top: 120px;
+    padding-bottom: 100px;
 }
 .flex {
     display: flex;
@@ -116,6 +117,10 @@
             letter-spacing: 0px;
             text-align: center;
         }
+
+        svg {
+            cursor: pointer;
+        }
     }
 
     .cart-item-price {
@@ -222,6 +227,7 @@
             width: 100%;
             background-color: #FF8438;
             border-radius: 30px;
+            cursor: pointer;
 
             span {
               margin-left: 15px;

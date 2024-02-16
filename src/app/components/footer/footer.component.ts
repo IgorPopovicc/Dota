@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
 import { EmailService } from '../../service/email.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dota-footer',
@@ -22,13 +22,7 @@ export class FooterComponent {
   public isContact = true;
   public isContactRoute: boolean = false;
 
-  constructor(private fb: FormBuilder, private emailService: EmailService, private router: Router) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.isContactRoute = (event.url === '/contact');
-      }
-    });
-  }
+  constructor(private fb: FormBuilder, private emailService: EmailService, private router: Router) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {

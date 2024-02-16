@@ -1,6 +1,7 @@
 .product {
     display: flex;
-    margin: 150px 0 100px 0;
+    padding-top: 120px;
+    padding-bottom: 100px;
 
     gallery {
         width: 60%;
@@ -114,6 +115,7 @@
             width: 100%;
             background-color: #FF8438;
             border-radius: 30px;
+            cursor: pointer;
 
             span {
               margin-left: 10px;
