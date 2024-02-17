@@ -47,7 +47,8 @@ export class OrderDetailsComponent implements OnInit {
       address: ['', [Validators.required]],
       placeNumber: ['', [Validators.required]],
       phone: [''],
-      message: ['']
+      message: [''],
+      contactUs: [false]
     });
 
     this.deliveryForm.get('city')?.valueChanges.subscribe(value => {
@@ -79,16 +80,21 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   onSubmit() {
+    this.router.navigate(['/order-message']);
     if (this.deliveryForm.invalid) {
       return;
     }
-
     console.log('Form submitted:', this.deliveryForm.value);
   }
 
   openShoppingCart() {
     this.router.navigate(['/shopping-cart']);
   }
+
+  submitOrder() {
+    
+  }
+
 
   get f() { return this.deliveryForm.controls; }
 

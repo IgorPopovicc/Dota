@@ -262,6 +262,58 @@
   }
 }
 
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px; 
+  min-width: 20px;
+  min-height: 20px; 
+  border-radius: 50%; 
+  border: 1px solid #ccc; 
+  outline: none; 
+  cursor: pointer; 
+  position: relative; 
+}
+
+input[type="checkbox"]::before {
+  content: ""; 
+  display: block;
+  width: 60%; 
+  height: 60%; 
+  background-color: #FF8438;; 
+  border-radius: 50%; 
+  position: absolute; 
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  opacity: 0; 
+}
+
+input[type="checkbox"]:checked::before {
+  opacity: 1; 
+}
+
+.checkbox-label {
+  margin-top: 30px;
+  display: flex;
+  align-items: center; 
+  margin-right: 10px; 
+
+  span {
+    padding-left: 10px;
+    font-family: 'Mulish', 'sans-serif';
+    color: #000c22a9;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+}
+
+
 @media screen and (min-width: 1350px ) {
   .search-container {
     .custom-input {
