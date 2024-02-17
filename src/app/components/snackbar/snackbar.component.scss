@@ -1,0 +1,56 @@
+.custom-snackbar {
+    display: flex;
+    align-items: center;
+    padding: 30px 15px;
+    background-color: #fdfdfd;
+    color: black;
+    width: 360px !important;
+    border: none !important;
+    margin: auto;
+    font-size: 16px;
+    font-family: 'Mulish', 'sans-serif';
+}
+  
+.logo {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+  
+.message {
+    text-align: center;
+    flex-grow: 1;
+}
+
+::ng-deep .mat-mdc-snack-bar-container {
+   padding: 0 !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-handset, .mat-mdc-snack-bar-container {
+    flex: none !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    background-color: white;
+}
+
+::ng-deep .mdc-snackbar__label {
+    padding: 0 !important;
+}
+
+::ng-deep .mdc-snackbar__surface {
+    padding: 0 !important;
+}
+
+@media screen and (max-width: 480px) {
+    .custom-snackbar {
+        font-size: 14px;
+        width: 280px !important; 
+    }
+
+    .logo {
+        width: 80px;
+    }
+}
+
+  

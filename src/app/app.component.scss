@@ -2,4 +2,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    overflow-x: hidden;
+    overscroll-behavior: none !important;
 }

@@ -6,6 +6,8 @@ import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { ProductComponent } from '../../components/product/product.component';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
 import { PromotionDialogComponent } from '../../components/promotion-dialog/promotion-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
   selector: 'product-details',
@@ -34,7 +36,7 @@ export class ProductDetailsComponent implements OnInit {
   products: Array<Product>;
   displayPromotion: boolean = false;
 
-  constructor(private router: Router, private shoppingCartService: ShoppingCartService) {
+  constructor(private router: Router, private shoppingCartService: ShoppingCartService, private snackBar: MatSnackBar) {
     let item = this.router.getCurrentNavigation().extras.state;
     if(item && item['product']) {
       this.product = item['product'];
@@ -78,10 +80,20 @@ export class ProductDetailsComponent implements OnInit {
 
   addToBag() {
     this.shoppingCartService.addItemToCart(new ShoppingCartItem(this.product, 1));
+    this.showCustomSnackbar("Uspjesno ste dodali u korpu!");
   }
 
   handleClose() {
     this.displayPromotion = false;
+  }
+
+  showCustomSnackbar(message: string) {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      data: { message: message },
+      duration: 5000, 
+      horizontalPosition: 'center', 
+      verticalPosition: 'bottom'
+    });
   }
 
 }

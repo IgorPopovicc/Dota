@@ -51,6 +51,7 @@
               <li class="item-detail" *ngFor="let item of shoppingCartItems">
                 <span>{{ item.product.name }}</span>
                 <span>{{ "X" + item.bagQuantity }}</span>
+                <span>{{ item.product.price + "rsd" }}</span>
               </li>
             </ul>
             <div class="total-price">
