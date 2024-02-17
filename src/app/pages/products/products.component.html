@@ -1,0 +1,26 @@
+<section class="container-fluid products">
+  <div class="header">
+    <h1 class="main-title">PROIZVODI</h1>
+    <details id="dropdown" class="custom-select">
+      <summary class="radios">
+        <input type="radio" name="item" id="default" title="SORTIRAJ" checked (change)="sortProducts('default')">
+        <input type="radio" name="item" id="Asc" title="Po ceni rastuće" (change)="sortProducts('asc')">
+        <input type="radio" name="item" id="Desc" title="Po ceni opadajuće" (change)="sortProducts('desc')">
+      </summary>
+      <ul class="list">
+        <li>
+          <label for="Asc">Po ceni rastuće</label>
+        </li>
+        <li>
+          <label for="Desc">Po ceni opadajuće</label>
+        </li>
+      </ul>
+    </details>
+  </div>
+  <section class="products-container">
+    @for (item of sortedList; track $index) {
+      <dota-product (click)="openProductDetails(item)" class="product-item" [product]="item"></dota-product>
+    }
+    <div class="load-more-trigger"></div>
+  </section>
+</section>

@@ -5,6 +5,7 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import { ContactComponent } from './pages/contact/contact.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { OrderMessageComponent } from './pages/order-message/order-message.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, data: { scrollPositionRestoration: 'top' } },
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path: 'shopping-cart', component: ShoppingCartComponent, data: { scrollPositionRestoration: 'top' } },
     { path: 'contact', component: ContactComponent, data: { scrollPositionRestoration: 'top' } },
     { path: 'order-details', component: OrderDetailsComponent, data: { scrollPositionRestoration: 'top' } },
-    { path: 'order-message', component: OrderMessageComponent, data: { scrollPositionREstoration: 'top'} }
+    { path: 'order-message', component: OrderMessageComponent, data: { scrollPositionRestoration: 'top'} },
+    { path: 'products', component: ProductsComponent }
 ];

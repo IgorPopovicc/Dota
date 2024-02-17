@@ -91,4 +91,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.router.navigate(["product-details", product.id],  { state: { product } } );
   }
 
+  openProducts() {
+    this.router.navigate(["/products"]);
+  }
+
 }
