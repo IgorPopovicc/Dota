@@ -81,6 +81,7 @@ export class OrderDetailsComponent implements OnInit {
 
   onSubmit() {
     this.router.navigate(['/order-message']);
+    this.shoppingCartService.clearShoppingCart();
     if (this.deliveryForm.invalid) {
       return;
     }
@@ -90,11 +91,6 @@ export class OrderDetailsComponent implements OnInit {
   openShoppingCart() {
     this.router.navigate(['/shopping-cart']);
   }
-
-  submitOrder() {
-    
-  }
-
 
   get f() { return this.deliveryForm.controls; }
 

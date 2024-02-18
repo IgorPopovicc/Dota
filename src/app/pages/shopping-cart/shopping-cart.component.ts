@@ -56,4 +56,8 @@ export class ShoppingCartComponent implements OnInit {
         this.router.navigate(["order-details"]);
     }
 
+    goToShop() {
+        this.router.navigate(['/products']);
+    }    
+
 }

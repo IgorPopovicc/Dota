@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { Product } from '../../model/Product';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'special-product',
@@ -25,6 +26,8 @@ export class SpecialProductComponent {
   onResize(event: Event): void {
     this.setContainerHeight();
   }
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.setContainerHeight();
@@ -58,4 +61,9 @@ export class SpecialProductComponent {
     color: "#000000",
     quantity: 5
   };
+
+  openProductDetails(product: Product) {
+    this.router.navigate(["product-details", product.id],  { state: { product } } );
+  }
+
 }

@@ -15,5 +15,6 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent, data: { scrollPositionRestoration: 'top' } },
     { path: 'order-details', component: OrderDetailsComponent, data: { scrollPositionRestoration: 'top' } },
     { path: 'order-message', component: OrderMessageComponent, data: { scrollPositionRestoration: 'top'} },
-    { path: 'products', component: ProductsComponent }
+    { path: 'products', component: ProductsComponent },
+    { path: '**', redirectTo: '/home' } 
 ];

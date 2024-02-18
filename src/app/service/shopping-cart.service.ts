@@ -82,4 +82,11 @@ export class ShoppingCartService {
     this.computeCartTotals();
   }
 
+  clearShoppingCart() {
+    this.cartItems = []; 
+    this.totalPrice.next(0); 
+    this.totalQuantity.next(0); 
+    this.cartItemsChanged.next([]); 
+  }
+
 }

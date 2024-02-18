@@ -4,7 +4,7 @@
             <h2 class="special-product-title">{{ componentName }}</h2>
             <p class="special-product-description">{{ componentDescription }}</p>
         </div>
-        <dota-product [product]="product" class="dota-product"></dota-product>
+        <dota-product (click)="openProductDetails(product)" [product]="product" class="dota-product"></dota-product>
     </div>
 </div>
   

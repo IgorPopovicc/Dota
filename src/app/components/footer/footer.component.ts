@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Renderer2 } from '@angular/core';
 import { EmailService } from '../../service/email.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'dota-footer',
@@ -22,7 +22,7 @@ export class FooterComponent {
   public isContact = true;
   public isContactRoute: boolean = false;
 
-  constructor(private fb: FormBuilder, private emailService: EmailService, private router: Router) {}
+  constructor(private fb: FormBuilder, private emailService: EmailService, private router: Router, private renderer: Renderer2) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -30,7 +30,12 @@ export class FooterComponent {
   }
 
   ngOnInit(): void {
-    this.isContactRoute = this.router.url === '/contact'; 
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isContactRoute = this.router.url === '/contact';
+        this.setFooterTextColor();
+      }
+    });
     this.checkScreenSize();
     this.emailForm = this.fb.group({
       userEmail: ['', [Validators.required, Validators.email]]
@@ -68,4 +73,19 @@ export class FooterComponent {
     this.router.navigate(['/contact']);
   }
 
+  setFooterTextColor(): void {
+    if (typeof window !== 'undefined') {
+      const footerElement = document.querySelector('.footer');
+      const emailInput = document.querySelector('#emailInput');
+      if (footerElement && emailInput) {
+        if (this.isContactRoute) {
+          this.renderer.addClass(footerElement, 'white-text');
+          this.renderer.addClass(emailInput, 'white');
+        } else {
+          this.renderer.removeClass(footerElement, 'white-text');
+          this.renderer.removeClass(emailInput, 'white');
+        }
+      }
+    }
+  }
 }

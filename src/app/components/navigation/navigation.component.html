@@ -2,11 +2,10 @@
     <ul class="navigation-menu">
       <li (click)="openHomePage()">POČETNA</li>
       <li><samp class="line"></samp></li>
-      <li class="active">TORBE</li>
-      <li>NOVČANICI</li>
+      <li (click)="openProducts()" routerLink="/products" routerLinkActive="active">TORBE</li>
+      <li (click)="openProducts()">NOVČANICI</li>
       <li><samp class="line"></samp></li>
-      <li>ŽENE</li>
-      <li>MUSKARCI</li>
+      <li (click)="openContact()" routerLink="/contact" routerLinkActive="active">KONTAKT</li>
     </ul>
     <div class="hamburger-menu">
       <dota-icon (click)="toggleDropdown()" iconPath="./assets/images/icons/hamburger-menu.svg?v=4" altText="Shopping cart"></dota-icon>
@@ -15,10 +14,9 @@
           <li>MENI</li>
           <hr class="menu-line">
           <li (click)="openHomePage()"><a href="#">POČETNA</a></li>
-          <li><a class="active" href="#">TORBE</a></li>
-          <li><a href="#">NOVČANICI</a></li>
-          <li><a href="#">ŽENE</a></li>
-          <li><a href="#">MUŠKARCI</a></li>
+          <li (click)="openProducts()"><a href="#">TORBE</a></li>
+          <li (click)="openProducts()"><a href="#">NOVČANICI</a></li>
+          <li (click)="openContact()"><a href="#">KONTAKT</a></li>
         </ul>
       </div>
     </div>

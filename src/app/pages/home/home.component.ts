@@ -36,11 +36,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
 
-  constructor(private productsService: ProductsService, 
-              private cartService: ShoppingCartService,
-              private loadingService: LoadingService,
-              private router: Router) {
+  constructor(private loadingService: LoadingService, private router: Router) {
     this.products = new Array<Product>;
+    this.loadingService.show();
   }
 
   ngOnInit(): void {
@@ -49,7 +47,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
         window.scrollTo(0, 0);
       }
     });
-    this.loadingService.show();
     this.checkScreenSize();
     for(let i = 0; i < 3; i++) {
       this.products.push(this.getProductsForHomePage());

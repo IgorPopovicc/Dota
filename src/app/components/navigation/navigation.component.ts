@@ -90,4 +90,12 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  openContact() {
+    this.router.navigate(['/contact']);
+  }
+
+  openProducts() {
+    this.router.navigate(['/products']);
+  }
+
 }

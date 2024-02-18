@@ -1,6 +1,8 @@
+<dota-loading></dota-loading>
 <section class="container-fluid products">
+  <h1 class="main-title">PROIZVODI</h1>
   <div class="header">
-    <h1 class="main-title">PROIZVODI</h1>
+    <input class="search" type="text" (input)="filterProducts($event)">
     <details id="dropdown" class="custom-select">
       <summary class="radios">
         <input type="radio" name="item" id="default" title="SORTIRAJ" checked (change)="sortProducts('default')">
@@ -20,7 +22,11 @@
   <section class="products-container">
     @for (item of sortedList; track $index) {
       <dota-product (click)="openProductDetails(item)" class="product-item" [product]="item"></dota-product>
+    } @empty {
+      <div class="empty-message">
+        <h3>Nemamo trazeni proizvod!</h3>
+      </div>
     }
-    <div class="load-more-trigger"></div>
   </section>
+  <div class="load-more-trigger"></div>
 </section>

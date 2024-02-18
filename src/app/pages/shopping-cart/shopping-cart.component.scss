@@ -292,6 +292,35 @@
     }
   }
 
+  .button {
+    cursor: pointer;
+    border: none;
+    margin-top: 30px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+
+    span {
+      margin-left: 10px;
+      font-family: 'Mulish', 'sans-serif';
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: uppercase;
+    }
+
+  }
+
+  .go-back {
+    width: 250px;
+    background-color: #f0f0f0;
+    color: #121212;
+  }
+
   @media screen and (min-width: 768px ) and (max-width: 1200px)  { 
     .cart-table {
         min-width: 62% !important;
