@@ -34,10 +34,14 @@ $Dota-theme: mat.define-light-theme((
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@500&family=Nothing+You+Could+Do&family=Poppins:wght@500&display=swap');
 
 body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    overscroll-behavior: none;
+  background-image: url('./assets/images/background/background.png');
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 body.loading-active {

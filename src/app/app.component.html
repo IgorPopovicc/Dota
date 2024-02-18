@@ -1,4 +1,4 @@
-<div class="background" [ngStyle]="{'background-image': isContactRoute ? 'url(\'./assets/images/background/contact-backgroun.png\')' : 'url(\'./assets/images/background/background.png\')'}">
+<div [ngClass]="{'background': isContactRoute }">
     <dota-navigation></dota-navigation>
         <router-outlet></router-outlet>
     <dota-footer></dota-footer>
