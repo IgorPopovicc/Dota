@@ -1,6 +1,6 @@
 <footer class="container-fluid">
     @if(!isPhone && !isTablet){
-        <section class="footer" [ngClass]="{ 'white-text': isContactRoute }">
+        <section class="footer">
             <div class="top-section">
                 <div class="footer-logo">
                     <img src="./../../../assets/images/logo/footer-logo.png" alt="Dota logo">
@@ -20,7 +20,7 @@
             <div class="middle-section">
                 <div class="email-input-container">
                     <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
-                        <input [ngClass]="{ 'white' : isContactRoute }" type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
+                        <input type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
                         <span id="sendText" (click)="sendEmail()">Pošalji</span>
                     </form>
                 </div>           
@@ -39,7 +39,7 @@
             <div class="middle-section-sm">
                 <div class="email-input-container">
                     <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
-                        <input [ngClass]="{ 'white' : isContactRoute }"  type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
+                        <input type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
                         <span id="sendText" (click)="sendEmail()">Pošalji</span>
                     </form>
                 </div>

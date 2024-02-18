@@ -26,7 +26,7 @@ export class ProductsComponent implements OnInit {
   order: string = 'default';
 
   pageIndex = 0;
-  pageSize = 10;
+  pageSize = 12;
 
   constructor(private elementRef: ElementRef, private router: Router, private loadingService: LoadingService) {
     this.loadingService.show();
@@ -134,7 +134,7 @@ export class ProductsComponent implements OnInit {
         price: 1900,
         type: "mini bag",
         color: "#000000",
-        quantity: 5
+        quantity: 0
       },{
         id: "4",
         name: "RESERVED",
@@ -182,7 +182,7 @@ export class ProductsComponent implements OnInit {
         price: 1900,
         type: "mini bag",
         color: "#000000",
-        quantity: 5
+        quantity: 0
       },{
         id: "4",
         name: "RESERVED",
@@ -230,7 +230,103 @@ export class ProductsComponent implements OnInit {
         price: 1900,
         type: "mini bag",
         color: "#000000",
+        quantity: 0
+      },{
+        id: "4",
+        name: "RESERVED",
+        imagesDisplay: {
+          imageDisplay1: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
+          imageDisplay3: "./assets/images/products/bags/bag-4-test/bg-4-test.avif"
+        },
+        price: 3100,
+        type: "mini bag",
+        color: "#000000",
         quantity: 5
+      },{
+        id: "1",
+        name: "MOONLIGHT",
+        imagesDisplay: {
+          imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
+          imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
+          imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
+        },
+        price: 2000,
+        type: "mini bag",
+        color: "#000000",
+        quantity: 5
+      },{
+        id: "2",
+        name: "CREAM BAG",
+        imagesDisplay: {
+          imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
+          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-test.avif"
+        },
+        price: 2300,
+        type: "bag",
+        color: "#000000",
+        quantity: 4
+      },{
+        id: "3",
+        name: "BLACKY",
+        imagesDisplay: {
+          imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
+          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-test.avif"
+        },
+        price: 1900,
+        type: "mini bag",
+        color: "#000000",
+        quantity: 0
+      },{
+        id: "4",
+        name: "RESERVED",
+        imagesDisplay: {
+          imageDisplay1: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
+          imageDisplay3: "./assets/images/products/bags/bag-4-test/bg-4-test.avif"
+        },
+        price: 3100,
+        type: "mini bag",
+        color: "#000000",
+        quantity: 5
+      },{
+        id: "1",
+        name: "MOONLIGHT",
+        imagesDisplay: {
+          imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
+          imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
+          imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
+        },
+        price: 2000,
+        type: "mini bag",
+        color: "#000000",
+        quantity: 5
+      },{
+        id: "2",
+        name: "CREAM BAG",
+        imagesDisplay: {
+          imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
+          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-test.avif"
+        },
+        price: 2300,
+        type: "bag",
+        color: "#000000",
+        quantity: 4
+      },{
+        id: "3",
+        name: "BLACKY",
+        imagesDisplay: {
+          imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
+          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-test.avif"
+        },
+        price: 1900,
+        type: "mini bag",
+        color: "#000000",
+        quantity: 0
       },{
         id: "4",
         name: "RESERVED",

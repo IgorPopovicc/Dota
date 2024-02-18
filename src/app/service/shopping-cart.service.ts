@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ShoppingCartItem } from '../model/Product';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../components/snackbar/snackbar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class ShoppingCartService {
   totalPrice: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   totalQuantity: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-  constructor() { }
+  constructor(private snackBar: MatSnackBar) { }
 
   addItemToCart(item: ShoppingCartItem) {
     const existingProduct = this.cartItems.find(currentItem => currentItem.product.id === item.product.id);
@@ -21,11 +23,13 @@ export class ShoppingCartService {
       if(existingProduct.product.quantity === existingProduct.bagQuantity) {
 
       } else {
+        this.showCustomSnackbar("Uspjesno ste dodali u korpu!");
         existingProduct.bagQuantity += item.bagQuantity;
       }
       
     } else {
       if(item.product.quantity > 0) {
+        this.showCustomSnackbar("Uspjesno ste dodali u korpu!");
         this.cartItems.push(item);
       }
     }
@@ -87,6 +91,15 @@ export class ShoppingCartService {
     this.totalPrice.next(0); 
     this.totalQuantity.next(0); 
     this.cartItemsChanged.next([]); 
+  }
+
+  showCustomSnackbar(message: string) {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      data: { message: message },
+      duration: 5000, 
+      horizontalPosition: 'center', 
+      verticalPosition: 'bottom'
+    });
   }
 
 }

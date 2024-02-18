@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Product, ShoppingCartItem } from '../../model/Product';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { ProductComponent } from '../../components/product/product.component';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
 import { PromotionDialogComponent } from '../../components/promotion-dialog/promotion-dialog.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
   selector: 'product-details',
@@ -28,15 +26,15 @@ export class ProductDetailsComponent implements OnInit {
     this.checkScreenSize();
   }
 
-
   product: Product;
   images: GalleryItem[];
   isPhone: boolean = false;
   isTablet: boolean = false;
   products: Array<Product>;
   displayPromotion: boolean = false;
+  outOfStocks: boolean = false;
 
-  constructor(private router: Router, private shoppingCartService: ShoppingCartService, private snackBar: MatSnackBar) {
+  constructor(private router: Router, private shoppingCartService: ShoppingCartService) {
     let item = this.router.getCurrentNavigation().extras.state;
     if(item && item['product']) {
       this.product = item['product'];
@@ -51,13 +49,9 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayPromotion = true;
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        window.scrollTo(0, 0);
-      }
-    });
     this.checkScreenSize();
     if(this.product) {
+      this.outOfStocks = this.product.quantity === 0;
       this.images = [
         new ImageItem({ src: this.product.imagesDisplay.imageDisplay1, thumb: this.product.imagesDisplay.imageDisplay1 }),
         new ImageItem({ src: this.product.imagesDisplay.imageDisplay2, thumb: this.product.imagesDisplay.imageDisplay2 }),
@@ -80,20 +74,14 @@ export class ProductDetailsComponent implements OnInit {
 
   addToBag() {
     this.shoppingCartService.addItemToCart(new ShoppingCartItem(this.product, 1));
-    this.showCustomSnackbar("Uspjesno ste dodali u korpu!");
+  }
+
+  makeReservation(product: Product) {
+    this.router.navigate(["order-details", ],  { state: { product } } );
   }
 
   handleClose() {
     this.displayPromotion = false;
-  }
-
-  showCustomSnackbar(message: string) {
-    this.snackBar.openFromComponent(SnackbarComponent, {
-      data: { message: message },
-      duration: 5000, 
-      horizontalPosition: 'center', 
-      verticalPosition: 'bottom'
-    });
   }
 
 }

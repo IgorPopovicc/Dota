@@ -94,6 +94,11 @@
           width: 55%;
           background-color: #FF8438;
           color: #FFF;
+          transition: 0.5s;
+
+          &:hover {
+            background-color: #904c9c;
+          }
         }
       }
       

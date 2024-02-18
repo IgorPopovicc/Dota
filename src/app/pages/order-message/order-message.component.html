@@ -1,15 +1,28 @@
 <dota-loading></dota-loading>
 <section class="container-fluid order-message">
-  <h1 class="main-title">HVALA NA VAŠOJ PORUDZBINI!</h1>
+  <h1 *ngIf="!isReservation" class="main-title">HVALA NA VAŠOJ PORUDZBINI!</h1>
+  <h1 *ngIf="isReservation" class="main-title">HVALA NA VAŠOJ REZERVACIJI!</h1>
   <hr color="grey">
   <img style="margin: 30px 0;" src="./assets/images/logo/logo.svg" alt="logo">
   <section class="content">
-    <p class="message">Želimo da vas obavestimo da je vaša porudžbina uspešno poručena!
+    <p *ngIf="!isReservation" class="message">Želimo da vas obavestimo da je vaša porudžbina uspešno poručena!
       <br><br>
       U slučaju bilo kakvih poteškoća ili nejasnoća u vezi sa vašom porudžbinom, 
       naš tim za podršku će biti tu da vam pomogne.
       <br><br>
       Hvala vam još jednom na poverenju i podršci.
+      <br><br>
+      Srdačan pozdrav,
+      <br>
+      Dota tim 🥂
+    </p>
+    <p *ngIf="isReservation" class="message">Hvala vam što ste izabrali naš proizvod! Želimo da vas obavestimo da je vaša rezervacija uspešno primljena.
+      <br><br>
+      Vaš proizvod trenutno nije dostupan, ali molimo vas da budete strpljivi jer ćemo ga poslati čim bude ponovo dostupan za kupovinu.
+      <br><br>
+      Ukoliko imate bilo kakvih pitanja ili nedoumica, naš tim za podršku stoji vam na raspolaganju.
+      <br><br>
+      Još jednom, hvala vam na poverenju i podršci.
       <br><br>
       Srdačan pozdrav,
       <br>

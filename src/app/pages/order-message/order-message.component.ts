@@ -16,7 +16,13 @@ import { LoadingService } from '../../service/loading.service';
 })
 export class OrderMessageComponent implements OnInit {
 
+  isReservation: boolean = false;
+
   constructor(private router: Router, private loadingService: LoadingService) { 
+    if(this.router.getCurrentNavigation().extras.state) {
+      let reservation = this.router.getCurrentNavigation().extras.state;
+      this.isReservation = reservation['isReservation'];
+    }
     this.loadingService.show();
   }
 

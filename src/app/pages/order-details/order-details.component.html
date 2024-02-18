@@ -1,9 +1,10 @@
 <section class="container-fluid order-details">
-  <h1 class="main-title">DODAJTE PODATKE O DOSTAVI</h1>
+  <h1 *ngIf="!isReservation" class="main-title">DODAJTE PODATKE ZA PORUČIVANJE</h1>
+  <h1 *ngIf="isReservation" class="main-title">DODAJTE PODATKE ZA REZERVACIJU</h1>
   <hr color="grey">
   <section class="flex">
     <div class="form-section">
-      <form [formGroup]="deliveryForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="deliveryForm" (ngSubmit)="!isReservation ? onSubmit() : onReservationSubmit()">
         <input class="custom-input" type="text" placeholder="Ime i prezime" formControlName="fullName">
         <input class="custom-input" type="email" placeholder="E-mail" formControlName="email">
         <div class="split-inputs">
@@ -30,15 +31,29 @@
           <span>Slažem se da primam obaveštenja o popustima i novostima na moju adresu e-pošte.</span>
         </label>
         <section class="buttons">
-          <button (click)="openShoppingCart()"  class="button go-back">
+          <button *ngIf="!isReservation" (click)="openShoppingCart()"  class="button go-back">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
               <path d="M17 6L2 6" stroke="#000000" stroke-width="1.5"/>
               <path d="M7 11L2 6L7 1" stroke="#000000" stroke-width="1.5"/>
             </svg>            
             <span>Vrati se u korpu</span>
           </button>
-          <button type="submit" class="button make-order">
+          <button *ngIf="isReservation" (click)="openShoppingPage()"  class="button go-back">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+              <path d="M17 6L2 6" stroke="#000000" stroke-width="1.5"/>
+              <path d="M7 11L2 6L7 1" stroke="#000000" stroke-width="1.5"/>
+            </svg>            
+            <span>Vrati se u kupovinu</span>
+          </button>
+          <button *ngIf="!isReservation" type="submit" class="button make-order">
             <span>Poruči</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+              <path d="M0.000978281 6.00098H15.001" stroke="#ffffff" stroke-width="1.5"/>
+              <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#ffffff" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <button *ngIf="isReservation" type="submit" class="button make-order">
+            <span>Pošalji rezervaciju</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
               <path d="M0.000978281 6.00098H15.001" stroke="#ffffff" stroke-width="1.5"/>
               <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#ffffff" stroke-width="1.5"/>
@@ -55,7 +70,6 @@
               <li class="item-detail" *ngFor="let item of shoppingCartItems">
                 <span>{{ item.product.name }}</span>
                 <span>{{ "X" + item.bagQuantity }}</span>
-                <span>{{ item.product.price + "rsd" }}</span>
               </li>
             </ul>
             <div class="total-price">

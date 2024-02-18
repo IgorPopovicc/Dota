@@ -228,6 +228,7 @@
             background-color: #FF8438;
             border-radius: 30px;
             cursor: pointer;
+            transition: 0.5s;
 
             span {
               margin-left: 15px;
@@ -242,6 +243,10 @@
 
             svg {
                 margin-right: 15px;
+            }
+
+            &:hover {
+                background-color: #904c9c;
             }
           }
     }
