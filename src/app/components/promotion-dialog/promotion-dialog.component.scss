@@ -15,7 +15,7 @@
         width: 40%;
         height: fit-content;
         background-color: white;
-        background-image: url(./../../../assets/images/background/promotion-background.png);
+        //background-image: url(./../../../assets/images/background/promotion-background.png);
         background-repeat: no-repeat;
         background-size: cover;
         opacity: 0;
@@ -36,20 +36,21 @@
         .text-section {
             width: 100%;
             height: fit-content;
-            text-align: end;
+            text-align: center;
             display: flex;
-            justify-content: end;
+            justify-content: center;
             .text {
-                width: 60%;
-                padding-right: 30px;
+                width: 100%;
+                //padding-right: 30px;
 
                 h4 {
                     font-family: 'Mulish', 'sans-serif';
                     font-size: 40px;
                     font-weight: 500;
                     letter-spacing: 0px;
-                    text-align: right;
+                    text-align: center;
                     text-transform: uppercase;
+                    padding: 0 20px;
                 }
             }
         }
@@ -115,13 +116,14 @@
                     justify-content: space-between;
                     width: 278px;
                     height: 10px;
-                    background-color: #f9f9f9b9;
+                    background-color: #FF8438;
                     border-radius: 30px;
+                    transition: 0.5s;
                     cursor: pointer;
         
                     span {
                       margin-left: 15px;
-                      color: #000000;
+                      color: #fff;
                       font-family: 'Mulish', 'sans-serif';
                       font-size: 12px;
                       font-style: normal;
@@ -132,7 +134,11 @@
                     svg {
                         margin-right: 15px;
                     }
-                  }
+
+                    &:hover {
+                        background-color: #904c9c;
+                    }
+                }
             }         
         }
     }
@@ -187,7 +193,7 @@
 
         .text-section {
             .text {
-                width: 65% !important;
+                width: 100% !important;
                 h4 {
                     font-size: 30px !important;
                 }
@@ -249,7 +255,6 @@
 
         .text-section {
             .text {
-                padding-right: 15px !important;
                 width: 80% !important;
                 h4 {
                     font-size: 26px !important;

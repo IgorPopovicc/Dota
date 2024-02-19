@@ -1,8 +1,9 @@
 .contact {
     display: flex;
     padding-top: 120px;
-    height: 100vh;
+    height: max-content;
     justify-content: flex-end;
+    padding-bottom: 50px;
 }
 
 .form {

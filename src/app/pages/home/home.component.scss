@@ -33,13 +33,14 @@
   font-family: 'Mulish', 'sans-serif';
   font-size: 68px;
   font-style: normal;
-  line-height: normal;
+  line-height: 50px;
   font-weight: 500;
   text-transform: uppercase;
 }
 
 .bold {
   font-weight: 100 !important;
+  font-size: 38px;
 }
 
 .dota-new-collection-button {
@@ -138,6 +139,7 @@
     justify-content: space-around;
     background: rgba(255, 255, 255, 0.6);
     border: 1px solid rgba(128, 128, 128, 0.404);
+    transition: 5s;
     cursor: pointer;
 
 
@@ -166,6 +168,10 @@
       font-weight: 500;
       line-height: normal;
       text-transform: uppercase;
+    }
+
+    &:hover {
+      animation: colorChange 4s infinite alternate;
     }
   } 
 
@@ -290,6 +296,26 @@
   }
 }
 
+@keyframes colorChange {
+  0%{
+    background: rgba(255, 255, 255, 0.4);
+  }
+  20% {
+    background-color: #904c9c46; /* Početna boja */
+  }
+  40% {
+    background-color: #d051e646; /* Početna boja */
+  }
+  60% {
+    background-color: #ff843846; /* Srednja boja */
+  }
+  80% {
+    background-color: #d051e646; /* Početna boja */
+  }
+  100% {
+    background-color: #904c9c46; /* Krajnja boja */
+  }
+}
 
 @media screen and (min-width: 1201px) and (max-width: 1500px) {
   .show-all-bags {
@@ -387,7 +413,7 @@
     background-size: cover !important;
     background-position: center !important;
   }
-
+  banner-tex
   .banner-dark-wrapper {
     background-color: rgba(0, 0, 0, 0.5) !important;
   }
@@ -475,6 +501,11 @@
   
   .banner-text-h1 {
     font-size: 44px;
+    line-height: 25px !important;
+
+    .bold {
+      font-size: 22px;
+    }
   }
 
   .dota-new-collection-button-phone {

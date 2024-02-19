@@ -48,7 +48,7 @@
         <div class="icon-info">
             <div class="delivery-time">
                 <img src="./assets/images/icons/delivery-package.svg" alt="Delivery package">
-                <span>dostava za<br>3 do 4 dana</span>
+                <span>dostava za<br>2 do 4 dana</span>
             </div>
             <samp class="line"></samp>
             <div class="delivery-price">
@@ -62,10 +62,38 @@
     <h1 class="main-title">Pogledaj još</h1>
     <div class="other-products">
         <div class="products">
-
+            @for (item of products; track $index) {
+                <dota-product (click)="openProductDetails(item)" class="product-item" [product]="item"></dota-product>
+              } @empty {
+                <div class="empty-message">
+                  <h3>Nemamo trazeni proizvod!</h3>
+                </div>
+              }
+              <div class="show-more">
+                <h3 class="show-more-text">Prikaži<br>sve<br>proizvode</h3>
+                <div class="show-more-button">
+                    <p class="button">Pogledaj 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+                            <path d="M0.000978281 6.00098H15.001" stroke="#000C22" stroke-width="1.5"/>
+                            <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#000C22" stroke-width="1.5"/>
+                        </svg>
+                    </p>
+                </div>
+              </div>
         </div>
-        <div *ngIf="!isPhone && !isTablet" class="vibe-image">
+        <div class="vibe-image">
             <img src="./assets/images/presentation-images/vibe-image.png" alt="vibe-image">
+        </div>
+    </div>
+    <div class="other-products-scroll">
+        <div class="products-scroll">
+            @for (item of products; track $index) {
+                <dota-product (click)="openProductDetails(item)" class="product-item" [product]="item"></dota-product>
+              } @empty {
+                <div class="empty-message">
+                  <h3>Nemamo trazeni proizvod!</h3>
+                </div>
+              }
         </div>
     </div>
 </section>

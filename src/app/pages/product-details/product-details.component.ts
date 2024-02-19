@@ -43,6 +43,7 @@ export class ProductDetailsComponent implements OnInit {
       this.products.push(this.product);
       this.products.push(this.product);
       this.products.push(this.product);
+      this.products.push(this.product);
     }
     
   }

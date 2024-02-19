@@ -5,27 +5,27 @@
   <section class="flex">
     <div class="form-section">
       <form [formGroup]="deliveryForm" (ngSubmit)="!isReservation ? onSubmit() : onReservationSubmit()">
-        <input class="custom-input" type="text" placeholder="Ime i prezime" formControlName="fullName">
+        <input class="custom-input" type="text" placeholder="Ime i prezime*" formControlName="fullName">
         <input class="custom-input" type="email" placeholder="E-mail" formControlName="email">
         <div class="split-inputs">
           <div class="search-container w-48">
-            <input class="custom-input" type="text" placeholder="Grad" formControlName="city">
+            <input class="custom-input" type="text" placeholder="Opština*" formControlName="city">
             <div class="search-results" *ngIf="showResults">
               <div *ngFor="let result of cities" (click)="selectResult(result)">
                 {{ result.city }}
               </div>
             </div>
           </div>
-          <input class="custom-input w-48" type="text" placeholder="Poštanski broj" formControlName="postCode">
+          <input class="custom-input w-48" type="text" placeholder="Poštanski broj*" formControlName="postCode">
         </div>
         <div class="split-inputs">
           <div class="search-container w-48">
-            <input class="custom-input" type="text" placeholder="Adresa i broj zgrade" formControlName="address">
+            <input class="custom-input" type="text" placeholder="Adresa i broj zgrade*" formControlName="address">
           </div>
           <input class="custom-input w-48" type="text" placeholder="Broj stana" formControlName="placeNumber">
         </div>
-        <input class="custom-input" type="tel" placeholder="Broj telefona" formControlName="phone">
-        <textarea class="custom-textarea" placeholder="Poruka" formControlName="message"></textarea>
+        <input class="custom-input" type="tel" placeholder="Broj telefona*" formControlName="phone">
+        <textarea class="custom-textarea" placeholder="Napomena" formControlName="message"></textarea>
         <label class="checkbox-label">
           <input type="checkbox" formControlName="contactUs">
           <span>Slažem se da primam obaveštenja o popustima i novostima na moju adresu e-pošte.</span>

@@ -84,18 +84,22 @@ export class NavigationComponent implements OnInit {
 
   openShoppingCart() {
     this.router.navigate(['/shopping-cart']);
+    this.isDropdownOpen = false;
   }
 
   openHomePage() {
     this.router.navigate(['/home']);
+    this.isDropdownOpen = false;
   }
 
   openContact() {
     this.router.navigate(['/contact']);
+    this.isDropdownOpen = false;
   }
 
   openProducts() {
     this.router.navigate(['/products']);
+    this.isDropdownOpen = false;
   }
 
 }
