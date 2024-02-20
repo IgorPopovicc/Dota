@@ -16,12 +16,11 @@
     flex-direction: column;
 
     .custom-input {
-      
         height: 30px; 
-        border: 1px solid rgba(83, 83, 83, 0.562); 
+        border: 2px solid rgba(83, 83, 83, 0.699); 
         border-radius: 5px; 
         padding: 10px; 
-        background-color: transparent; 
+        background-color: rgb(245, 245, 245); 
         margin-bottom: 10px;
       }
       
@@ -41,10 +40,10 @@
 
       .custom-textarea {
         height: 50px; 
-        border: 1px solid rgba(83, 83, 83, 0.562); 
+        border: 2px solid rgba(83, 83, 83, 0.699); 
         border-radius: 5px;
         padding: 10px; 
-        background-color: transparent; 
+        background-color: rgb(245, 245, 245);
         resize: vertical; 
       }
       
@@ -147,7 +146,8 @@
   width: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  padding-top: 40px;
   .confirm-order {
     height: fit-content;
     width: 80%;
@@ -174,6 +174,7 @@
                 font-weight: 500;
                 letter-spacing: 0px;
                 text-align: right;
+                margin-bottom: 0;
             }
   
             .value {
@@ -186,15 +187,15 @@
                 text-transform: uppercase;
                 padding-bottom: 20px;
             }
-        }
-  
-        .delivery-fee {
-            font-family: 'Mulish', 'sans-serif';
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 0px;
-            text-align: left;
-            text-transform: uppercase;
+
+            .delivery-fee {
+              margin-top: 2px;
+              color: #000c227a;
+              font-family: 'Mulish', 'sans-serif';
+              font-size: 12px;
+              text-align: right;
+              text-transform: uppercase;
+          }
         }
     }
     
@@ -206,6 +207,12 @@
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
+
+    .line {
+      border: 1px solid #EEE;
+      font-size: 12px;
+    }
+    
   
     .delivery-time {
       display: flex;
@@ -403,6 +410,34 @@ input[type="checkbox"]:checked::before {
   .search-container {
     .custom-input {
       width: 82% !important;
+    }
+  }
+
+  .icon-info {
+
+    .delivery-time {
+
+      img {
+        width: 35px;
+      }
+
+      span {
+        margin-left: 5px;
+        font-size: 10px;
+      }
+    }
+
+    .delivery-price {
+
+      img {
+        width: 35px;
+      }
+
+
+      span {
+        margin-left: 5px;
+        font-size: 10px;
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'promotion-dialog',
@@ -19,10 +20,14 @@ export class PromotionDialogComponent implements OnInit {
   @Input() newPrice: string;
   @Input() buttonText: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
 
+  }
+
+  checkWallets() {
+    this.router.navigate(['/products']);
   }
 
   closePromotionDialog() {

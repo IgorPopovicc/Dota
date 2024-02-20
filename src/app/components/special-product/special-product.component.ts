@@ -51,15 +51,17 @@ export class SpecialProductComponent {
   }
 
   product: Product = {
-    id: "1",
-    name: "MOONLIGHT",
+    id: "2",
+    name: "CREAM BAG",
     imagesDisplay: {
-      imageDisplay1: "./assets/images/products/bags/test-product/product1.png"
+      imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
+      imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
+      imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
     },
-    price: 2000,
-    type: "mini bag",
+    price: 2300,
+    type: "bag",
     color: "#000000",
-    quantity: 5
+    quantity: 4
   };
 
   openProductDetails(product: Product) {

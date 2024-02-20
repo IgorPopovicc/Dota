@@ -103,9 +103,9 @@ export class ProductsComponent implements OnInit {
         id: "1",
         name: "MOONLIGHT",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
+          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
+          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
         },
         price: 2000,
         type: "mini bag",
@@ -116,8 +116,8 @@ export class ProductsComponent implements OnInit {
         name: "CREAM BAG",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
         },
         price: 2300,
         type: "bag",
@@ -128,8 +128,8 @@ export class ProductsComponent implements OnInit {
         name: "BLACKY",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
         },
         price: 1900,
         type: "mini bag",
@@ -139,9 +139,9 @@ export class ProductsComponent implements OnInit {
         id: "4",
         name: "RESERVED",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bg-4-test.avif"
+          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
         },
         price: 3100,
         type: "mini bag",
@@ -151,9 +151,9 @@ export class ProductsComponent implements OnInit {
         id: "1",
         name: "MOONLIGHT",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
+          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
+          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
         },
         price: 2000,
         type: "mini bag",
@@ -164,8 +164,8 @@ export class ProductsComponent implements OnInit {
         name: "CREAM BAG",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
         },
         price: 2300,
         type: "bag",
@@ -176,8 +176,8 @@ export class ProductsComponent implements OnInit {
         name: "BLACKY",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
         },
         price: 1900,
         type: "mini bag",
@@ -187,9 +187,9 @@ export class ProductsComponent implements OnInit {
         id: "4",
         name: "RESERVED",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bg-4-test.avif"
+          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
         },
         price: 3100,
         type: "mini bag",
@@ -199,9 +199,9 @@ export class ProductsComponent implements OnInit {
         id: "1",
         name: "MOONLIGHT",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
+          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
+          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
         },
         price: 2000,
         type: "mini bag",
@@ -212,8 +212,8 @@ export class ProductsComponent implements OnInit {
         name: "CREAM BAG",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
         },
         price: 2300,
         type: "bag",
@@ -224,8 +224,8 @@ export class ProductsComponent implements OnInit {
         name: "BLACKY",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
         },
         price: 1900,
         type: "mini bag",
@@ -235,9 +235,9 @@ export class ProductsComponent implements OnInit {
         id: "4",
         name: "RESERVED",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bg-4-test.avif"
+          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
         },
         price: 3100,
         type: "mini bag",
@@ -247,9 +247,9 @@ export class ProductsComponent implements OnInit {
         id: "1",
         name: "MOONLIGHT",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
+          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
+          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
         },
         price: 2000,
         type: "mini bag",
@@ -260,8 +260,8 @@ export class ProductsComponent implements OnInit {
         name: "CREAM BAG",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
         },
         price: 2300,
         type: "bag",
@@ -272,8 +272,8 @@ export class ProductsComponent implements OnInit {
         name: "BLACKY",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
         },
         price: 1900,
         type: "mini bag",
@@ -283,9 +283,9 @@ export class ProductsComponent implements OnInit {
         id: "4",
         name: "RESERVED",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bg-4-test.avif"
+          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
         },
         price: 3100,
         type: "mini bag",
@@ -295,9 +295,9 @@ export class ProductsComponent implements OnInit {
         id: "1",
         name: "MOONLIGHT",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
-          imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
+          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
+          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
         },
         price: 2000,
         type: "mini bag",
@@ -308,8 +308,8 @@ export class ProductsComponent implements OnInit {
         name: "CREAM BAG",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
         },
         price: 2300,
         type: "bag",
@@ -320,8 +320,8 @@ export class ProductsComponent implements OnInit {
         name: "BLACKY",
         imagesDisplay: {
           imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-test.avif"
+          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
         },
         price: 1900,
         type: "mini bag",
@@ -331,9 +331,9 @@ export class ProductsComponent implements OnInit {
         id: "4",
         name: "RESERVED",
         imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bg-4-test.avif",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bg-4-test.avif"
+          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
+          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
+          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
         },
         price: 3100,
         type: "mini bag",

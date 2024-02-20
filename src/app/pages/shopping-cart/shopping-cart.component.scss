@@ -190,6 +190,7 @@
         .total-price {
             min-height: 15vh;
             .price {
+                margin-bottom: 0;
                 font-family: 'Mulish', 'sans-serif';
                 font-size: 36px;
                 font-weight: 500;
@@ -207,16 +208,47 @@
                 text-transform: uppercase;
                 padding-bottom: 20px;
             }
+
+            .delivery-fee {
+                margin-top: 2px;
+                color: #000c227a;
+                font-family: 'Mulish', 'sans-serif';
+                font-size: 12px;
+                text-align: right;
+                text-transform: uppercase;
+            }
+    
         }
 
-        .delivery-fee {
-            font-family: 'Mulish', 'sans-serif';
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 0px;
-            text-align: left;
-            text-transform: uppercase;
+        .add-to-bag-lock-button {
+            margin-top: 10px;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background-color: #b3b3b3;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.5s;
+
+            span {
+              margin-left: 15px;
+              color: black;
+              font-family: 'Mulish', 'sans-serif';
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              text-transform: uppercase;
+            }
+
+            svg {
+                margin-right: 15px;
+            }
         }
+
 
         .add-to-bag-button {
             margin-top: 10px;
@@ -250,6 +282,39 @@
                 background-color: #904c9c;
             }
           }
+
+        .go-back-button {
+            margin-top: 10px;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background-color: #b3b3b3;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.5s;
+
+            span {
+              margin-right: 15px;
+              color: black;
+              font-family: 'Mulish', 'sans-serif';
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              text-transform: uppercase;
+            }
+
+            svg {
+                margin-left: 15px;
+            }
+
+            &:hover {
+                background-color: #919090;
+            }
+        }
     }
     
 }
@@ -260,6 +325,11 @@
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
+
+    .line {
+        border: 1px solid #EEE;
+        font-size: 12px;
+    }
 
     .delivery-time {
       display: flex;
@@ -367,7 +437,34 @@
                 svg {
                     margin-right: 15px !important;
                 }
-              }
+            }
+
+            .add-to-bag-lock-button {
+                padding: 10px 0 !important;
+    
+                span {
+                  margin-left: 15px !important;
+                  font-size: 14px !important;
+                }
+    
+                svg {
+                    margin-right: 15px !important;
+                }
+            }
+
+
+            .go-back-button {
+                padding: 10px 0 !important;
+    
+                span {
+                  margin-left: 15px !important;
+                  font-size: 14px !important;
+                }
+    
+                svg {
+                    margin-right: 15px !important;
+                }
+            }
         }
         
     }
@@ -491,7 +588,7 @@
             }
     
             .delivery-fee {
-                font-size: 14px !important;
+                font-size: 10px !important;
             }
     
             .add-to-bag-button {
@@ -505,7 +602,34 @@
                 svg {
                     margin-right: 15px !important;
                 }
-              }
+            }
+
+            .add-to-bag-lock-button {
+                padding: 12px 0 !important;
+    
+                span {
+                  margin-left: 15px !important;
+                  font-size: 16px !important;
+                }
+    
+                svg {
+                    margin-right: 15px !important;
+                }
+            }
+
+
+            .go-back-button {
+                padding: 12px 0 !important;
+    
+                span {
+                  margin-left: 15px !important;
+                  font-size: 16px !important;
+                }
+    
+                svg {
+                    margin-right: 15px !important;
+                }
+            }
         }
         
     }
@@ -640,7 +764,7 @@
             }
     
             .delivery-fee {
-                font-size: 14px !important;
+                font-size: 10px !important;
             }
     
             .add-to-bag-button {
@@ -654,7 +778,33 @@
                 svg {
                     margin-right: 15px !important;
                 }
-              }
+            }
+
+            .add-to-bag-lock-button {
+                padding: 12px 0 !important;
+    
+                span {
+                  margin-left: 15px !important;
+                  font-size: 16px !important;
+                }
+    
+                svg {
+                    margin-right: 15px !important;
+                }
+            }
+
+            .go-back-button {
+                padding: 12px 0 !important;
+    
+                span {
+                  margin-left: 15px !important;
+                  font-size: 16px !important;
+                }
+    
+                svg {
+                    margin-right: 15px !important;
+                }
+            }
         }
         
     }
@@ -742,7 +892,7 @@
 
             span {
                 margin-left: 10px;
-                font-size: 12px !important;
+                font-size: 10px !important;
             }
         }
     
@@ -752,7 +902,7 @@
                 height: 35px;
             }
             span {
-                font-size: 12px !important;
+                font-size: 10px !important;
             }
         }
     }
