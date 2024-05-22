@@ -264,8 +264,9 @@
   .item-detail {
     margin-top: 10px;
     list-style: none;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr; /* Prvi element zauzima dvostruko više prostora od ostalih dva */
+    gap: 10px;
     
     span {
       font-size: 16px;

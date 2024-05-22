@@ -219,3 +219,29 @@ label span {
     }
 
   }
+
+  @media screen and (max-width: 400px) {
+    .product-item {
+        flex-basis: calc(50% - 20px);
+    }
+
+    details {
+        position: relative;
+        width: 120px;
+        font-size: 10px !important;
+    }
+
+    input[type=radio]:after {
+        font-size: 12px !important;
+    }
+
+    .search {
+        width: 130px !important;
+        font-size: 12px !important;
+    }
+
+    summary {
+        padding: 0.8rem !important;
+    }
+
+  }

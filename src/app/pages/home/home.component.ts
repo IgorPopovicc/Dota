@@ -6,6 +6,8 @@ import { SpecialProductComponent } from "../../components/special-product/specia
 import { LoadingComponent } from "../../components/loading/loading.component";
 import { LoadingService } from '../../service/loading.service';
 import { Router } from '@angular/router';
+import { RouterService } from '../../service/router.service';
+import { ProductsService } from '../../service/products.service';
 
 @Component({
     selector: 'app-home',
@@ -34,20 +36,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
 
-  constructor(private loadingService: LoadingService, private router: Router) {
+  constructor(private loadingService: LoadingService, private routerService: RouterService, private productService: ProductsService) {
     this.products = new Array<Product>;
     this.loadingService.show();
   }
 
   ngOnInit(): void {
     this.checkScreenSize();
-    this.products = this.getProductsForHomePage();
+    this.getProductsForHomePage();
   }
 
   ngAfterViewInit() { 
     setTimeout(() => {
       this.loadingService.hide();
-    }, 2000);
+    }, 1000);
   }
 
   checkScreenSize(): void {
@@ -59,64 +61,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   getProductsForHomePage() {
-    let product: Product[] = [{
-      id: "1",
-      name: "MOONLIGHT",
-      imagesDisplay: {
-        imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
-        imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
-        imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
-      },
-      price: 2000,
-      type: "mini bag",
-      color: "#000000",
-      quantity: 5
-    },{
-      id: "2",
-      name: "CREAM BAG",
-      imagesDisplay: {
-        imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-        imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
-        imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
-      },
-      price: 2300,
-      type: "bag",
-      color: "#000000",
-      quantity: 4
-    },{
-      id: "3",
-      name: "BLACKY",
-      imagesDisplay: {
-        imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-        imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
-        imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
-      },
-      price: 1900,
-      type: "mini bag",
-      color: "#000000",
-      quantity: 0
-    },{
-      id: "4",
-      name: "RESERVED",
-      imagesDisplay: {
-        imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
-        imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
-        imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
-      },
-      price: 3100,
-      type: "mini bag",
-      color: "#000000",
-      quantity: 5
-    }];
-    return product;
+    this.productService.getAllProducts().subscribe(products => {
+      if(products) {
+        this.products = products;
+      }
+    });
   }
 
   openProductDetails(product: Product) {
-    this.router.navigate(["product-details", product.id],  { state: { product } } );
+    this.routerService.routerByPathAndRequestParamWithBody("product-details", product.id, product );
   }
 
   openProducts() {
-    this.router.navigate(["/products"]);
+    this.routerService.routerByPath("products");
   }
 
 }

@@ -6,6 +6,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { OrderMessageComponent } from './pages/order-message/order-message.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, data: { scrollPositionRestoration: 'top' } },
@@ -16,5 +17,6 @@ export const routes: Routes = [
     { path: 'order-details', component: OrderDetailsComponent, data: { scrollPositionRestoration: 'top' } },
     { path: 'order-message', component: OrderMessageComponent, data: { scrollPositionRestoration: 'top'} },
     { path: 'products', component: ProductsComponent },
+    { path: 'privacy', component: PrivacyComponent },
     { path: '**', redirectTo: '/home' } 
 ];

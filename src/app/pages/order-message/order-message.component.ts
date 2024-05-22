@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { LoadingService } from '../../service/loading.service';
+import { RouterService } from '../../service/router.service';
 
 @Component({
   selector: 'app-order-message',
@@ -18,7 +19,7 @@ export class OrderMessageComponent implements OnInit {
 
   isReservation: boolean = false;
 
-  constructor(private router: Router, private loadingService: LoadingService) { 
+  constructor(private router: Router, private loadingService: LoadingService, private routerService: RouterService) { 
     if(this.router.getCurrentNavigation().extras.state) {
       let reservation = this.router.getCurrentNavigation().extras.state;
       this.isReservation = reservation['isReservation'];
@@ -36,7 +37,7 @@ export class OrderMessageComponent implements OnInit {
   }
 
   goToShop() {
-    this.router.navigate(['/home']);
+    this.routerService.routerByPath('home');
   }
 
 }

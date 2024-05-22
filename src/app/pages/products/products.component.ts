@@ -3,9 +3,10 @@ import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
 import { Product } from '../../model/Product';
 import { Observable, of } from 'rxjs';
-import { Router } from '@angular/router';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { LoadingService } from '../../service/loading.service';
+import { ProductsService } from '../../service/products.service';
+import { RouterService } from '../../service/router.service';
 
 @Component({
   selector: 'app-products',
@@ -28,7 +29,9 @@ export class ProductsComponent implements OnInit {
   pageIndex = 0;
   pageSize = 12;
 
-  constructor(private elementRef: ElementRef, private router: Router, private loadingService: LoadingService) {
+  product: any[] = []
+
+  constructor(private elementRef: ElementRef, private routerService: RouterService, private loadingService: LoadingService, private productService: ProductsService) {
     this.loadingService.show();
    }
 
@@ -51,30 +54,19 @@ export class ProductsComponent implements OnInit {
     }, 2000);
   }
 
-  getProductsForHomePage() {
-    let product: Product = {
-      id: "1",
-      name: "MOONLIGHT",
-      imagesDisplay: {
-        imageDisplay1: "./assets/images/products/bags/test-product/product1.png",
-        imageDisplay2: "./assets/images/products/bags/test-product/product1.png",
-        imageDisplay3: "./assets/images/products/bags/test-product/product1.png"
-      },
-      price: 2000,
-      type: "mini bag",
-      color: "#000000",
-      quantity: 5
-    };
-    return product;
-  }
-
   loadProducts() {
-    this.getProducts(this.pageIndex, this.pageSize)
+    this.productService.getAllProducts().subscribe(data => {
+      this.product = data;
+      this.getProducts(this.pageIndex, this.pageSize)
       .subscribe((data: any) => {
-        this.list.push(...data);
+        console.log("DATA ", data);
+        if(data) {
+          this.list.push(...data);
         this.sortedList.push(...data);
         this.pageIndex++;
+        }
       });
+    })
   }
 
   initIntersectionObserver() {
@@ -98,256 +90,14 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts(index: number, pageSize: number): Observable<Product[]> {
-    const mockData = [
-      {
-        id: "1",
-        name: "MOONLIGHT",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
-        },
-        price: 2000,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },{
-        id: "2",
-        name: "CREAM BAG",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
-        },
-        price: 2300,
-        type: "bag",
-        color: "#000000",
-        quantity: 4
-      },{
-        id: "3",
-        name: "BLACKY",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
-        },
-        price: 1900,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 0
-      },{
-        id: "4",
-        name: "RESERVED",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
-        },
-        price: 3100,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },{
-        id: "1",
-        name: "MOONLIGHT",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
-        },
-        price: 2000,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },{
-        id: "2",
-        name: "CREAM BAG",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
-        },
-        price: 2300,
-        type: "bag",
-        color: "#000000",
-        quantity: 4
-      },{
-        id: "3",
-        name: "BLACKY",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
-        },
-        price: 1900,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 0
-      },{
-        id: "4",
-        name: "RESERVED",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
-        },
-        price: 3100,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },{
-        id: "1",
-        name: "MOONLIGHT",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
-        },
-        price: 2000,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },{
-        id: "2",
-        name: "CREAM BAG",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
-        },
-        price: 2300,
-        type: "bag",
-        color: "#000000",
-        quantity: 4
-      },{
-        id: "3",
-        name: "BLACKY",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
-        },
-        price: 1900,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 0
-      },{
-        id: "4",
-        name: "RESERVED",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
-        },
-        price: 3100,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },{
-        id: "1",
-        name: "MOONLIGHT",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
-        },
-        price: 2000,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },{
-        id: "2",
-        name: "CREAM BAG",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
-        },
-        price: 2300,
-        type: "bag",
-        color: "#000000",
-        quantity: 4
-      },{
-        id: "3",
-        name: "BLACKY",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
-        },
-        price: 1900,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 0
-      },{
-        id: "4",
-        name: "RESERVED",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
-        },
-        price: 3100,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },{
-        id: "1",
-        name: "MOONLIGHT",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/test-product/bag-1-test.png",
-          imageDisplay2: "./assets/images/products/bags/test-product/bag-1-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/test-product/bag-1-display3.png"
-        },
-        price: 2000,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },{
-        id: "2",
-        name: "CREAM BAG",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
-        },
-        price: 2300,
-        type: "bag",
-        color: "#000000",
-        quantity: 4
-      },{
-        id: "3",
-        name: "BLACKY",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-3-test/bag-3-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-3-test/bag-3-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-3-test/bag-3-display3.jpeg"
-        },
-        price: 1900,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 0
-      },{
-        id: "4",
-        name: "RESERVED",
-        imagesDisplay: {
-          imageDisplay1: "./assets/images/products/bags/bag-4-test/bag-4-test.avif",
-          imageDisplay2: "./assets/images/products/bags/bag-4-test/bag-4-display2.jpeg",
-          imageDisplay3: "./assets/images/products/bags/bag-4-test/bag-4-display3.jpeg"
-        },
-        price: 3100,
-        type: "mini bag",
-        color: "#000000",
-        quantity: 5
-      },
-    ];
+    let mockData = this.product;
     const startIndex = index * pageSize;
     const endIndex = startIndex + pageSize;
-    return of(mockData.slice(startIndex, endIndex)); // Paginacija mock podataka
+    return of(mockData.slice(startIndex, endIndex));
   }
 
   openProductDetails(product: Product) {
-    this.router.navigate(["product-details", product.id],  { state: { product } } );
+    this.routerService.routerByPathAndRequestParamWithBody("product-details", product.id,  product);
   }
 
   sortProducts(order: string) {

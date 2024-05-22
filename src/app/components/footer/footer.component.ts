@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, HostListener, Renderer2 } from '@an
 import { EmailService } from '../../service/email.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
+import { RouterService } from '../../service/router.service';
 
 @Component({
   selector: 'dota-footer',
@@ -22,7 +23,7 @@ export class FooterComponent {
   public isContact = true;
   public isContactRoute: boolean = false;
 
-  constructor(private fb: FormBuilder, private emailService: EmailService, private router: Router, private renderer: Renderer2) {}
+  constructor(private fb: FormBuilder, private emailService: EmailService, private router: Router, private routerService: RouterService , private renderer: Renderer2) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -70,7 +71,7 @@ export class FooterComponent {
   }
 
   openCOntact() {
-    this.router.navigate(['/contact']);
+    this.routerService.routerByPath('contact');
   }
 
   setFooterTextColor(): void {

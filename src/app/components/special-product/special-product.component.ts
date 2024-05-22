@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core'
 import { ProductComponent } from "../product/product.component";
 import { Product } from '../../model/Product';
 import { Router } from '@angular/router';
+import { RouterService } from '../../service/router.service';
 
 @Component({
     selector: 'special-product',
@@ -27,7 +28,7 @@ export class SpecialProductComponent {
     this.setContainerHeight();
   }
 
-  constructor(private router: Router) {}
+  constructor(private routerService: RouterService) {}
 
   ngOnInit(): void {
     this.setContainerHeight();
@@ -51,21 +52,37 @@ export class SpecialProductComponent {
   }
 
   product: Product = {
-    id: "2",
+    id: 2,
     name: "CREAM BAG",
-    imagesDisplay: {
-      imageDisplay1: "./assets/images/products/bags/bag-2-test/bag-2-test.avif",
-      imageDisplay2: "./assets/images/products/bags/bag-2-test/bag-2-display2.jpeg",
-      imageDisplay3: "./assets/images/products/bags/bag-2-test/bag-2-display3.jpeg"
-    },
+    productDetails: [{
+      color: '#ffffff',
+      info: 'test',
+      productId: 3,
+      quantity: 5,
+      images: [
+        {
+            id: 1,
+            isDisplay: true,
+            imagePath: "https://dota-bucket-test.s3.eu-central-1.amazonaws.com/images/torbica/Moonlight/black/5e84efbc-1a67-45ed-94ff-274ce728b5aa.jpg"
+        },
+        {
+            id: 2,
+            isDisplay: false,
+            imagePath: "https://dota-bucket-test.s3.eu-central-1.amazonaws.com/images/torbica/Moonlight/black/fbdd3e2f-2ef8-48c6-9a90-e9351c520e7b.jpg"
+        },
+        {
+            id: 3,
+            isDisplay: false,
+            imagePath: "https://dota-bucket-test.s3.eu-central-1.amazonaws.com/images/torbica/Moonlight/black/5d4dc253-e3f4-4a44-a254-0e546b43b6a7.jpg"
+        },
+      ],
+    }],
     price: 2300,
-    type: "bag",
-    color: "#000000",
-    quantity: 4
+    type: "bag"
   };
 
   openProductDetails(product: Product) {
-    this.router.navigate(["product-details", product.id],  { state: { product } } );
+    this.routerService.routerByPathAndRequestParamWithBody("product-details", product.id, product );
   }
 
 }

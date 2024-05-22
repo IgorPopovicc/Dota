@@ -1,10 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ShoppingCartItem } from '../../model/Product';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
 import { Router } from '@angular/router';
+import { RouterService } from '../../service/router.service';
+import { LoadingComponent } from '../../components/loading/loading.component';
+import { LoadingService } from '../../service/loading.service';
 
 @Component({
   selector: 'app-order-details',
@@ -12,12 +15,13 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    LoadingComponent 
   ],
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss']
 })
-export class OrderDetailsComponent implements OnInit {
+export class OrderDetailsComponent implements OnInit, AfterViewInit {
 
   places: any[] = [];
   cities: any[] = [];
@@ -31,13 +35,15 @@ export class OrderDetailsComponent implements OnInit {
   constructor(private http: HttpClient, 
               private formBuilder: FormBuilder, 
               private shoppingCartService: ShoppingCartService,
-              private router: Router) { 
+              private router: Router,
+              private routerService: RouterService,
+              private loadingService: LoadingService) { 
                 if(this.router.getCurrentNavigation().extras.state) {
                   let product = this.router.getCurrentNavigation().extras.state;
-                  console.log("PRODUCT: ", product['product']);
-                  this.shoppingCartItems.push(new ShoppingCartItem(product['product'], 1));
+                  this.shoppingCartItems.push(new ShoppingCartItem(product['product'], 1, false));
                   this.totalPrice = product['product'].price;
                   this.isReservation = true;
+                  this.loadingService.show();
                 }
               }
 
@@ -68,6 +74,10 @@ export class OrderDetailsComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.loadingService.hide();
+  }
+
   searchCity(searchTerm: string) {
     if (searchTerm.trim() === '') {
       this.showResults = false;
@@ -85,14 +95,13 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   selectResult(result){ 
-    console.log('Izabran rezultat:', result);
     this.deliveryForm.get('city').setValue(result.city);
     this.deliveryForm.get('postCode').setValue(result.id);
     this.showResults = false;
   }
 
   onSubmit() {
-    this.router.navigate(['/order-message']);
+    this.routerService.routerByPath('order-message');
     this.shoppingCartService.clearShoppingCart();
     if (this.deliveryForm.invalid) {
       return;
@@ -101,18 +110,18 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   onReservationSubmit() {
-    this.router.navigate(['/order-message'], { state: { isReservation: true }});
+    this.routerService.routerWithBody('order-message', { isReservation: true });
     if (this.deliveryForm.invalid) {
       return;
     }
   }
 
   openShoppingCart() {
-    this.router.navigate(['/shopping-cart']);
+    this.routerService.routerByPath('shopping-cart');
   }
 
   openShoppingPage() {
-    this.router.navigate(['/products']);
+    this.routerService.routerByPath('products');
   }
 
   get f() { return this.deliveryForm.controls; }

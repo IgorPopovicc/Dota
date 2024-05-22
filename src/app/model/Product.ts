@@ -1,28 +1,37 @@
 export class Product {
-    id: string;
+    id: number;
     name: string;
     price: number;
-    quantity: number;
+    productDetails: ProductDetails[];
     isNewCollection?: boolean;
-    imagesDisplay: ProductImages;
-    color?: string;
     type: string;
+    size?: string;
+}
+
+export class ProductDetails {
+    id?: number;
+    color: string;
+    images: ProductImages[];
+    info: string;
+    productId: number;
+    quantity: number;
 }
 
 export class ProductImages {
-    imageDisplay1: string;
-    imageDisplay2?: string;
-    imageDisplay3?: string;
+    id: number;
+    isDisplay: boolean;
+    imagePath: string;
 }
 
 export class ShoppingCartItem {
-
     product: Product;
     bagQuantity?: number;
+    reservation?: boolean;
 
-    constructor(product: Product, bagQuantity: number) {
+    constructor(product: Product, bagQuantity: number, reservation: boolean) {
         this.product = product;
         this.bagQuantity = bagQuantity;
+        this.reservation = reservation;
     }
 
 }

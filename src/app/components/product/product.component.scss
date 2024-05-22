@@ -3,6 +3,7 @@
 }
 
 .product {
+  background-color: white;
   display: relative;
   border: 1px solid rgba(128, 128, 128, 0.267);
   height: 100%;
@@ -41,6 +42,7 @@
   position: relative;
   height: 20%;
   min-height: 90px;
+  height: fit-content;
   width: 100%;
   opacity: 0.8;
   background: #ffffffde;
@@ -72,22 +74,13 @@
       text-transform: uppercase;
     }
 
-    .color-box {
-      padding: 0;
-      margin: 10px 0 0 17px;
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-      border-radius: 3px;
-      background-color: black;
-    }
-
   }
 
   .product-price {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 5px 10px 10px 0;
 
     .price {
       color: #000C22;
@@ -106,6 +99,24 @@
       font-weight: 500;
       text-transform: uppercase;
     }
+  }
+}
+
+.product-colors {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  margin-left: 7px;
+
+  .color-box {
+    border: 1px solid gray !important;
+    padding: 0;
+    margin: 10px 0 0 10px;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    background-color: black;
   }
 }
 
@@ -130,8 +141,6 @@
     }
   
     .product-price {
-      bottom: 5px !important;
-      right: 5px !important;
   
       .price {
         font-size: 24px !important;
@@ -140,6 +149,13 @@
       .value {
         font-size: 18px !important;
       }
+    }
+  }
+
+  .product-colors {
+    .color-box {
+      width: 18px !important;
+      height: 18px !important;
     }
   }
 
@@ -155,7 +171,6 @@
   }
 
   .product-details {
-    height: 25% !important;
 
     .product-main-details {
       .bag-type {
@@ -166,24 +181,24 @@
         font-size: 16px !important;
       }
   
-      .color-box {
-        width: 10px !important;
-        height: 10px !important;
-      }
-  
     }
   
     .product-price {
-      bottom: 5px !important;
-      right: 5px !important;
   
       .price {
-        font-size: 18px !important;
+        font-size: 20px !important;
       }
   
       .value {
-        font-size: 14px !important;
+        font-size: 18px !important;
       }
+    }
+  }
+
+  .product-colors {
+    .color-box {
+      width: 16px !important;
+      height: 16px !important;
     }
   }
 
@@ -198,7 +213,6 @@
   }
 
   .product-details {
-    height: 25% !important;
 
     .product-main-details {
       .bag-type {
@@ -209,24 +223,24 @@
         font-size: 16px !important;
       }
   
-      .color-box {
-        width: 10px !important;
-        height: 10px !important;
-      }
-  
     }
   
     .product-price {
-      bottom: 5px !important;
-      right: 5px !important;
   
       .price {
-        font-size: 18px !important;
+        font-size: 20px !important;
       }
   
       .value {
-        font-size: 14px !important;
+        font-size: 16px !important;
       }
+    }
+  }
+
+  .product-colors {
+    .color-box {
+      width: 14px !important;
+      height: 14px !important;
     }
   }
 }
@@ -240,7 +254,6 @@
   }
 
   .product-details {
-    height: 30% !important;
 
     .product-main-details {
       .bag-type {
@@ -253,25 +266,25 @@
         font-size: 16px !important;
       }
   
-      .color-box {
-        margin: 10px 0 0 10px !important;
-        width: 9px !important;
-        height: 9px !important;
-      }
-  
     }
   
     .product-price {
-      bottom: 3px !important;
-      right: 3px !important;
   
       .price {
-        font-size: 18px !important;
+        font-size: 20px !important;
       }
   
       .value {
-        font-size: 12px !important;
+        font-size: 16px !important;
       }
+    }
+  }
+
+  .product-colors {
+    margin: 0 !important;
+    .color-box {
+      width: 14px !important;
+      height: 14px !important;
     }
   }
 }
@@ -286,7 +299,6 @@
   }
 
   .product-details {
-    height: 30% !important;
 
     .product-main-details {
       .bag-type {
@@ -299,25 +311,25 @@
         font-size: 16px !important;
       }
   
-      .color-box {
-        margin: 10px 0 0 10px !important;
-        width: 10px !important;
-        height: 10px !important;
-      }
-  
     }
   
     .product-price {
-      bottom: 5px !important;
-      right: 5px !important;
   
       .price {
         font-size: 20px !important;
       }
   
       .value {
-        font-size: 14px !important;
+        font-size: 16px !important;
       }
+    }
+  }
+
+  .product-colors {
+    margin: 0 !important;
+    .color-box {
+      width: 12px !important;
+      height: 12px !important;
     }
   }
 }

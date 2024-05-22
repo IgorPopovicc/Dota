@@ -1,12 +1,17 @@
 <section class="product">
     <div class="product-image">
-        <img [src]="product.imagesDisplay.imageDisplay1" alt="Dota product">
+        <img [src]="product.productDetails[0].images[0].imagePath" alt="Dota product">
     </div>
     <div class="product-details">
         <div class="product-main-details">
             <p class="bag-type">{{ product.type }}</p>
             <h3 class="bag-name">{{ product.name }}</h3>
-            <div class="color-box" [ngStyle]="{'background-color': product.color}"></div>
+            <!-- <div class="color-box" [ngStyle]="{'background-color': product.productDetails[0].color}"></div> -->
+        </div>
+        <div class="product-colors">
+            @for (item of product.productDetails; track $index) {
+                <div class="color-box" [ngStyle]="{'background-color': item.color}"></div>
+            }
         </div>
         <div class="product-price">
             <span class="price">{{ product.price }}</span>

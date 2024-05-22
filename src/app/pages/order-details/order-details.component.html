@@ -1,3 +1,4 @@
+<dota-loading></dota-loading>
 <section class="container-fluid order-details">
   <h1 *ngIf="!isReservation" class="main-title">DODAJTE PODATKE ZA PORUČIVANJE</h1>
   <h1 *ngIf="isReservation" class="main-title">DODAJTE PODATKE ZA REZERVACIJU</h1>
@@ -68,8 +69,9 @@
             <h1 class="total">Total</h1>
             <ul class="items-list">
               <li class="item-detail" *ngFor="let item of shoppingCartItems">
-                <span>{{ item.product.name }}</span>
+                <span>{{ item.product.name }} - {{ item.product.productDetails[0].info }}</span>
                 <span>{{ "X" + item.bagQuantity }}</span>
+                <span style="text-align: end;">{{ item.product.price }}</span>
               </li>
             </ul>
             <div class="total-price">

@@ -17,24 +17,29 @@ export class ShoppingCartService {
   constructor(private snackBar: MatSnackBar) { }
 
   addItemToCart(item: ShoppingCartItem) {
-    const existingProduct = this.cartItems.find(currentItem => currentItem.product.id === item.product.id);
+    const existingProduct = this.cartItems.find(currentItem => currentItem.product.productDetails[0].id === item.product.productDetails[0].id);
 
     if (existingProduct) {
-      if(existingProduct.product.quantity === existingProduct.bagQuantity) {
-
+      if(existingProduct.product.productDetails[0].quantity === existingProduct.bagQuantity) {
+       
       } else {
         this.showCustomSnackbar("Uspjesno ste dodali u korpu!");
         existingProduct.bagQuantity += item.bagQuantity;
       }
       
     } else {
-      if(item.product.quantity > 0) {
+      if(item.product.productDetails[0].quantity > 0) {
         this.showCustomSnackbar("Uspjesno ste dodali u korpu!");
         this.cartItems.push(item);
+        this.computeCartTotals();
+      } else {
+        if(item.reservation) {
+          this.showCustomSnackbar("Uspjesno ste dodali rezervisani proizvod u korpu!");
+        this.cartItems.push(item);
+        this.computeCartTotals();
+        }
       }
     }
-
-    this.computeCartTotals();
   }
 
   private computeCartTotals() {
@@ -43,7 +48,7 @@ export class ShoppingCartService {
     
     for (const currentCartItem of this.cartItems) {
       totalPriceValue += currentCartItem.bagQuantity * currentCartItem.product.price;
-      totalQuantityValue += currentCartItem.bagQuantity;
+      totalQuantityValue += 1;
     }
 
     this.totalPrice.next(totalPriceValue);
@@ -56,10 +61,10 @@ export class ShoppingCartService {
   }
 
   addItemQuantity(item: ShoppingCartItem) {
-    const existingProduct = this.cartItems.find(currentItem => currentItem.product.id === item.product.id);
+    const existingProduct = this.cartItems.find(currentItem => currentItem.product.productDetails[0].id === item.product.productDetails[0].id);
   
     if (existingProduct) {
-      if(existingProduct.product.quantity === existingProduct.bagQuantity) {
+      if(existingProduct.product.productDetails[0].quantity === existingProduct.bagQuantity) {
 
       } else {
         existingProduct.bagQuantity++;
@@ -73,7 +78,7 @@ export class ShoppingCartService {
   }
   
   removeItemQuantity(item: ShoppingCartItem) {
-    const existingProductIndex = this.cartItems.findIndex(currentItem => currentItem.product.id === item.product.id);
+    const existingProductIndex = this.cartItems.findIndex(currentItem => currentItem.product.productDetails[0].id === item.product.productDetails[0].id);
   
     if (existingProductIndex !== -1) {
       if (this.cartItems[existingProductIndex].bagQuantity === 1) {
