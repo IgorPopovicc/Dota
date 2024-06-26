@@ -55,18 +55,22 @@ export class ProductsComponent implements OnInit {
   }
 
   loadProducts() {
-    this.productService.getAllProducts().subscribe(data => {
-      this.product = data;
-      this.getProducts(this.pageIndex, this.pageSize)
-      .subscribe((data: any) => {
-        console.log("DATA ", data);
-        if(data) {
-          this.list.push(...data);
-        this.sortedList.push(...data);
-        this.pageIndex++;
-        }
-      });
-    })
+    this.productService.getAllProducts().subscribe({ 
+      next: data => {
+        this.product = data;
+        this.getProducts(this.pageIndex, this.pageSize)
+        .subscribe((data: any) => {
+          console.log("DATA ", data);
+          if(data) {
+            this.list.push(...data);
+          this.sortedList.push(...data);
+          this.pageIndex++;
+          }
+        });
+      }, 
+      error: () => {
+        console.log("Error")}
+      })
   }
 
   initIntersectionObserver() {
