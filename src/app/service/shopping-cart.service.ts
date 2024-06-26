@@ -35,8 +35,8 @@ export class ShoppingCartService {
       } else {
         if(item.reservation) {
           this.showCustomSnackbar("Uspjesno ste dodali rezervisani proizvod u korpu!");
-        this.cartItems.push(item);
-        this.computeCartTotals();
+          this.cartItems.push(item);
+          this.computeCartTotals();
         }
       }
     }

@@ -90,10 +90,15 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts(index: number, pageSize: number): Observable<Product[]> {
-    let mockData = this.product;
-    const startIndex = index * pageSize;
-    const endIndex = startIndex + pageSize;
-    return of(mockData.slice(startIndex, endIndex));
+    if(this.product) {
+      let mockData = this.product;
+      const startIndex = index * pageSize;
+      const endIndex = startIndex + pageSize;
+      return of(mockData.slice(startIndex, endIndex));
+    } else {
+      return of([]);
+    }
+    
   }
 
   openProductDetails(product: Product) {
