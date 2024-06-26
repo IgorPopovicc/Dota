@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,17 +27,21 @@ export class ProductsService {
     );;
   }
 
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    let errorMessage = 'Unknown error!';
-    if (typeof error.error === 'string') {
-      // Server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    } else {
+  private handleError(error: HttpErrorResponse): Observable<any> {
+    let errorMessage: string;
+
+    if (error.error instanceof ErrorEvent) {
       // Client-side error
-      errorMessage = `Error: ${error.message}`;
+      errorMessage = `Client-side error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      errorMessage = `Server-side error: ${error.status} ${error.message}`;
     }
+
     console.error(errorMessage);
-    return throwError(() => new Error(errorMessage));
+
+    // Return a fallback value so the app can continue
+    return of({ error: true, message: errorMessage });
   }
 
 }
