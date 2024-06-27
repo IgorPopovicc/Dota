@@ -1,27 +1,30 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as emailjs from 'emailjs-com';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailService {
 
+  private baseUrl = 'http://localhost:8080/dota';
+
+  constructor(private httpClient: HttpClient) {
+
+  }
+
   isValidEmail(email: string): boolean {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
   }
 
-  sendEmail(email: string) {
+  sendEmail(email: string): Observable<any>  {
     if (this.isValidEmail(email)) {
-      const templateParams = {
-        to_email: email
-      };
-
-      return emailjs.send("service_dota", "template_bj9wwqo", templateParams, "MbP3G-16Env1srvYF");
+      return this.httpClient.post(this.baseUrl + "/newsletter", { email: email }, {});
     } else {
-      console.error('Neispravna e-mail adresa.');
-      return Promise.reject('Neispravna e-mail adresa.');
-    }
+      return of(null);
+    } 
   }
 
 }

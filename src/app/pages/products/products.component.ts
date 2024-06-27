@@ -44,7 +44,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.loadProducts();
+    this.loadProducts();
     this.initIntersectionObserver();
   }
 
@@ -54,20 +54,20 @@ export class ProductsComponent implements OnInit {
     }, 2000);
   }
 
-  // loadProducts() {
-  //   this.productService.getAllProducts().subscribe(data => {
-  //     this.product = data;
-  //     this.getProducts(this.pageIndex, this.pageSize)
-  //     .subscribe((data: any) => {
-  //       console.log("DATA ", data);
-  //       if(data) {
-  //         this.list.push(...data);
-  //       this.sortedList.push(...data);
-  //       this.pageIndex++;
-  //       }
-  //     });
-  //   })
-  // }
+  loadProducts() {
+    this.productService.getAllProducts().subscribe(data => {
+      this.product = data;
+      this.getProducts(this.pageIndex, this.pageSize)
+      .subscribe((data: any) => {
+        console.log("DATA ", data);
+        if(data) {
+          this.list.push(...data);
+        this.sortedList.push(...data);
+        this.pageIndex++;
+        }
+      });
+    })
+  }
 
   initIntersectionObserver() {
     const options = {
@@ -80,7 +80,7 @@ export class ProductsComponent implements OnInit {
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            //this.loadProducts();
+            this.loadProducts();
           }
         });
       }, options);
@@ -89,16 +89,12 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  // getProducts(index: number, pageSize: number): Observable<Product[]> {
-  //   if(this.product) {
-  //     let mockData = this.product;
-  //     const startIndex = index * pageSize;
-  //     const endIndex = startIndex + pageSize;
-  //     return of(mockData.slice(startIndex, endIndex));
-  //   } else {
-  //     return of([]);
-  //   } 
-  // }
+  getProducts(index: number, pageSize: number): Observable<Product[]> {
+    let mockData = this.product;
+    const startIndex = index * pageSize;
+    const endIndex = startIndex + pageSize;
+    return of(mockData.slice(startIndex, endIndex));
+  }
 
   openProductDetails(product: Product) {
     this.routerService.routerByPathAndRequestParamWithBody("product-details", product.id,  product);

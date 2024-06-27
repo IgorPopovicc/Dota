@@ -46,12 +46,12 @@
                         </svg>
                     </p>
                 </div>
-                <div class="all-bags-image">
-                    <div class="all-bags-image-item">
-                        <img src="./assets/images/products/bags/test-product/product1.png" alt="Dota bag">
+                <div *ngIf="products && products.length > 4" class="all-bags-image">
+                    <div (click)="openProductDetails(products[3])" class="all-bags-image-item">
+                        <img [src]="products[3].productDetails[0].images[0].imagePath" alt="Dota bag">
                     </div>
-                    <div class="all-bags-image-item">
-                        <img src="./assets/images/products/bags/test-product/product1.png" alt="Dota bag">
+                    <div (click)="openProductDetails(products[4])" class="all-bags-image-item">
+                        <img [src]="products[4].productDetails[0].images[0].imagePath" alt="Dota bag">
                     </div>
                 </div>
             </div>

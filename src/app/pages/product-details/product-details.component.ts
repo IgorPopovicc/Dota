@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
 
   product: Product;
   selectedProductDetails: ProductDetails;
-  images: GalleryItem[];
+  images: GalleryItem[] = [];
   isPhone: boolean = false;
   isTablet: boolean = false;
   products: Array<Product>;
@@ -59,11 +59,9 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     this.checkScreenSize();
     if(this.product) {
       this.outOfStocks = this.selectedProductDetails.quantity === 0;
-      this.images = [
-        new ImageItem({ src: this.product.productDetails[0].images[0].imagePath, thumb: this.product.productDetails[0].images[0].imagePath }),
-        new ImageItem({ src: this.product.productDetails[0].images[1].imagePath, thumb: this.product.productDetails[0].images[1].imagePath }),
-        new ImageItem({ src: this.product.productDetails[0].images[2].imagePath, thumb: this.product.productDetails[0].images[2].imagePath })
-      ];
+      for(const element of this.product.productDetails[0].images) {
+        this.images.push(new ImageItem({ src: element.imagePath, thumb: element.imagePath }))
+      }
     }
   }
 

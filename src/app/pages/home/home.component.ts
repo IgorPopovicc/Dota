@@ -5,7 +5,6 @@ import { Product } from '../../model/Product';
 import { SpecialProductComponent } from "../../components/special-product/special-product.component";
 import { LoadingComponent } from "../../components/loading/loading.component";
 import { LoadingService } from '../../service/loading.service';
-import { Router } from '@angular/router';
 import { RouterService } from '../../service/router.service';
 import { ProductsService } from '../../service/products.service';
 
@@ -61,11 +60,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   getProductsForHomePage() {
-    // this.productService.getAllProducts().subscribe(products => {
-    //   if(products) {
-    //     this.products = products;
-    //   }
-    // });
+    this.productService.getAllProducts().subscribe(products => {
+      if(products) {
+        this.products = products;
+      }
+    });
   }
 
   openProductDetails(product: Product) {

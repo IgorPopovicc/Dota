@@ -4,6 +4,7 @@ import { ProductComponent } from "../product/product.component";
 import { Product } from '../../model/Product';
 import { Router } from '@angular/router';
 import { RouterService } from '../../service/router.service';
+import { ProductsService } from '../../service/products.service';
 
 @Component({
     selector: 'special-product',
@@ -22,16 +23,23 @@ export class SpecialProductComponent {
   componentName = 'Naziv komponente';
   componentDescription = 'Ovde treba da stoji neki opis ili citat vezan za torbicu. Ovde treba da stoji neki opis ili citat vezan za torbicu.';
   containerHeight: number = 500;
+  product: Product;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
     this.setContainerHeight();
   }
 
-  constructor(private routerService: RouterService) {}
+  constructor(private routerService: RouterService, private productService: ProductsService) {}
 
   ngOnInit(): void {
     this.setContainerHeight();
+    this.productService.getProductById("9").subscribe(result => {
+      if(result) {
+        this.product = result as Product;
+        console.log("RESULT BY ID: ", result);
+      }
+    })
   }
 
   setContainerHeight(): void {
@@ -50,36 +58,6 @@ export class SpecialProductComponent {
   getHeight(): string {
     return `${this.containerHeight}px`;
   }
-
-  product: Product = {
-    id: 2,
-    name: "CREAM BAG",
-    productDetails: [{
-      color: '#ffffff',
-      info: 'test',
-      productId: 3,
-      quantity: 5,
-      images: [
-        {
-            id: 1,
-            isDisplay: true,
-            imagePath: "https://dota-bucket-test.s3.eu-central-1.amazonaws.com/images/torbica/Moonlight/black/5e84efbc-1a67-45ed-94ff-274ce728b5aa.jpg"
-        },
-        {
-            id: 2,
-            isDisplay: false,
-            imagePath: "https://dota-bucket-test.s3.eu-central-1.amazonaws.com/images/torbica/Moonlight/black/fbdd3e2f-2ef8-48c6-9a90-e9351c520e7b.jpg"
-        },
-        {
-            id: 3,
-            isDisplay: false,
-            imagePath: "https://dota-bucket-test.s3.eu-central-1.amazonaws.com/images/torbica/Moonlight/black/5d4dc253-e3f4-4a44-a254-0e546b43b6a7.jpg"
-        },
-      ],
-    }],
-    price: 2300,
-    type: "bag"
-  };
 
   openProductDetails(product: Product) {
     this.routerService.routerByPathAndRequestParamWithBody("product-details", product.id, product );

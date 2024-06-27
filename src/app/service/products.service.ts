@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, retry, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,33 @@ export class ProductsService {
     return this.cartSIze;
   }
 
-  // getAllProducts(): Observable<any> {
-  //   return this.httpClient.get(this.baseUrl + "/products");
-  // }
+  getAllProducts(): Observable<any> {
+    return this.httpClient.get(this.baseUrl + "/products").pipe(
+      retry(2),
+      catchError(this.handleError)
+    );;
+  }
+
+  private handleError(error: any) {
+    let errorMessage = '';
+    if (error instanceof Error) {
+      // Klijentska ili mrežna greška
+      errorMessage = `An error occurred: ${error.message}`;
+    } else if (error instanceof HttpErrorResponse) {
+      // Server error
+      errorMessage = `Server returned code: ${error.status}, error message is: ${error.message}`;
+    } else {
+      errorMessage = 'Unknown error';
+    }
+    console.error(errorMessage);
+    return throwError(() => new Error('Something bad happened; please try again later.'));
+  }
+
+  getProductById(id: string): Observable<any> {
+    return this.httpClient.get(this.baseUrl + "/products/" + id).pipe(
+      retry(2),
+      catchError(this.handleError)
+    );;
+  }
 
 }
