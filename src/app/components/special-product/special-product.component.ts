@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { Product } from '../../model/Product';
 import { Router } from '@angular/router';
@@ -30,14 +30,15 @@ export class SpecialProductComponent {
     this.setContainerHeight();
   }
 
-  constructor(private routerService: RouterService, private productService: ProductsService) {}
+  constructor(private routerService: RouterService, private productService: ProductsService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.setContainerHeight();
-    this.productService.getProductById("9").subscribe(result => {
+    this.productService.getProductById("6").subscribe(result => {
       if(result) {
         this.product = result as Product;
         console.log("RESULT BY ID: ", result);
+        this.cdr.markForCheck();
       }
     })
   }

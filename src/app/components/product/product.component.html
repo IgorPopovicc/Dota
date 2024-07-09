@@ -6,7 +6,7 @@
         <div class="product-main-details">
             <p class="bag-type">{{ product.type }}</p>
             <h3 class="bag-name">{{ product.name }}</h3>
-            <!-- <div class="color-box" [ngStyle]="{'background-color': product.productDetails[0].color}"></div> -->
+            <div class="color-box" [ngStyle]="{'background-color': product.productDetails[0].color}"></div>
         </div>
         <div class="product-colors">
             @for (item of product.productDetails; track $index) {
