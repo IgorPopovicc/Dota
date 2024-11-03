@@ -1,29 +1,36 @@
-<nav class="navigation row">
-    <ul class="navigation-menu">
-      <li (click)="openHomePage()">POČETNA</li>
-      <li><samp class="line"></samp></li>
-      <li (click)="openProducts()" routerLink="/products" routerLinkActive="active">TORBE</li>
-      <li (click)="openProducts()">NOVČANICI</li>
-      <li><samp class="line"></samp></li>
-      <li (click)="openContact()" routerLink="/contact" routerLinkActive="active">KONTAKT</li>
-    </ul>
-    <div class="hamburger-menu">
-      <dota-icon (click)="toggleDropdown()" iconPath="./assets/images/icons/hamburger-menu.svg?v=4" altText="Shopping cart"></dota-icon>
-      <div *ngIf="isDropdownOpen" class="dropdown-menu">
-        <ul>
-          <li>MENI</li>
-          <hr class="menu-line">
-          <li (click)="openHomePage()"><a>POČETNA</a></li>
-          <li (click)="openProducts()"><a>TORBE</a></li>
-          <li (click)="openProducts()"><a>NOVČANICI</a></li>
-          <li (click)="openContact()"><a>KONTAKT</a></li>
-        </ul>
-      </div>
+<nav [ngClass]="{
+        'scrolled': (isScrolled && isHomePage()) || !isHomePage(),
+        'transparent': !isScrolled && isHomePage()
+      }"
+     class="navigation row">
+
+  <ul class="navigation-menu">
+    <li (click)="openHomePage()">POČETNA</li>
+    <li><samp class="line"></samp></li>
+    <li (click)="openProducts()" routerLink="/products" routerLinkActive="active">TORBE</li>
+    <li (click)="openProducts()">NOVČANICI</li>
+    <li><samp class="line"></samp></li>
+    <li (click)="openContact()" routerLink="/contact" routerLinkActive="active">KONTAKT</li>
+  </ul>
+
+  <div class="hamburger-menu">
+    <dota-icon (click)="toggleDropdown()" iconPath="./assets/images/icons/hamburger-menu.svg?v=4" altText="Shopping cart"></dota-icon>
+    <div *ngIf="isDropdownOpen" class="dropdown-menu">
+      <ul>
+        <li>MENI</li>
+        <hr class="menu-line">
+        <li (click)="openHomePage()"><a>POČETNA</a></li>
+        <li (click)="openProducts()"><a>TORBE</a></li>
+        <li (click)="openProducts()"><a>NOVČANICI</a></li>
+        <li (click)="openContact()"><a>KONTAKT</a></li>
+      </ul>
     </div>
-  
-  <div class="logo">
-    <img (click)="openHomePage()" src="./assets/images/logo/main-logo.svg?v=2" alt="logo image">
   </div>
+
+  <div class="logo">
+    <img *ngIf="isScrolled || !isHomePage()" (click)="openHomePage()" src='./assets/images/logo/main-logo.svg' alt="logo image">
+  </div>
+
   <div (click)="openShoppingCart()" class="shopping-cart">
     <div class="cart">
       <dota-icon iconPath="./assets/images/icons/shopping-cart.svg" altText="Shopping cart"></dota-icon>

@@ -34,18 +34,22 @@ $Dota-theme: mat.define-light-theme((
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@500&family=Nothing+You+Could+Do&family=Poppins:wght@500&display=swap');
 
 body {
-  background-image: url('./assets/images/background/background-main.png');
-  background-size: cover;
-  background-repeat: repeat;
-  background-position: center;
+  // background-image: url('./assets/images/background/bacground-main.svg');
+  // background-size: cover;
+  // background-repeat: repeat-y;
+  // background-position: center;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overscroll-behavior: none;
+  overflow-x: hidden !important;
+  overscroll-behavior: none !important;
 }
 
 body.loading-active {
   overflow: hidden;
+}
+
+button, a, input, textarea {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .main-title {
@@ -88,14 +92,14 @@ body.loading-active {
 
 .container {
   padding-right: 0;
-  padding-left: 0;  
+  padding-left: 0;
   margin-right: 0;
   margin-left: 0;
 }
 
 .container-fluid {
   padding-right: 5%;
-  padding-left: 5%;  
+  padding-left: 5%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -107,11 +111,11 @@ body.loading-active {
   }
 }
 
-@media screen and (min-width: 482px) and (max-width: 767px )  { 
+@media screen and (min-width: 482px) and (max-width: 767px )  {
   .section {
-    padding: 0 20px; 
+    padding: 0 20px;
   }
-  
+
   .main-title {
     font-size: 32px !important;
   }
@@ -119,10 +123,10 @@ body.loading-active {
 
 
 @media screen and (max-width: 480px) {
-  
+
   .container-fluid {
     padding-right: 20px;
-    padding-left: 20px;  
+    padding-left: 20px;
     margin-right: auto;
     margin-left: auto;
   }
@@ -130,7 +134,7 @@ body.loading-active {
   .main-title {
     font-size: 26px !important;
   }
-  
+
 }
 
 html, body { height: 100%; }

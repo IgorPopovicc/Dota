@@ -1,9 +1,12 @@
 <dota-loading></dota-loading>
-<section class="banner"> 
+<section class="banner">
     <div class="banner-dark-wrapper">
         <div class="banner-content">
-            <h1 class="banner-text-h1">DOTA BAGS<span class="bold"><br>NEW COLLECTION</span></h1>
-            @if(!isPhone && !isTablet) {
+          <h1 class="banner-text-h1">
+            <span class="typewriter-text">DOTA BAGS</span>
+            <span class="bold"><br><span class="typewriter-text">NEW COLLECTION</span></span>
+          </h1>
+          @if(!isPhone && !isTablet) {
                 <div (click)="openProducts()" class="dota-new-collection-button">
                     <span class="dota-button-text">KUPI SADA</span>
                     <svg style="padding-left: 20px;" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
@@ -26,7 +29,6 @@
 </section>
 <br><br>
 <section class="container-fluid">
-    <h1 class="main-title" *ngIf="!isPhone">Torbe</h1>
     <div class="bags-section">
         @if(!isPhone && !isTablet) {
             @for (product of products; track product.id; let index = $index) {
@@ -39,7 +41,7 @@
             <div class="all-bags">
                 <div (click)="openProducts()" class="show-all-bags">
                     <h3 class="title">Prikazi sve <br><b>Torbice</b></h3>
-                    <p class="button">Pogledaj 
+                    <p class="button">Pogledaj
                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
                             <path d="M0.000978281 6.00098H15.001" stroke="#000C22" stroke-width="1.5"/>
                             <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#000C22" stroke-width="1.5"/>
@@ -66,7 +68,7 @@
             <div class="all-bags">
                 <div (click)="openProducts()"  class="show-all-bags">
                     <h3 class="title">Prikazi sve <br><b>Torbice</b></h3>
-                    <p class="button">Pogledaj 
+                    <p class="button">Pogledaj
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 17 12" fill="none">
                             <path d="M0.000978281 6.00098H15.001" stroke="#000C22" stroke-width="1.5"/>
                             <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#000C22" stroke-width="1.5"/>
@@ -101,7 +103,7 @@
                 </div>
                 <div (click)="openProducts()" class="show-all-bags">
                     <h3 class="title">Prikazi sve <br><b>Torbice</b></h3>
-                    <p class="button">Pogledaj 
+                    <p class="button">Pogledaj
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 17 12" fill="none">
                             <path d="M0.000978281 6.00098H15.001" stroke="#000C22" stroke-width="1.5"/>
                             <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#000C22" stroke-width="1.5"/>
@@ -113,73 +115,67 @@
     </div>
 </section>
 <br><br>
-<section class="container-fluid">
-    @if(!isPhone && !isTablet){
-        <div class="ideas-for-stylish">
-            <div class="stylish-text">
-                <h1 class="stylish-normal">Ideas for</h1>
-                <h1 class="stylish-custom">Stylish</h1>
-                <h1 class="stylish-normal">Fun</h1>
-            </div>
-            <div class="stylish-image">
-                <img src="./assets/images/presentation-images/mix-the-colors.png" alt="" srcset="">
-            </div>
-            <div class="stylish-image">
-                <img src="./assets/images/presentation-images/silver-bold.png" alt="">
-            </div>
-        </div>
-    } @else {
-        <div class="ideas-for-stylish-sm">
-            <div class="stylish-text-sm">
-                <h1 class="stylish-normal-sm">Ideas for <span class="stylish-custom-sm">Stylish</span> Fun</h1>
-            </div>
-            <div class="stylish-image-sm">
-                <div class="image-sm">
-                    <img src="./assets/images/presentation-images/mix-the-colors.png" alt="" srcset="">
-                </div>
-                <div class="image-sm">
-                    <img src="./assets/images/presentation-images/silver-bold.png" alt="">
-                </div>
-            </div>
-        </div>
-    }
-</section>
-<br><br><br><br>
 <section class="container">
-    <special-product></special-product>
+  <special-product></special-product>
+</section>
+<section class="container-fluid" style="background-image: url('./assets/images/background/bacground-main.svg'); background-size: cover; background-repeat: repeat-x; background-position: bottom; padding-top: 50px">
+  @if(!isPhone && !isTablet){
+    <div class="ideas-for-stylish">
+      <div class="stylish-text">
+        <h1 class="stylish-normal">Ideas for</h1>
+        <h1 class="stylish-custom">Stylish</h1>
+        <h1 class="stylish-normal">Fun</h1>
+      </div>
+      <div class="stylish-image">
+        <img src="./assets/images/presentation-images/mix-the-colors.png" alt="" srcset="">
+      </div>
+      <div class="stylish-image">
+        <img src="./assets/images/presentation-images/silver-bold.png" alt="">
+      </div>
+    </div>
+  } @else {
+    <div class="ideas-for-stylish-sm">
+      <div class="stylish-text-sm">
+        <h1 class="stylish-normal-sm">Ideas for <span class="stylish-custom-sm">Stylish</span> Fun</h1>
+      </div>
+      <div class="stylish-image-sm">
+        <div class="image-sm">
+          <img src="./assets/images/presentation-images/mix-the-colors.png" alt="" srcset="">
+        </div>
+        <div class="image-sm">
+          <img src="./assets/images/presentation-images/silver-bold.png" alt="">
+        </div>
+      </div>
+    </div>
+  }
 </section>
 <br><br><br><br>
+<section class="container-fluid">
+  <div class="end-stylish-text ">
+    <h1 class="stylish-custom">#Carry style, not just stuff.</h1>
+  </div>
+</section>
 <!-- OVDE IDE SLIDER -->
 <section class="container-fluid">
-    @if(!isPhone && !isTablet){
-        <div class="ideas-for-stylish">
-            <div class="stylish-text">
-                <h1 class="stylish-normal">Ideas for</h1>
-                <h1 class="stylish-custom">Stylish</h1>
-                <h1 class="stylish-normal">Fun</h1>
-            </div>
-            <div class="stylish-image">
-                <img src="./assets/images/presentation-images/mix-the-colors.png" alt="" srcset="">
-            </div>
-            <div class="stylish-image">
-                <img src="./assets/images/presentation-images/silver-bold.png" alt="">
-            </div>
+    <div class="image-slider">
+      <div class="slide-track">
+        <div class="slide">
+          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
         </div>
-    } @else {
-        <div class="ideas-for-stylish-sm">
-            <div class="stylish-text-sm">
-                <h1 class="stylish-normal-sm">Ideas for <span class="stylish-custom-sm">Stylish</span> Fun</h1>
-            </div>
-            <div class="stylish-image-sm">
-                <div class="image-sm">
-                    <img src="./assets/images/presentation-images/mix-the-colors.png" alt="" srcset="">
-                </div>
-                <div class="image-sm">
-                    <img src="./assets/images/presentation-images/silver-bold.png" alt="">
-                </div>
-            </div>
+        <div class="slide">
+          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
         </div>
-    }
+        <div class="slide">
+          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
+        </div>
+        <div class="slide">
+          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
+        </div>
+        <div class="slide">
+          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
+        </div>
+      </div>
+    </div>
 </section>
-<!-- OVDE SE ZAVRSAVA SLIDER -->
 <br><br><br><br>
+<!-- OVDE SE ZAVRSAVA SLIDER -->

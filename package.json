@@ -11,6 +11,9 @@
     "clean-install": "rm -rf node_modules && npm install"
   },
   "private": true,
+  "engines": {
+    "node": ">=18.14.0"
+  },
   "dependencies": {
     "@angular/animations": "^17.0.0",
     "@angular/cdk": "^17.1.0",
@@ -38,7 +41,7 @@
     "@angular/compiler-cli": "^17.0.0",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
-    "@types/node": "^18.18.0",
+    "@types/node": ">=18.14.0",
     "intersection-observer": "^0.12.2",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",

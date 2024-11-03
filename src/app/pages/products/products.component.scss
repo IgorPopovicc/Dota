@@ -9,11 +9,11 @@
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; 
-    gap: 20px; 
+    justify-content: space-between;
+    gap: 20px;
     height: fit-content;
   }
-  
+
   .product-item {
     flex-basis: calc(25% - 20px); /* Prilagodba prostora između elemenata */
     margin-bottom: 20px; /* Prostor ispod elemenata */
@@ -181,13 +181,13 @@ label span {
     line-height: normal;
     text-transform: uppercase;
 }
-  
+
   @media screen and (max-width: 1200px) {
     .product-item {
       flex-basis: calc(25% - 20px);
     }
   }
-  
+
   @media screen and (max-width: 800px) {
     .product-item {
         flex-basis: calc(33.333% - 20px);
@@ -197,10 +197,10 @@ label span {
         font-size: 12px !important;
     }
   }
-  
+
   @media screen and (max-width: 600px) {
     .product-item {
-        flex-basis: calc(50% - 20px);
+        flex-basis: calc(50% - 10px);
     }
 
     details {
@@ -222,7 +222,7 @@ label span {
 
   @media screen and (max-width: 400px) {
     .product-item {
-        flex-basis: calc(50% - 20px);
+        flex-basis: calc(50% - 10px);
     }
 
     details {
