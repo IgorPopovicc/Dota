@@ -14,15 +14,15 @@ import { ProductsService } from '../../service/products.service';
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        CommonModule,
-        ProductComponent,
-        SpecialProductComponent,
-        LoadingComponent
-    ]
+  imports: [
+    CommonModule,
+    ProductComponent,
+    SpecialProductComponent,
+    LoadingComponent
+  ]
 })
-export class HomeComponent implements OnInit, AfterViewInit { 
-  
+export class HomeComponent implements OnInit, AfterViewInit {
+
   public count = 0;
   public isPhone: boolean = false;
   public isTablet: boolean = false;
@@ -35,7 +35,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
 
-  constructor(private loadingService: LoadingService, private routerService: RouterService, private productService: ProductsService) {
+  constructor(private loadingService: LoadingService,
+              private routerService: RouterService,
+              private productService: ProductsService) {
     this.products = new Array<Product>;
     this.loadingService.show();
   }
@@ -45,7 +47,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.getProductsForHomePage();
   }
 
-  ngAfterViewInit() { 
+  ngAfterViewInit() {
     setTimeout(() => {
       this.loadingService.hide();
     }, 1000);

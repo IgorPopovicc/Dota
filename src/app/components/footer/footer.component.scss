@@ -5,6 +5,32 @@
 .white {
   color: white !important;
   border-color: white !important;
+
+  input {
+    background-color: transparent !important;
+    color: white !important;
+    border-bottom: 1px solid white !important;
+  }
+
+  .link {
+    color: white !important;
+  }
+
+  h1, h3 {
+    color: white !important;
+  }
+
+  .icon {
+    filter: brightness(0) invert(1); /* This makes the icons appear white */
+  }
+
+  #sendText {
+    color: white !important;
+  }
+}
+
+.white-text.footer {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
 }
 
 .footer {
@@ -37,7 +63,7 @@
       justify-content: center;
       width: 40%;
       padding-top: 40px;
-      
+
       ul {
         margin: 0;
         display: inline-flex;
@@ -86,12 +112,12 @@
       position: relative;
       width: 40%;
     }
-    
+
     #emailInput {
       border: none;
       border-bottom: 1px solid #000;
-      background-color: rgba(255, 255, 255, 0); 
-      width: 90%; 
+      background-color: rgba(255, 255, 255, 0);
+      width: 90%;
       color: #000;
       font-family: 'Mulish', 'sans-serif';
       font-size: 18px;
@@ -104,7 +130,7 @@
         outline: none;
       }
     }
-    
+
     #sendText {
       position: absolute;
       right: 10%;
@@ -118,9 +144,9 @@
 
       cursor: pointer;
     }
-    
+
     #emailInput:focus + #sendLabel {
-      color: #007bff; 
+      color: #007bff;
     }
 
   }
@@ -148,7 +174,7 @@
 }
 
 .email-title-sm {
-  
+
   h1 {
     margin: 0;
     padding: 20px;
@@ -156,7 +182,7 @@
     font-size: 22px;
     font-style: normal;
     font-weight: 500;
-    line-height: 30px; 
+    line-height: 30px;
     text-transform: uppercase;
   }
 
@@ -173,11 +199,11 @@
     position: relative;
     width: 40%;
   }
-  
+
   #emailInput {
     border: none;
-    border-bottom: 1px solid #000;
-    background-color: rgba(255, 255, 255, 0); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0);
     width: 90%;
 
     font-family: 'Mulish', 'sans-serif';
@@ -191,7 +217,7 @@
       outline: none;
     }
   }
-  
+
   #sendText {
     position: absolute;
     right: 10%;
@@ -205,7 +231,7 @@
 
     cursor: pointer;
   }
-  
+
   #emailInput:focus + #sendLabel {
     color: #007bff;
   }
@@ -217,7 +243,7 @@
   justify-content: start;
   width: 40%;
   padding-left: 20px;
-  
+
   ul {
     margin: 0;
     padding: 20px 0 0 0;
@@ -240,7 +266,7 @@
   }
 }
 
-@media screen and (min-width: 1201px ) { 
+@media screen and (min-width: 1201px ) {
   .bottom-section {
     margin-left: 40px;
   }
@@ -256,62 +282,62 @@
           height: 42px !important;
         }
       }
-  
+
       .footer-links {
         width: 40%;
         padding-top: 40px;
-        
+
         ul {
-  
+
           .link {
             font-size: 16px !important;
             line-height: 24px;
             cursor: pointer;
           }
-  
+
         }
       }
-  
+
       .email-title {
         padding: 40px 10px 0 0;
         width: 40%;
-  
+
         h1 {
           font-size: 22px !important;
         }
       }
     }
-  
+
     .middle-section {
       .email-input-container {
         width: 40%;
       }
-      
+
       #emailInput {
-        width: 90%; 
+        width: 90%;
         font-size: 16px;
       }
-      
+
       #sendText {
         right: 10%;
         bottom: 0;
         padding: 5px;
         font-size: 16px;
-  
+
         cursor: pointer;
       }
-  
+
     }
-  
+
     .bottom-section {
       width: 100%;
       margin-left: 40px;
-  
+
       .icon {
         padding: 20px;
         width: 25px;
       }
-  
+
       .policy {
         margin-left: 50px;
         font-size: 16px;
@@ -338,7 +364,7 @@
         justify-content: space-between;
         align-items: end;
 
-        .footer-logo { 
+        .footer-logo {
           img {
             padding: 20px;
           }
@@ -348,7 +374,7 @@
 
 }
 
-@media screen and (min-width: 481px) and (max-width: 728px )  { 
+@media screen and (min-width: 481px) and (max-width: 728px )  {
   .footer {
     .middle-section-sm {
       .email-input-container {
@@ -365,7 +391,7 @@
       justify-content: space-between;
       align-items: end;
 
-      .footer-logo { 
+      .footer-logo {
         img {
           padding: 20px;
         }
@@ -405,7 +431,7 @@
       justify-content: space-between;
       align-items: end;
 
-      .footer-logo { 
+      .footer-logo {
         img {
           width: 116px !important;
           height: 42px !important;

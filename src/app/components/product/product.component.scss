@@ -4,8 +4,6 @@
 
 .product {
   background-color: white;
-  display: relative;
-  border: 1px solid rgba(128, 128, 128, 0.267);
   height: 100%;
   width: 100%;
   flex-shrink: 0;
@@ -40,7 +38,6 @@
 
 .product-details {
   position: relative;
-  height: 20%;
   min-height: 90px;
   height: fit-content;
   width: 100%;
@@ -80,11 +77,11 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding: 5px 10px 10px 0;
+    padding: 5px 10px 15px 0;
 
     .price {
       color: #000C22;
-      font-family: Inter;
+      font-family: Inter, serif;
       font-size: 36px;
       font-style: normal;
       font-weight: 500;
@@ -121,31 +118,31 @@
 }
 
 @media screen and (min-width: 1201px ) and (max-width: 1500px)  {
-  
+
   .product-details {
     .product-main-details {
 
       .bag-type {
         font-size: 14px !important;
       }
-  
+
       .bag-name {
         font-size: 18px !important;
       }
-  
+
       .color-box {
         width: 12px !important;
         height: 12px !important;
       }
-  
+
     }
-  
+
     .product-price {
-  
+
       .price {
         font-size: 24px !important;
       }
-  
+
       .value {
         font-size: 18px !important;
       }
@@ -162,7 +159,7 @@
 }
 
 @media screen and (min-width: 884px ) and (max-width: 1200px)  {
-  
+
   .product-image {
     height: 75% !important;
     img {
@@ -176,19 +173,19 @@
       .bag-type {
         font-size: 12px !important;
       }
-  
+
       .bag-name {
         font-size: 16px !important;
       }
-  
+
     }
-  
+
     .product-price {
-  
+
       .price {
         font-size: 20px !important;
       }
-  
+
       .value {
         font-size: 18px !important;
       }
@@ -218,19 +215,19 @@
       .bag-type {
         font-size: 12px !important;
       }
-  
+
       .bag-name {
         font-size: 16px !important;
       }
-  
+
     }
-  
+
     .product-price {
-  
+
       .price {
         font-size: 20px !important;
       }
-  
+
       .value {
         font-size: 16px !important;
       }
@@ -245,7 +242,7 @@
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 728px )  { 
+@media screen and (min-width: 481px) and (max-width: 728px )  {
   .product-image {
     height: 70% !important;
     img {
@@ -260,20 +257,20 @@
         margin: 5px 0 0 10px !important;
         font-size: 10px !important;
       }
-  
+
       .bag-name {
         margin: 0 0 0 10px !important;
         font-size: 16px !important;
       }
-  
+
     }
-  
+
     .product-price {
-  
+
       .price {
         font-size: 20px !important;
       }
-  
+
       .value {
         font-size: 16px !important;
       }
@@ -305,20 +302,20 @@
         margin: 5px 0 0 10px !important;
         font-size: 10px !important;
       }
-  
+
       .bag-name {
         margin: 0 0 0 10px !important;
         font-size: 16px !important;
       }
-  
+
     }
-  
+
     .product-price {
-  
+
       .price {
         font-size: 20px !important;
       }
-  
+
       .value {
         font-size: 16px !important;
       }

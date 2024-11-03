@@ -1,17 +1,23 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
+  Inject,
+  OnDestroy,
   OnInit,
+  PLATFORM_ID,
   signal,
 } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
 import { ProductsService } from '../../service/products.service';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
 import { RouterService } from '../../service/router.service';
+import { Router, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
+import { fromEvent, Subscription, throttleTime } from 'rxjs';
 
 @Component({
   selector: 'dota-navigation',
@@ -19,24 +25,42 @@ import { RouterService } from '../../service/router.service';
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, HttpClientModule, IconComponent],
+  imports: [CommonModule, HttpClientModule, IconComponent, NgOptimizedImage],
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, OnDestroy {
+  isScrolled: boolean = false;
+
   constructor(
-      private productsService: ProductsService,
-      private cartService: ShoppingCartService,
-      private elRef: ElementRef, 
-      private routerService: RouterService
-    ) {}
+    private productsService: ProductsService,
+    private cartService: ShoppingCartService,
+    private elRef: ElementRef,
+    private routerService: RouterService,
+    protected router: Router,
+    private location: Location,
+    @Inject(PLATFORM_ID) private platformId: Object // Dodato za proveru SSR okruženja
+  ) {}
 
   public isPhone: boolean = false;
   public isTablet: boolean = false;
   public isDropdownOpen: boolean = false;
   public count = signal(0);
+  private routerSubscription: Subscription;
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) { // Proverava da li se izvršava na klijentskoj strani
+      this.checkScreenSize();
+      this.updateCartItemsStatus();
+      this.checkScrollPosition();
+
+      fromEvent(window, 'scroll')
+        .pipe(throttleTime(100))
+        .subscribe(() => this.checkScrollPosition());
+    }
+  }
 
   @HostListener('document:click', ['$event'])
   onClick(event: Event): void {
-    if((this.isPhone || this.isTablet) && this.isDropdownOpen === true) {
+    if (isPlatformBrowser(this.platformId) && (this.isPhone || this.isTablet) && this.isDropdownOpen === true) {
       const hamburgerMenu = this.elRef.nativeElement;
       const dropdownMenu = hamburgerMenu.querySelector('.dropdown-menu');
 
@@ -50,18 +74,42 @@ export class NavigationComponent implements OnInit {
     this.isDropdownOpen = false;
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any): void {
-    this.checkScreenSize();
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.checkScrollPosition(); // Provera pri svakom skrolovanju
+    }
   }
 
-  ngOnInit(): void {
-    this.checkScreenSize();
-    this.updateCartItemsStatus();
+  checkScrollPosition() {
+    if (isPlatformBrowser(this.platformId) && typeof document !== 'undefined') {
+      requestAnimationFrame(() => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        if (this.isHomePage()) {
+          this.isScrolled = (this.isPhone && scrollTop > 50) ||
+            (this.isTablet && scrollTop > 100) ||
+            (!this.isTablet && !this.isPhone && scrollTop > 100);
+        }
+      });
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.checkScreenSize();
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 
   checkScreenSize(): void {
-    if (typeof window !== 'undefined') {
+    if (isPlatformBrowser(this.platformId) && typeof window !== 'undefined') {
       const screenWidth = window.innerWidth;
       this.isPhone = screenWidth <= 480;
       this.isTablet = screenWidth > 480 && screenWidth <= 1200;
@@ -73,7 +121,12 @@ export class NavigationComponent implements OnInit {
       this.count.update(() => data);
     });
   }
-  
+
+  public isHomePage(): boolean {
+    const currentPath = this.location.path();
+    return currentPath === '' || currentPath === '/' || currentPath === '/home';
+  }
+
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
@@ -101,5 +154,4 @@ export class NavigationComponent implements OnInit {
     this.routerService.routerByPath('products');
     this.isDropdownOpen = false;
   }
-
 }

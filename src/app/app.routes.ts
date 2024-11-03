@@ -9,7 +9,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent, data: { scrollPositionRestoration: 'top' } },
+    { path: '', redirectTo: '/home', data: { scrollPositionRestoration: 'top' }, pathMatch: 'full'  },
     { path: 'home', component: HomeComponent, data: { scrollPositionRestoration: 'top' } },
     { path: 'product-details/:productId', component: ProductDetailsComponent, data: { scrollPositionRestoration: 'top' } },
     { path: 'shopping-cart', component: ShoppingCartComponent, data: { scrollPositionRestoration: 'top' } },
@@ -18,5 +18,5 @@ export const routes: Routes = [
     { path: 'order-message', component: OrderMessageComponent, data: { scrollPositionRestoration: 'top'} },
     { path: 'products', component: ProductsComponent },
     { path: 'privacy', component: PrivacyComponent },
-    { path: '**', redirectTo: '/home' } 
+    { path: '**', redirectTo: '/home' }
 ];

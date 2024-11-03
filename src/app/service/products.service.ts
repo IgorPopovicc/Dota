@@ -7,7 +7,7 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 })
 export class ProductsService {
 
-  private baseUrl = 'http://localhost:8080/dota'
+  private baseUrl = 'https://dota-be.onrender.com/dota'
 
   private cartSIze = 0;
 
@@ -25,7 +25,7 @@ export class ProductsService {
     return this.httpClient.get(this.baseUrl + "/products").pipe(
       retry(2),
       catchError(this.handleError)
-    );;
+    );
   }
 
   private handleError(error: any) {
@@ -47,7 +47,7 @@ export class ProductsService {
     return this.httpClient.get(this.baseUrl + "/products/" + id).pipe(
       retry(2),
       catchError(this.handleError)
-    );;
+    );
   }
 
 }
