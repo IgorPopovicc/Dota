@@ -15,12 +15,10 @@ import { LoadingService } from '../../service/loading.service';
 })
 export class ContactComponent implements OnInit, AfterViewInit {
 
-  constructor(private loadingService: LoadingService) { 
-    this.loadingService.show();
-  }
+  constructor(private loadingService: LoadingService) {}
 
   ngOnInit() {
-
+    this.loadingService.show();
   }
 
   ngAfterViewInit(): void {

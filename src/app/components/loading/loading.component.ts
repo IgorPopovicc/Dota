@@ -5,20 +5,17 @@ import { LoadingService } from '../../service/loading.service';
 @Component({
   selector: 'dota-loading',
   standalone: true,
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   template: `<div *ngIf="loadingService.isLoading | async" class="loading-overlay">
-              <div class="spinner"> 
+              <div class="spinner">
                 <img src="./assets/images/logo/main-logo.svg" alt="logo">
-                <img class="spinner" src="./assets/images/icons/loading.svg" alt="loading">
+                <img class="spinner" src="./assets/images/icons/loading.svg" alt="loading" width="40" height="40">
               </div>
             </div>`,
-  styleUrl: './loading.component.scss',
+  styleUrls: ['./loading.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoadingComponent { 
-
-  constructor(public loadingService: LoadingService) {} 
-
+export class LoadingComponent {
+  constructor(public loadingService: LoadingService) {}
 }
+

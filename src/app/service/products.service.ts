@@ -28,6 +28,19 @@ export class ProductsService {
     );
   }
 
+  getProductsByType(type: string): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/products/type/${type}`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+  }
+
+  placeOrder(payload: any): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "/orders", payload).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: any) {
     let errorMessage = '';
     if (error instanceof Error) {
