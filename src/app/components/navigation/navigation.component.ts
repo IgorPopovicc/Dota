@@ -154,4 +154,15 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.routerService.routerByPath('products');
     this.isDropdownOpen = false;
   }
+
+  openProductsByType(type: string) {
+    if (type) {
+      this.routerService.routerByPath(`/products/type/${type}`);
+      this.isDropdownOpen = false;
+    } else {
+      this.routerService.routerByPath('products');
+      this.isDropdownOpen = false;
+    }
+  }
+
 }

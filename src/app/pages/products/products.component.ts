@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit} from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
 import { Product } from '../../model/Product';
-import { Observable, of } from 'rxjs';
+import {Observable, of, Subscription} from 'rxjs';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { LoadingService } from '../../service/loading.service';
 import { ProductsService } from '../../service/products.service';
 import { RouterService } from '../../service/router.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -19,7 +20,7 @@ import { RouterService } from '../../service/router.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   list: any[] = [];
   sortedList: any[] = [];
@@ -30,8 +31,13 @@ export class ProductsComponent implements OnInit {
   pageSize = 12;
 
   product: any[] = []
+  private routeSub: Subscription;
 
-  constructor(private elementRef: ElementRef, private routerService: RouterService, private loadingService: LoadingService, private productService: ProductsService) {
+  constructor(private elementRef: ElementRef,
+              private routerService: RouterService,
+              private loadingService: LoadingService,
+              private productService: ProductsService,
+              private route: ActivatedRoute) {
     this.loadingService.show();
    }
 
@@ -44,11 +50,28 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadProducts();
-    this.initIntersectionObserver();
+    this.routeSub = this.route.paramMap.subscribe(params => {
+      this.resetComponentState();
+      const type = params.get('type');
+      if (type) {
+        this.loadProductsByType(type);
+        this.initIntersectionObserverType(type);
+      } else {
+        this.loadProducts();
+        this.initIntersectionObserver();
+      }
+    });
   }
 
-  ngAfterViewInit() { 
+  resetComponentState() {
+    // Resetovanje svih potrebnih varijabli
+    this.list = [];
+    this.sortedList = [];
+    this.pageIndex = 0;
+    this.product = [];
+  }
+
+  ngAfterViewInit() {
     setTimeout(() => {
       this.loadingService.hide();
     }, 2000);
@@ -69,6 +92,21 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  loadProductsByType(type: string): void {
+    this.productService.getProductsByType(type).subscribe(products => {
+      this.product = products;
+      this.getProducts(this.pageIndex, this.pageSize)
+        .subscribe((data: any) => {
+          console.log("DATA ", data);
+          if(data) {
+            this.list.push(...data);
+            this.sortedList.push(...data);
+            this.pageIndex++;
+          }
+        });
+    });
+  }
+
   initIntersectionObserver() {
     const options = {
       root: null,
@@ -81,6 +119,26 @@ export class ProductsComponent implements OnInit {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             this.loadProducts();
+          }
+        });
+      }, options);
+
+      observer.observe(this.elementRef.nativeElement.querySelector('.load-more-trigger'));
+    }
+  }
+
+  initIntersectionObserverType(type: string) {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0
+    };
+
+    if (typeof window !== 'undefined') {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.loadProductsByType(type);
           }
         });
       }, options);
@@ -123,6 +181,12 @@ export class ProductsComponent implements OnInit {
     this.sortedList = this.sortedList.filter(item =>
       item.name.toLowerCase().includes(filter.toLowerCase())
     );
+  }
+
+  ngOnDestroy(): void {
+    if (this.routeSub) {
+      this.routeSub.unsubscribe();
+    }
   }
 
 }

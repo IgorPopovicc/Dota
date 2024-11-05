@@ -7,10 +7,11 @@
   <ul class="navigation-menu">
     <li (click)="openHomePage()">POČETNA</li>
     <li><samp class="line"></samp></li>
-    <li (click)="openProducts()" routerLink="/products" routerLinkActive="active">TORBE</li>
-    <li (click)="openProducts()">NOVČANICI</li>
+    <li (click)="openProducts()">PROIZVODI</li>
+    <li (click)="openProductsByType('torbica')">TORBE</li>
+    <li (click)="openProductsByType('novcanik')">NOVČANICI</li>
     <li><samp class="line"></samp></li>
-    <li (click)="openContact()" routerLink="/contact" routerLinkActive="active">KONTAKT</li>
+    <li (click)="openContact()">KONTAKT</li>
   </ul>
 
   <div class="hamburger-menu">
@@ -20,8 +21,9 @@
         <li>MENI</li>
         <hr class="menu-line">
         <li (click)="openHomePage()"><a>POČETNA</a></li>
-        <li (click)="openProducts()"><a>TORBE</a></li>
-        <li (click)="openProducts()"><a>NOVČANICI</a></li>
+        <li (click)="openProducts()"><a>PROIZVODI</a></li>
+        <li (click)="openProductsByType('torbica')"><a>TORBE</a></li>
+        <li (click)="openProductsByType('novcanik')"><a>NOVČANICI</a></li>
         <li (click)="openContact()"><a>KONTAKT</a></li>
       </ul>
     </div>

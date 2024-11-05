@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { RouterService } from '../../service/router.service';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { LoadingService } from '../../service/loading.service';
+import {ProductsService} from "../../service/products.service";
 
 @Component({
   selector: 'app-order-details',
@@ -16,7 +17,7 @@ import { LoadingService } from '../../service/loading.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    LoadingComponent 
+    LoadingComponent
   ],
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss']
@@ -32,12 +33,13 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
   totalPrice: number;
   isReservation: boolean = false;
 
-  constructor(private http: HttpClient, 
-              private formBuilder: FormBuilder, 
+  constructor(private http: HttpClient,
+              private formBuilder: FormBuilder,
               private shoppingCartService: ShoppingCartService,
               private router: Router,
               private routerService: RouterService,
-              private loadingService: LoadingService) { 
+              private loadingService: LoadingService,
+              private productsService: ProductsService) {
                 if(this.router.getCurrentNavigation().extras.state) {
                   let product = this.router.getCurrentNavigation().extras.state;
                   this.shoppingCartItems.push(new ShoppingCartItem(product['product'], 1, false));
@@ -52,7 +54,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
       this.shoppingCartItems = this.shoppingCartService.getCartItems();
       this.totalPrice = this.shoppingCartService.totalPrice.value;
     }
-    
+
     this.http.get<any[]>('assets/json/serbia_zip_codes.json').subscribe(data => {
       this.places = data.map(item => ({ city: item.city, id: item._id }));
       this.cities = this.places;
@@ -82,31 +84,62 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
     if (searchTerm.trim() === '') {
       this.showResults = false;
     } else {
-      this.cities = this.places.filter(place => 
+      this.cities = this.places.filter(place =>
         place.city.toLowerCase().includes(searchTerm.toLowerCase())
       );
       this.showResults = this.cities.length > 0;
       if (!this.showResults && searchTerm.length > 0) {
         this.deliveryForm.get('postCode')?.enable();
       } else {
-        this.deliveryForm.get('postCode')?.disable(); 
+        this.deliveryForm.get('postCode')?.disable();
       }
     }
   }
 
-  selectResult(result){ 
+  selectResult(result){
     this.deliveryForm.get('city').setValue(result.city);
     this.deliveryForm.get('postCode').setValue(result.id);
     this.showResults = false;
   }
 
   onSubmit() {
-    this.routerService.routerByPath('order-message');
-    this.shoppingCartService.clearShoppingCart();
     if (this.deliveryForm.invalid) {
       return;
     }
-    console.log('Form submitted:', this.deliveryForm.value);
+
+    this.deliveryForm.get('postCode')?.enable();
+
+    const payload = {
+      fullName: this.deliveryForm.value.fullName,
+      email: this.deliveryForm.value.email,
+      city: this.deliveryForm.value.city,
+      postalCode: this.deliveryForm.value.postCode,
+      address: this.deliveryForm.value.address,
+      flatNumber: this.deliveryForm.value.placeNumber,
+      phone: this.deliveryForm.value.phone,
+      description: this.deliveryForm.value.message || '',
+      totalPrice: this.totalPrice,
+      waitReserved: this.isReservation,
+      orderItems: this.shoppingCartItems.map(item => ({
+        productDetailsId: item.product.productDetails[0].id,
+        quantity: item.bagQuantity,
+        isAvailable: item.reservation
+    }))
+    };
+
+    this.loadingService.show();
+
+    this.productsService.placeOrder(payload).subscribe({
+      next: (response) => {
+        console.log('Order placed successfully:', response);
+        this.routerService.routerByPath('order-message');
+        this.shoppingCartService.clearShoppingCart();
+      },
+      error: (error) => {
+        console.error('Error placing order:', error);
+        this.loadingService.hide();
+      }
+    });
   }
 
   onReservationSubmit() {
