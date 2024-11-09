@@ -63,4 +63,11 @@ export class ProductsService {
     );
   }
 
+  fetchProductDetailsById(productId: string) {
+    return this.httpClient.get(this.baseUrl + "/products/" + productId).pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+  }
+
 }

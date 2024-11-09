@@ -18,19 +18,26 @@ import { RouterService } from '../../service/router.service';
 export class OrderMessageComponent implements OnInit {
 
   isReservation: boolean = false;
+  isError: boolean = false;
 
-  constructor(private router: Router, private loadingService: LoadingService, private routerService: RouterService) { 
-    if(this.router.getCurrentNavigation().extras.state) {
-      let reservation = this.router.getCurrentNavigation().extras.state;
-      this.isReservation = reservation['isReservation'];
-    }
+  constructor(private router: Router, private loadingService: LoadingService, private routerService: RouterService) {
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras?.state || {};
+
+    this.isReservation = state['body'].isReservation ?? false;
+    this.isError = state['body'].isError ?? false;
+
+    console.log(this.isReservation);
+    console.log(this.isError);
+    console.log(state);
+
     this.loadingService.show();
   }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit() { 
+  ngAfterViewInit() {
     setTimeout(() => {
       this.loadingService.hide();
     }, 2000);

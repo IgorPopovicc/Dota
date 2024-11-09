@@ -66,9 +66,9 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
       postCode: [{ value: '', disabled: true }, [Validators.required]],
       address: ['', [Validators.required]],
       placeNumber: ['', [Validators.required]],
-      phone: [''],
+      phone: ['', [Validators.required]],
       message: [''],
-      contactUs: [false]
+      contactUs: [false, [Validators.required]],
     });
 
     this.deliveryForm.get('city')?.valueChanges.subscribe(value => {
@@ -103,11 +103,11 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
+    this.deliveryForm.get('postCode')?.enable();
     if (this.deliveryForm.invalid) {
+      this.deliveryForm.markAllAsTouched();
       return;
     }
-
-    this.deliveryForm.get('postCode')?.enable();
 
     const payload = {
       fullName: this.deliveryForm.value.fullName,
@@ -131,22 +131,21 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
 
     this.productsService.placeOrder(payload).subscribe({
       next: (response) => {
-        console.log('Order placed successfully:', response);
-        this.routerService.routerByPath('order-message');
+        if (!this.isReservation) {
+          this.routerService.routerWithBody('order-message', { isError: false, isReservation: false });
+        }
         this.shoppingCartService.clearShoppingCart();
       },
       error: (error) => {
-        console.error('Error placing order:', error);
         this.loadingService.hide();
+        this.routerService.routerWithBody('order-message', { isError: true, isReservation: false });
       }
     });
   }
 
   onReservationSubmit() {
-    this.routerService.routerWithBody('order-message', { isReservation: true });
-    if (this.deliveryForm.invalid) {
-      return;
-    }
+    this.onSubmit();
+    this.routerService.routerWithBody('order-message', { isError: false, isReservation: true });
   }
 
   openShoppingCart() {

@@ -1,23 +1,39 @@
 <dota-loading></dota-loading>
-<section class="conteiner-fluid contact">
-    <div class="form">
-        <h1>Kontaktirajte nas</h1>
-        <div class="flex">
-            <form action="">
-                <input class="custom-input" type="text" placeholder="Ime i prezime">
-                <input class="custom-input" type="text" placeholder="E-mail">
-                <input class="custom-input" type="text" placeholder="Telefon">
-                <textarea class="custom-textarea" placeholder="Poruka"></textarea>
-                <div class="add-to-bag-button">
-                    <span>Pošalji</span>
-                </div>
-            </form>
-            <div class="info">
-                <p>info dota.rs</p>
-                <hr>
-                <p>Instagram</p>
-                <p>Tiktok</p>
-            </div>
-        </div>      
+<section class="container-fluid contact">
+  <div class="form">
+    <h1>Kontaktirajte nas</h1>
+    <div class="flex">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <input class="custom-input" formControlName="fullName" type="text" placeholder="Ime i prezime">
+        <div *ngIf="contactForm.get('fullName')?.invalid && contactForm.get('fullName')?.touched" class="error">
+          Ime i prezime je obavezno
+        </div>
+
+        <input class="custom-input" formControlName="email" type="text" placeholder="E-mail">
+        <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error">
+          Unesite ispravan e-mail
+        </div>
+
+        <input class="custom-input" formControlName="phone" type="text" placeholder="Telefon">
+        <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error">
+          Telefon je obavezan
+        </div>
+
+        <textarea class="custom-textarea" formControlName="message" placeholder="Poruka"></textarea>
+        <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="error">
+          Poruka je obavezna
+        </div>
+
+        <button type="submit" class="send-button">
+          <span>Pošalji</span>
+        </button>
+      </form>
+      <div class="info">
+        <p>info dota.rs</p>
+        <hr>
+        <p>Instagram</p>
+        <p>Tiktok</p>
+      </div>
     </div>
+  </div>
 </section>

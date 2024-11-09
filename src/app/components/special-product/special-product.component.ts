@@ -17,7 +17,7 @@ import { ProductsService } from '../../service/products.service';
         ProductComponent
     ]
 })
-export class SpecialProductComponent { 
+export class SpecialProductComponent {
 
   backgroundImageUrl = 'putanja/do/slike.jpg';
   componentName = 'Naziv komponente';
@@ -37,7 +37,6 @@ export class SpecialProductComponent {
     this.productService.getProductById("6").subscribe(result => {
       if(result) {
         this.product = result as Product;
-        console.log("RESULT BY ID: ", result);
         this.cdr.markForCheck();
       }
     })

@@ -16,43 +16,43 @@
     flex-direction: column;
 
     .custom-input {
-        height: 30px; 
-        border: 2px solid rgba(83, 83, 83, 0.699); 
-        border-radius: 5px; 
-        padding: 10px; 
-        background-color: rgb(245, 245, 245); 
+        height: 30px;
+        border: 2px solid rgba(83, 83, 83, 0.699);
+        border-radius: 5px;
+        padding: 10px;
+        background-color: rgb(245, 245, 245);
         margin-bottom: 10px;
       }
-      
+
       .custom-input:focus {
-        outline: none; 
+        outline: none;
       }
-      
+
       .custom-input::placeholder {
-        color: black; 
+        color: black;
       }
-      
+
       .custom-input::placeholder::before {
-        font-size: 18px; 
-        color: black; 
-        opacity: 1; 
+        font-size: 18px;
+        color: black;
+        opacity: 1;
       }
 
       .custom-textarea {
-        height: 50px; 
-        border: 2px solid rgba(83, 83, 83, 0.699); 
+        height: 50px;
+        border: 2px solid rgba(83, 83, 83, 0.699);
         border-radius: 5px;
-        padding: 10px; 
+        padding: 10px;
         background-color: rgb(245, 245, 245);
-        resize: vertical; 
+        resize: vertical;
       }
-      
+
       .custom-textarea:focus {
-        outline: none; 
+        outline: none;
       }
-      
+
       .custom-textarea::placeholder {
-        color: black; 
+        color: black;
       }
 
       .buttons {
@@ -70,7 +70,7 @@
           align-items: center;
           justify-content: space-between;
           border-radius: 30px;
-  
+
           span {
             margin-left: 10px;
             font-family: 'Mulish', 'sans-serif';
@@ -100,7 +100,7 @@
           }
         }
       }
-      
+
     .split-inputs {
       display: flex;
       flex-direction: row;
@@ -111,12 +111,12 @@
         width: 48%;
       }
     }
-    // SEARCH 
+    // SEARCH
 
     .search-container {
       position: relative;
     }
-    
+
     .search-results {
       position: absolute;
       top: 100%;
@@ -133,12 +133,12 @@
       padding: 10px;
       font-family: 'Mulish', 'sans-serif';
     }
-    
+
     .search-results div {
       padding: 10px;
       cursor: pointer;
     }
-    
+
   }
 }
 
@@ -165,7 +165,7 @@
             text-transform: uppercase;
             border-bottom: 1px solid rgba(128, 128, 128, 0.603);
         }
-  
+
         .total-price {
             min-height: 15vh;
             .price {
@@ -176,9 +176,9 @@
                 text-align: right;
                 margin-bottom: 0;
             }
-  
+
             .value {
-                color: #000c227a;           
+                color: #000c227a;
                 font-family: 'Mulish', 'sans-serif';
                 font-size: 16px;
                 font-weight: 500;
@@ -198,9 +198,9 @@
           }
         }
     }
-    
+
   }
-  
+
   .icon-info {
     margin-top: 20px;
     display: flex;
@@ -212,14 +212,14 @@
       border: 1px solid #EEE;
       font-size: 12px;
     }
-    
-  
+
+
     .delivery-time {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-  
+
       span {
         margin-left: 10px;
         color: #000C22;
@@ -231,13 +231,13 @@
         text-transform: uppercase;
       }
     }
-  
+
     .delivery-price {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-  
+
       span {
         margin-left: 10px;
         color: #000C22;
@@ -267,7 +267,7 @@
     display: grid;
     grid-template-columns: 4fr 1fr 1fr; /* Prvi element zauzima dvostruko više prostora od ostalih dva */
     gap: 10px;
-    
+
     span {
       font-size: 16px;
       display: block;
@@ -280,39 +280,39 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 20px;
-  height: 20px; 
+  height: 20px;
   min-width: 20px;
-  min-height: 20px; 
-  border-radius: 50%; 
-  border: 1px solid #ccc; 
-  outline: none; 
-  cursor: pointer; 
-  position: relative; 
+  min-height: 20px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  position: relative;
 }
 
 input[type="checkbox"]::before {
-  content: ""; 
+  content: "";
   display: block;
-  width: 60%; 
-  height: 60%; 
-  background-color: #FF8438;; 
-  border-radius: 50%; 
-  position: absolute; 
+  width: 60%;
+  height: 60%;
+  background-color: #FF8438;;
+  border-radius: 50%;
+  position: absolute;
   top: 50%;
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  opacity: 0; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
 }
 
 input[type="checkbox"]:checked::before {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .checkbox-label {
   margin-top: 30px;
   display: flex;
-  align-items: center; 
-  margin-right: 10px; 
+  align-items: center;
+  margin-right: 10px;
 
   span {
     padding-left: 10px;
@@ -321,11 +321,24 @@ input[type="checkbox"]:checked::before {
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
-    letter-spacing: 0px;
     text-align: left;
   }
 }
 
+.custom-input.ng-invalid.ng-touched,
+.custom-textarea.ng-invalid.ng-touched {
+  border-color: red !important;
+}
+
+.is-invalid {
+  border-color: red !important;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
 
 @media screen and (min-width: 1350px ) {
   .search-container {
@@ -335,7 +348,7 @@ input[type="checkbox"]:checked::before {
   }
 }
 
-@media screen and (min-width: 481px ) and (max-width: 883px)  { 
+@media screen and (min-width: 481px ) and (max-width: 883px)  {
   .order-details {
     padding-top: 120px;
     padding-bottom: 100px;

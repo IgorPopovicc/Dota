@@ -31,19 +31,22 @@
           <input type="checkbox" formControlName="contactUs">
           <span>Slažem se da primam obaveštenja o popustima i novostima na moju adresu e-pošte.</span>
         </label>
+        <div *ngIf="f['contactUs'].invalid && f['contactUs'].touched" class="error-message">
+          Molimo označite saglasnost za primanje obaveštenja.
+        </div>
         <section class="buttons">
           <button *ngIf="!isReservation" (click)="openShoppingCart()"  class="button go-back">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
               <path d="M17 6L2 6" stroke="#000000" stroke-width="1.5"/>
               <path d="M7 11L2 6L7 1" stroke="#000000" stroke-width="1.5"/>
-            </svg>            
+            </svg>
             <span>Vrati se u korpu</span>
           </button>
           <button *ngIf="isReservation" (click)="openShoppingPage()"  class="button go-back">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
               <path d="M17 6L2 6" stroke="#000000" stroke-width="1.5"/>
               <path d="M7 11L2 6L7 1" stroke="#000000" stroke-width="1.5"/>
-            </svg>            
+            </svg>
             <span>Vrati se u kupovinu</span>
           </button>
           <button *ngIf="!isReservation" type="submit" class="button make-order">

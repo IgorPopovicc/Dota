@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 })
 export class EmailService {
 
-  private baseUrl = 'http://localhost:8080/dota';
+  private baseUrl = 'https://dota-be.onrender.com/dota';
 
   constructor(private httpClient: HttpClient) {
 
@@ -24,7 +24,15 @@ export class EmailService {
       return this.httpClient.post(this.baseUrl + "/newsletter", { email: email }, {});
     } else {
       return of(null);
-    } 
+    }
+  }
+
+  sendContactForm(formData: { fullName: string; email: string; phone: string; message: string }): Observable<any> {
+    if (this.isValidEmail(formData.email)) {
+      return this.httpClient.post(`${this.baseUrl}/contact`, formData, {});
+    } else {
+      return of(null);
+    }
   }
 
 }
