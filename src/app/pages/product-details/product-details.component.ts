@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Product, ProductDetails, ShoppingCartItem } from '../../model/Product';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { ProductComponent } from '../../components/product/product.component';
@@ -9,6 +9,7 @@ import { PromotionDialogComponent } from '../../components/promotion-dialog/prom
 import { RouterService } from '../../service/router.service';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { LoadingService } from '../../service/loading.service';
+import {ProductsService} from "../../service/products.service";
 
 @Component({
   selector: 'product-details',
@@ -39,30 +40,65 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
   displayPromotion: boolean = false;
   outOfStocks: boolean = false;
 
-  constructor(private router: Router, private shoppingCartService: ShoppingCartService, private routerService: RouterService, private loadingService: LoadingService) {
-    let item = this.router.getCurrentNavigation().extras.state;
-    if(item && item['body']) {
-      this.product = item['body'];
-      this.selectedProductDetails = this.product.productDetails[0];
-      this.products = new Array<Product>();
-      this.products.push(this.product);
-      this.products.push(this.product);
-      this.products.push(this.product);
-      this.products.push(this.product);
-      this.products.push(this.product);
-    }
+  constructor(private router: Router,
+              private shoppingCartService: ShoppingCartService,
+              private routerService: RouterService,
+              private loadingService: LoadingService,
+              private route: ActivatedRoute,
+              private productsService: ProductsService
+  ) {
     this.loadingService.show();
   }
 
   ngOnInit(): void {
-    this.displayPromotion = true;
-    this.checkScreenSize();
-    if(this.product) {
-      this.outOfStocks = this.selectedProductDetails.quantity === 0;
-      for(const element of this.product.productDetails[0].images) {
-        this.images.push(new ImageItem({ src: element.imagePath, thumb: element.imagePath }))
+    const productId = this.route.snapshot.paramMap.get('productId');
+
+    // Ako postoji proizvod u stanju navigacije, koristi ga
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras?.state as { body?: Product };
+    this.productsService.getProductsByType('novcanik').subscribe( result => {
+      this.products = new Array<Product>();
+      this.products = result;
+    })
+
+    if (state && state.body) {
+      this.product = state.body;
+      this.selectedProductDetails = this.product.productDetails[0];
+
+      this.checkScreenSize();
+      if(this.product) {
+        this.outOfStocks = this.selectedProductDetails.quantity === 0;
+        for(const element of this.product.productDetails[0].images) {
+          this.images.push(new ImageItem({ src: element.imagePath, thumb: element.imagePath }))
+        }
       }
+
+    } else if (productId) {
+      this.loadingService.show();
+      this.productsService.fetchProductDetailsById(productId).subscribe( result => {
+        console.log('Product by id: ', result);
+
+        if (!this.product) {
+          this.product = {} as Product;
+        }
+
+        Object.assign(this.product, result);
+        this.selectedProductDetails = this.product.productDetails[0];
+
+        this.checkScreenSize();
+        if(this.product) {
+          this.outOfStocks = this.selectedProductDetails.quantity === 0;
+          for(const element of this.product.productDetails[0].images) {
+            this.images.push(new ImageItem({ src: element.imagePath, thumb: element.imagePath }))
+          }
+        }
+
+        this.loadingService.hide();
+      });
     }
+
+    this.displayPromotion = true;
+
   }
 
   ngAfterViewInit(): void {
@@ -82,7 +118,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
   }
 
   addToBag() {
-    let selectedProduct: Product = new Product();
+    const selectedProduct: Product = new Product();
     selectedProduct.name = this.product.name;
     selectedProduct.price = this.product.price;
     selectedProduct.size = this.product.size;
@@ -104,7 +140,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     //this.routerService.routerWithBody("order-details", product);
   }
 
-  changeProductDetails(id: number) { 
+  changeProductDetails(id: number) {
     this.selectedProductDetails = this.product.productDetails.find(details => { return details.id === id });
     this.images = [];
     this.outOfStocks = this.selectedProductDetails.quantity > 0 ? false : true;

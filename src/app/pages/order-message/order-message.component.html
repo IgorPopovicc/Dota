@@ -1,13 +1,11 @@
 <dota-loading></dota-loading>
 <section class="container-fluid order-message">
-  <h1 *ngIf="!isReservation" class="main-title">HVALA NA VAŠOJ PORUDZBINI!</h1>
-  <h1 *ngIf="isReservation" class="main-title">HVALA NA VAŠOJ REZERVACIJI!</h1>
-  <hr color="grey">
   <img style="margin: 30px 0;" src="./assets/images/logo/logo.svg" alt="logo">
+  <hr>
   <section class="content">
-    <p *ngIf="!isReservation" class="message">Želimo da vas obavestimo da je vaša porudžbina uspešno poručena!
+    <p *ngIf="!isReservation && !isError" class="message">Želimo da vas obavestimo da je vaša porudžbina uspešno poručena!
       <br><br>
-      U slučaju bilo kakvih poteškoća ili nejasnoća u vezi sa vašom porudžbinom, 
+      U slučaju bilo kakvih poteškoća ili nejasnoća u vezi sa vašom porudžbinom,
       naš tim za podršku će biti tu da vam pomogne.
       <br><br>
       Hvala vam još jednom na poverenju i podršci.
@@ -16,7 +14,7 @@
       <br>
       Dota tim 🥂
     </p>
-    <p *ngIf="isReservation" class="message">Hvala vam što ste izabrali naš proizvod! Želimo da vas obavestimo da je vaša rezervacija uspešno primljena.
+    <p *ngIf="isReservation && !isError" class="message">Hvala vam što ste izabrali naš proizvod! Želimo da vas obavestimo da je vaša rezervacija uspešno primljena.
       <br><br>
       Vaš proizvod trenutno nije dostupan, ali molimo vas da budete strpljivi jer ćemo ga poslati čim bude ponovo dostupan za kupovinu.
       <br><br>
@@ -28,11 +26,24 @@
       <br>
       Dota tim 🥂
     </p>
+    <p *ngIf="isError && !isReservation" class="message">
+      Nažalost, došlo je do problema sa vašom porudžbinom.
+      <br><br>
+      Molimo vas da nas kontaktirate putem e-mail adrese na
+      <a href="mailto:support@dota.rs">support&commat;dota.rs</a> ili nas pronađite na
+      <a href="https://www.instagram.com/dotabags" target="_blank">Instagramu</a> za dalju pomoć.
+      <br><br>
+      Izvinjavamo se zbog neprijatnosti i hvala na vašem razumevanju.
+      <br><br>
+      Srdačan pozdrav,
+      <br>
+      Dota tim 🥂
+    </p>
     <button (click)="goToShop()" class="button go-back">
       <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
         <path d="M17 6L2 6" stroke="#000000" stroke-width="1.5"/>
         <path d="M7 11L2 6L7 1" stroke="#000000" stroke-width="1.5"/>
-      </svg>            
+      </svg>
       <span>Nastavi kupovinu</span>
     </button>
   </section>

@@ -21,17 +21,16 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-
   list: any[] = [];
   sortedList: any[] = [];
   searchTerm: string = '';
   order: string = 'default';
-
   pageIndex = 0;
   pageSize = 12;
-
   product: any[] = []
+  private observer: IntersectionObserver | null = null;
   private routeSub: Subscription;
+  private currentType: string | null = null;
 
   constructor(private elementRef: ElementRef,
               private routerService: RouterService,
@@ -53,15 +52,20 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.routeSub = this.route.paramMap.subscribe(params => {
       this.resetComponentState();
       const type = params.get('type');
+      this.currentType = type; // Postavi trenutni tip
+
+      if (!this.observer) {
+        this.initIntersectionObserver(); // Inicijalizuj posmatrača samo prvi put
+      }
+
       if (type) {
         this.loadProductsByType(type);
-        this.initIntersectionObserverType(type);
       } else {
         this.loadProducts();
-        this.initIntersectionObserver();
       }
     });
   }
+
 
   resetComponentState() {
     // Resetovanje svih potrebnih varijabli
@@ -94,6 +98,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   loadProductsByType(type: string): void {
     this.productService.getProductsByType(type).subscribe(products => {
+      this.product = [];
       this.product = products;
       this.getProducts(this.pageIndex, this.pageSize)
         .subscribe((data: any) => {
@@ -115,17 +120,23 @@ export class ProductsComponent implements OnInit, OnDestroy {
     };
 
     if (typeof window !== 'undefined') {
-      const observer = new IntersectionObserver((entries, observer) => {
+      this.observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            this.loadProducts();
+            // Proveri trenutni tip i učitaj odgovarajuće proizvode
+            if (this.currentType) {
+              this.loadProductsByType(this.currentType);
+            } else {
+              this.loadProducts();
+            }
           }
         });
       }, options);
 
-      observer.observe(this.elementRef.nativeElement.querySelector('.load-more-trigger'));
+      this.observer.observe(this.elementRef.nativeElement.querySelector('.load-more-trigger'));
     }
   }
+
 
   initIntersectionObserverType(type: string) {
     const options = {
@@ -184,9 +195,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
     if (this.routeSub) {
       this.routeSub.unsubscribe();
     }
   }
+
 
 }
