@@ -53,6 +53,7 @@ export class ShoppingCartService {
       } else {
         this.showCustomSnackbar("Uspjesno ste dodali u korpu!");
         existingProduct.bagQuantity += item.bagQuantity;
+        this.computeCartTotals();
       }
 
     } else {
@@ -66,7 +67,9 @@ export class ShoppingCartService {
           this.cartItems.push(item);
           this.computeCartTotals();
         }
+        this.computeCartTotals();
       }
+      this.computeCartTotals();
     }
     this.saveCartToStorage();
   }
@@ -99,6 +102,7 @@ export class ShoppingCartService {
 
       } else {
         existingProduct.bagQuantity++;
+        this.computeCartTotals();
       }
 
     } else {

@@ -346,6 +346,23 @@
   }
 }
 
+.no-link-style {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.no-link-style:visited,
+.no-link-style:active,
+.no-link-style:focus {
+  color: inherit;
+  outline: none;
+}
+
+.no-link-style:hover {
+  text-decoration: none;
+}
+
 
 @media screen and (min-width: 728px) and (max-width: 884px ) {
     .footer {

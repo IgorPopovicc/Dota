@@ -18,6 +18,6 @@ export const routes: Routes = [
     { path: 'order-message', component: OrderMessageComponent, data: { scrollPositionRestoration: 'top'} },
     { path: 'products', component: ProductsComponent },
     { path: 'products/type/:type', component: ProductsComponent },
-    { path: 'privacy', component: PrivacyComponent },
+    { path: 'info/:type', component: PrivacyComponent },
     { path: '**', redirectTo: '/home' }
 ];

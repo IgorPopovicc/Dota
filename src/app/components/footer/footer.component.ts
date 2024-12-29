@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, HostListener, Renderer2 } from '@angular/core';
 import { EmailService } from '../../service/email.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NavigationEnd, Router } from '@angular/router';
+import {NavigationEnd, Router, RouterLink} from '@angular/router';
 import { RouterService } from '../../service/router.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,10 +15,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ]
 })
-export class FooterComponent { 
+export class FooterComponent {
   public isPhone: boolean = false;
   public isTablet: boolean = false;
   public emailForm: FormGroup;
@@ -71,14 +72,18 @@ export class FooterComponent {
   showCustomSnackbar(message: string) {
     this.snackBar.openFromComponent(SnackbarComponent, {
       data: { message: message },
-      duration: 5000, 
-      horizontalPosition: 'center', 
+      duration: 5000,
+      horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
   }
 
-  openCOntact() {
+  openContact() {
     this.routerService.routerByPath('contact');
+  }
+
+  goToInfo(type: string) {
+    this.routerService.routerByPath(`info/${type}`);
   }
 
   setFooterTextColor(): void {

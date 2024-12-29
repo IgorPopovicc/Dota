@@ -7,10 +7,16 @@
                 </div>
                 <div class="footer-links">
                     <ul>
-                        <li class="link">Pomoć i podrška</li>
-                        <li class="link">Povraćaji</li>
-                        <li class="link">Dostava i plaćanja</li>
-                        <li (click)="openCOntact()" class="link">Kontakt</li>
+                      <li class="link">
+                        <a (click)="goToInfo('support')" class="no-link-style">Pomoć i podrška</a>
+                      </li>
+                      <li class="link">
+                        <a (click)="goToInfo('return')" class="no-link-style">Povraćaji</a>
+                      </li>
+                      <li class="link">
+                        <a (click)="goToInfo('delivery')" class="no-link-style">Dostava i plaćanja</a>
+                      </li>
+                        <li (click)="openContact()" class="link">Kontakt</li>
                     </ul>
                 </div>
                 <div class="email-title">
@@ -23,12 +29,12 @@
                         <input type="email" id="emailInput" formControlName="userEmail" placeholder="Tvoj e-mail" (keydown.enter)="sendEmail()">
                         <span id="sendText" (click)="sendEmail()">Pošalji</span>
                     </form>
-                </div>           
+                </div>
             </div>
             <div class="bottom-section">
-                <img class="icon" src="./assets/images/icons/instagram.svg" alt="Instagram">
-                <img class="icon" src="./assets/images/icons/tiktok.svg" alt="Tiktok">
-                <h3 class="policy">Uslovi i politika</h3>
+              <a href="https://www.instagram.com/dotabags/" target="_blank"><img class="icon" src="./assets/images/icons/instagram.svg" alt="Instagram"></a>
+              <a href="https://www.tiktok.com/@dotabags" target="_blank"><img class="icon" src="./assets/images/icons/tiktok.svg" alt="Tiktok"></a>
+              <h3 class="policy">Uslovi i politika</h3>
             </div>
         </section>
     } @else {
@@ -43,20 +49,26 @@
                         <span id="sendText" (click)="sendEmail()">Pošalji</span>
                     </form>
                 </div>
-            </div>            
+            </div>
             <div class="footer-links-sm">
                 <ul>
-                    <li class="link">Pomoć i podrška</li>
-                    <li class="link">Povraćaji</li>
-                    <li class="link">Dostava i plaćanja</li>
-                    <li (click)="openCOntact()" class="link">Kontakt</li>
+                  <li class="link">
+                    <a (click)="goToInfo('support')" class="no-link-style">Pomoć i podrška</a>
+                  </li>
+                  <li class="link">
+                    <a (click)="goToInfo('return')" class="no-link-style">Povraćaji</a>
+                  </li>
+                  <li class="link">
+                    <a (click)="goToInfo('delivery')" class="no-link-style">Dostava i plaćanja</a>
+                  </li>
+                  <li (click)="openContact()" class="link">Kontakt</li>
                 </ul>
             </div>
-            
+
             <div class="bottom-section">
                 <div class="icons">
-                    <img class="icon" src="./assets/images/icons/instagram.svg" alt="Instagram">
-                    <img class="icon" src="./assets/images/icons/tiktok.svg" alt="Tiktok">
+                  <a href="https://www.instagram.com/dotabags/" target="_blank"><img class="icon" src="./assets/images/icons/instagram.svg" alt="Instagram"></a>
+                  <a href="https://www.tiktok.com/@dotabags" target="_blank"><img class="icon" src="./assets/images/icons/tiktok.svg" alt="Tiktok"></a>
                 </div>
                 <div class="footer-logo">
                     <img src="./../../../assets/images/logo/footer-logo.png" alt="Dota logo">

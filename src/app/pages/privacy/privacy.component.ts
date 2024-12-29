@@ -1,24 +1,40 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Product, ShoppingCartItem } from '../../model/Product';
-import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
-import { ProductComponent } from '../../components/product/product.component';
-import { ShoppingCartService } from '../../service/shopping-cart.service';
-import { PromotionDialogComponent } from '../../components/promotion-dialog/promotion-dialog.component';
-import { RouterService } from '../../service/router.service';
-import { LoadingComponent } from '../../components/loading/loading.component';
-import { LoadingService } from '../../service/loading.service';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {LoadingComponent} from "../../components/loading/loading.component";
+import {RouterService} from "../../service/router.service";
+import {LoadingService} from "../../service/loading.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'product-details',
+  selector: 'privacy-details',
   standalone: true,
   imports: [
     CommonModule,
+    LoadingComponent,
   ],
   templateUrl: './privacy.component.html',
   styleUrl: './privacy.component.scss'
 })
-export class PrivacyComponent {
+export class PrivacyComponent implements OnInit, AfterViewInit {
+  type: string | null = null;
+
+  constructor(private loadingService: LoadingService, private routerService: RouterService, private route: ActivatedRoute) {}
+
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.type = params.get('type');
+    });
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.loadingService.hide();
+    }, 2000);
+  }
+
+  goToShop() {
+    this.routerService.routerByPath('home');
+  }
 
 }
