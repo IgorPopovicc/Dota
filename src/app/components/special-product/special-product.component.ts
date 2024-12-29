@@ -34,7 +34,7 @@ export class SpecialProductComponent {
 
   ngOnInit(): void {
     this.setContainerHeight();
-    this.productService.getProductById("6").subscribe(result => {
+    this.productService.getProductById("31").subscribe(result => {
       if(result) {
         this.product = result as Product;
         this.cdr.markForCheck();

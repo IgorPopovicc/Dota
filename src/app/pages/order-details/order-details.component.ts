@@ -42,7 +42,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
               private productsService: ProductsService) {
                 if(this.router.getCurrentNavigation().extras.state) {
                   let product = this.router.getCurrentNavigation().extras.state;
-                  this.shoppingCartItems.push(new ShoppingCartItem(product['product'], 1, false));
+                  this.shoppingCartItems.push(new ShoppingCartItem(product['product'], 1, true));
                   this.totalPrice = product['product'].price;
                   this.isReservation = true;
                   this.loadingService.show();

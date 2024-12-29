@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+import {AfterViewInit, Component, OnDestroy, OnInit} from "@angular/core";
 import { ProductComponent } from "../../components/product/product.component";
 import { CommonModule } from "@angular/common";
 import { ShoppingCartItem } from "../../model/Product";
@@ -20,17 +20,17 @@ import { LoadingComponent } from "../../components/loading/loading.component";
     templateUrl: './shopping-cart.component.html',
     styleUrl: './shopping-cart.component.scss'
 })
-export class ShoppingCartComponent implements OnInit, AfterViewInit {
+export class ShoppingCartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public cart: ShoppingCartItem[] = [];
     public totalPrice: number = 0;
     private cartSubscription: Subscription;
-  
-    constructor(private shoppingCartService: ShoppingCartService, private router: Router, private routerService: RouterService, private loadingService: LoadingService) { 
+
+    constructor(private shoppingCartService: ShoppingCartService, private router: Router, private routerService: RouterService, private loadingService: LoadingService) {
         this.loadingService.show();
     }
-  
-    ngOnInit(): void {    
+
+    ngOnInit(): void {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
               window.scrollTo(0, 0);
@@ -39,7 +39,7 @@ export class ShoppingCartComponent implements OnInit, AfterViewInit {
 
         this.cart = this.shoppingCartService.getCartItems();
         this.totalPrice = this.shoppingCartService.totalPrice.value;
-    
+
         this.cartSubscription = this.shoppingCartService.cartItemsChanged.subscribe(items => {
             this.cart = items;
             this.totalPrice = this.shoppingCartService.totalPrice.value;
@@ -49,7 +49,7 @@ export class ShoppingCartComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         this.loadingService.hide();
     }
-  
+
     ngOnDestroy(): void {
         this.cartSubscription.unsubscribe();
     }
@@ -61,13 +61,13 @@ export class ShoppingCartComponent implements OnInit, AfterViewInit {
     removeItem(item: ShoppingCartItem) {
         this.shoppingCartService.removeItemQuantity(item);
     }
-  
+
     openOrderDetails() {
         this.routerService.routerByPath("order-details");
     }
 
     goToShop() {
         this.routerService.routerByPath('/products');
-    }    
+    }
 
 }
