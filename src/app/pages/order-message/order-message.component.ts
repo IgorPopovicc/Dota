@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { LoadingService } from '../../service/loading.service';
@@ -15,7 +15,7 @@ import { RouterService } from '../../service/router.service';
   templateUrl: './order-message.component.html',
   styleUrls: ['./order-message.component.scss']
 })
-export class OrderMessageComponent implements OnInit {
+export class OrderMessageComponent implements OnInit, AfterViewInit {
 
   isReservation: boolean = false;
   isError: boolean = false;
@@ -26,10 +26,6 @@ export class OrderMessageComponent implements OnInit {
 
     this.isReservation = state['body'].isReservation ?? false;
     this.isError = state['body'].isError ?? false;
-
-    console.log(this.isReservation);
-    console.log(this.isError);
-    console.log(state);
 
     this.loadingService.show();
   }
