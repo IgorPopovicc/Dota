@@ -68,7 +68,9 @@
     <div class="other-products">
         <div class="products">
             @for (item of products; track $index) {
+              @if ($index <= 4) {
                 <dota-product (click)="openProductDetails(item)" class="product-item" [product]="item"></dota-product>
+              }
               } @empty {
                 <div class="empty-message">
                   <h3>Nemamo trazeni proizvod!</h3>
@@ -77,7 +79,7 @@
               <div class="show-more">
                 <h3 class="show-more-text">Prikaži<br>sve<br>proizvode</h3>
                 <div class="show-more-button">
-                    <p class="button">Pogledaj 
+                    <p class="button">Pogledaj
                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
                             <path d="M0.000978281 6.00098H15.001" stroke="#000C22" stroke-width="1.5"/>
                             <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#000C22" stroke-width="1.5"/>
@@ -87,13 +89,15 @@
               </div>
         </div>
         <div class="vibe-image">
-            <img src="./assets/images/presentation-images/vibe-image.png" alt="vibe-image">
+            <img src="./assets/images/presentation-images/slider-image-4.jpeg" alt="vibe-image">
         </div>
     </div>
     <div class="other-products-scroll">
         <div class="products-scroll">
             @for (item of products; track $index) {
+              @if ($index <= 8) {
                 <dota-product (click)="openProductDetails(item)" class="product-item" [product]="item"></dota-product>
+              }
               } @empty {
                 <div class="empty-message">
                   <h3>Nemamo trazeni proizvod!</h3>

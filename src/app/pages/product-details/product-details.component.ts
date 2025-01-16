@@ -56,7 +56,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     // Ako postoji proizvod u stanju navigacije, koristi ga
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras?.state as { body?: Product };
-    this.productsService.getProductsByType('novcanik').subscribe( result => {
+    this.productsService.getProductsByType('torbica').subscribe( result => {
       this.products = new Array<Product>();
       this.products = result;
     })
@@ -97,7 +97,10 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
       });
     }
 
-    this.displayPromotion = true;
+    const isPromotionSeen = localStorage.getItem('promotionSeen');
+    if (!isPromotionSeen) {
+      this.displayPromotion = true;
+    }
 
   }
 
@@ -137,13 +140,12 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     selectedProduct.productDetails = [];
     selectedProduct.productDetails[0] = this.selectedProductDetails;
     this.shoppingCartService.addItemToCart(new ShoppingCartItem(selectedProduct, 1, true));
-    //this.routerService.routerWithBody("order-details", product);
   }
 
   changeProductDetails(id: number) {
     this.selectedProductDetails = this.product.productDetails.find(details => { return details.id === id });
     this.images = [];
-    this.outOfStocks = this.selectedProductDetails.quantity > 0 ? false : true;
+    this.outOfStocks = this.selectedProductDetails.quantity <= 0;
     for(let i = 0; i < this.selectedProductDetails.images.length; i++) {
       this.images.push(new ImageItem({ src: this.selectedProductDetails.images[i].imagePath, thumb: this.selectedProductDetails.images[i].imagePath }))
     }
@@ -151,6 +153,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
 
   handleClose() {
     this.displayPromotion = false;
+    localStorage.setItem('promotionSeen', 'true');
   }
 
 }

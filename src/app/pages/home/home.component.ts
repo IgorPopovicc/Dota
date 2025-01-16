@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   getProductsForHomePage() {
     this.productService.getAllProducts().subscribe(products => {
       if(products) {
-        this.products = products;
+        this.products = [...products];
       }
     });
   }
