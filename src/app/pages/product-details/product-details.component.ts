@@ -1,5 +1,5 @@
 import { CommonModule, Location  } from '@angular/common';
-import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product, ProductDetails, ShoppingCartItem } from '../../model/Product';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
@@ -25,7 +25,7 @@ import { Meta, Title } from "@angular/platform-browser";
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
-export class ProductDetailsComponent implements OnInit, AfterViewInit {
+export class ProductDetailsComponent implements OnInit{
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -77,6 +77,8 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
         }
       }
 
+      this.loadingService.hide();
+
     } else if (productId) {
       this.loadingService.show();
       this.productsService.fetchProductDetailsById(productId).subscribe( result => {
@@ -101,7 +103,6 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
           this.meta.updateTag({
             name: 'description',
             content: `Kupite ${this.product.name} - ${this.selectedProductDetails.info}. Dostupno sada na najboljoj ceni!`,
-
           });
 
           // Dodavanje Open Graph meta tagova za sliku
@@ -122,6 +123,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
         }
 
         this.loadingService.hide();
+
       });
     }
 
@@ -130,10 +132,6 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
       this.displayPromotion = true;
     }
 
-  }
-
-  ngAfterViewInit(): void {
-    this.loadingService.hide();
   }
 
   checkScreenSize(): void {
@@ -145,7 +143,11 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
   }
 
   openProductDetails(product: Product) {
-    this.routerService.routerByPathAndRequestParamWithBody("product-details", product.id, product);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`/product-details`, product.id]).then(() => {
+        window.scrollTo(0, 0);
+      });
+    });
   }
 
   addToBag() {

@@ -62,7 +62,7 @@
     display: flex;
     flex-direction: row;
     list-style: none;
-    max-width: 33%;
+    max-width: 38%;
     padding: 0 !important;
 
     li:first-child  {
@@ -94,7 +94,7 @@
   .logo {
     flex: 1;
     flex-shrink: 0;
-    max-width: 33%;
+    max-width: 23%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,14 +111,14 @@
     justify-content: end;
     flex: 1;
     flex-shrink: 0;
-    max-width: 33%;
+    max-width: 38%;
     padding-right: 40px;
-    cursor: pointer;
 
     .cart {
       background-color: rgba(0, 0, 0, 0.06);
       border-radius: 50%;
       padding: 5px 7px;
+      cursor: pointer;
     }
 
     .badge {

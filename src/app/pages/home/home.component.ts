@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
 import { ProductComponent } from "../../components/product/product.component";
 import { Product } from '../../model/Product';
 import { SpecialProductComponent } from "../../components/special-product/special-product.component";
@@ -21,7 +21,7 @@ import { ProductsService } from '../../service/products.service';
     LoadingComponent
   ]
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
   public isPhone: boolean = false;
   public isTablet: boolean = false;
   public products: Array<Product>;
@@ -44,12 +44,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.getProductsForHomePage();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.loadingService.hide();
-    }, 1000);
-  }
-
   checkScreenSize(): void {
     if (typeof window !== 'undefined') {
       const screenWidth = window.innerWidth;
@@ -62,6 +56,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.productService.getAllProducts().subscribe(products => {
       if(products) {
         this.products = [...products];
+        this.loadingService.hide();
       }
     });
   }

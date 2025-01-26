@@ -42,7 +42,7 @@
               font-weight: 500;
               line-height: normal;
             }
-        
+
             .value {
               color: #000c229d;
               font-family: 'Mulish', 'sans-serif';
@@ -79,7 +79,7 @@
           .color {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;       
+            justify-content: space-between;
           }
 
           .size {
@@ -146,7 +146,7 @@
             width: 100%;
             background-color: #aaaaaa;
             border-radius: 30px;
-        
+
             span {
               margin-left: 10px;
               color: #000000;
@@ -158,7 +158,7 @@
               text-transform: uppercase;
             }
         }
-          
+
         }
 
         .icon-info {
@@ -234,7 +234,7 @@
     .show-more {
       flex-basis: calc(33% - 22px);
       height: 50%;
-      border: 1px solid black;
+      border: 1px solid rgba(128, 128, 128, 0.32);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -349,7 +349,7 @@
   }
 }
 
-@media screen and (min-width: 884px ) and (max-width: 1200px)  { 
+@media screen and (min-width: 884px ) and (max-width: 1200px)  {
   .product {
     flex-direction: column;
 
@@ -360,7 +360,7 @@
     }
 
     .product-details {
-        width: 90% !important;    
+        width: 90% !important;
         padding: 5%;
 
         .type {
@@ -375,7 +375,7 @@
             .price {
               font-size: 30px;
             }
-        
+
             .value {
               font-size: 16px;
             }
@@ -411,7 +411,7 @@
               font-size: 16px;
             }
           }
-          
+
         }
 
         .icon-info {
@@ -463,7 +463,7 @@
   }
 }
 
-@media screen and (min-width: 481px ) and (max-width: 883px)  { 
+@media screen and (min-width: 481px ) and (max-width: 883px)  {
   .product {
     flex-direction: column;
 
@@ -474,7 +474,7 @@
     }
 
     .product-details {
-        width: 90% !important;    
+        width: 90% !important;
         padding: 5%;
 
         .type {
@@ -489,7 +489,7 @@
             .price {
               font-size: 30px;
             }
-        
+
             .value {
               font-size: 16px;
             }
@@ -525,7 +525,7 @@
               font-size: 16px;
             }
           }
-          
+
         }
 
         .icon-info {
@@ -588,7 +588,7 @@
     }
 
     .product-details {
-        width: 90% !important;    
+        width: 90% !important;
         padding: 5%;
 
         .type {
@@ -606,7 +606,7 @@
             .price {
               font-size: 30px;
             }
-        
+
             .value {
               font-size: 16px;
             }
@@ -642,7 +642,7 @@
               font-size: 16px;
             }
           }
-          
+
         }
 
         .icon-info {

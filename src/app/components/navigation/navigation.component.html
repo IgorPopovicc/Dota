@@ -33,9 +33,9 @@
     <img *ngIf="isScrolled || !isHomePage()" (click)="openHomePage()" src='./assets/images/logo/main-logo.svg' alt="logo image">
   </div>
 
-  <div (click)="openShoppingCart()" class="shopping-cart">
+  <div class="shopping-cart">
     <div class="cart">
-      <dota-icon iconPath="./assets/images/icons/shopping-cart.svg" altText="Shopping cart"></dota-icon>
+      <dota-icon (click)="openShoppingCart()"  iconPath="./assets/images/icons/shopping-cart.svg" altText="Shopping cart"></dota-icon>
       <span *ngIf="count() > 0" class="badge">{{ count() }}</span>
     </div>
   </div>

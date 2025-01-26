@@ -1,10 +1,10 @@
-<div class="full-screen-container" [ngStyle]="{ height: getHeight() }">
+<div *ngIf="this.product" class="full-screen-container" [ngStyle]="{ height: getHeight() }">
     <div class="dark-overlay">
         <div class="component-details">
-            <h2 class="special-product-title">{{ componentName }}</h2>
-            <p class="special-product-description">{{ componentDescription }}</p>
+          <h2 class="special-product-title">{{ componentName }}</h2>
+          <p class="special-product-description">{{ componentDescription }}</p>
+          <p class="special-product-description">Specijalna ponuda: {{ this.product.price }}</p>
         </div>
         <dota-product *ngIf="product" (click)="openProductDetails(product)" [product]="product" class="dota-product"></dota-product>
     </div>
 </div>
-  

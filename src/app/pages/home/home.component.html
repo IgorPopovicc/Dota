@@ -63,7 +63,7 @@
                     <dota-product (click)="openProductDetails(product)" class="dota-product-l" [product]="product"></dota-product>
                 }
             } @empty {
-                Empty list of users
+                Empty list of bags
             }
             <div class="all-bags">
                 <div (click)="openProducts()"  class="show-all-bags">
@@ -90,7 +90,7 @@
                     <dota-product (click)="openProductDetails(product)" class="dota-product-s" [product]="product"></dota-product>
                 }
             } @empty {
-                Empty list of users
+                Empty list of bags
             }
             <div class="all-bags">
                 <div *ngIf="products && products.length > 3" class="all-bags-image">

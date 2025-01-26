@@ -17,8 +17,8 @@ import { ProductsService } from '../../service/products.service';
     ]
 })
 export class SpecialProductComponent implements OnInit {
-  componentName = 'Naziv komponente';
-  componentDescription = 'Ovde treba da stoji neki opis ili citat vezan za torbicu. Ovde treba da stoji neki opis ili citat vezan za torbicu.';
+  componentName: string;
+  componentDescription: string;
   containerHeight: number = 500;
   product: Product;
 
@@ -35,6 +35,8 @@ export class SpecialProductComponent implements OnInit {
       if(result) {
         this.product = result as Product;
         this.cdr.markForCheck();
+        this.componentName = this.product.name;
+        this.componentDescription = this.product.productDetails[0].info;
       }
     })
   }
