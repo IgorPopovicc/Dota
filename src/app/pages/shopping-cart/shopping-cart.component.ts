@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from "@angular/core";
-import { ProductComponent } from "../../components/product/product.component";
+import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ShoppingCartItem } from "../../model/Product";
 import { ShoppingCartService } from "../../service/shopping-cart.service";
@@ -14,13 +13,14 @@ import { LoadingComponent } from "../../components/loading/loading.component";
     standalone: true,
     imports: [
         CommonModule,
-        ProductComponent,
         LoadingComponent
     ],
     templateUrl: './shopping-cart.component.html',
     styleUrl: './shopping-cart.component.scss'
 })
 export class ShoppingCartComponent implements OnInit, AfterViewInit, OnDestroy {
+
+    private stockCheckInterval: any;
 
     public cart: ShoppingCartItem[] = [];
     public totalPrice: number = 0;

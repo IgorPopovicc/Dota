@@ -12,10 +12,9 @@ import {
   signal,
 } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
-import { ProductsService } from '../../service/products.service';
 import { ShoppingCartService } from '../../service/shopping-cart.service';
 import { RouterService } from '../../service/router.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { fromEvent, Subscription, throttleTime } from 'rxjs';
 
@@ -31,13 +30,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
   isScrolled: boolean = false;
 
   constructor(
-    private productsService: ProductsService,
     private cartService: ShoppingCartService,
     private elRef: ElementRef,
     private routerService: RouterService,
     protected router: Router,
     private location: Location,
-    @Inject(PLATFORM_ID) private platformId: Object // Dodato za proveru SSR okruženja
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   public isPhone: boolean = false;
@@ -47,7 +45,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   private routerSubscription: Subscription;
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) { // Proverava da li se izvršava na klijentskoj strani
+    if (isPlatformBrowser(this.platformId)) {
       this.checkScreenSize();
       this.updateCartItemsStatus();
       this.checkScrollPosition();
@@ -77,7 +75,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     if (isPlatformBrowser(this.platformId)) {
-      this.checkScrollPosition(); // Provera pri svakom skrolovanju
+      this.checkScrollPosition();
     }
   }
 
@@ -129,10 +127,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
-  onClickOutside(): void {
-    this.isDropdownOpen = false;
   }
 
   openShoppingCart() {

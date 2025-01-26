@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { RouterService } from '../../service/router.service';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { LoadingService } from '../../service/loading.service';
-import {ProductsService} from "../../service/products.service";
+import { ProductsService } from "../../service/products.service";
 
 @Component({
   selector: 'app-order-details',
@@ -26,7 +26,6 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
 
   places: any[] = [];
   cities: any[] = [];
-  searchTerm: string = '';
   showResults: boolean = false;
   deliveryForm: FormGroup;
   shoppingCartItems: ShoppingCartItem[] = [];
@@ -46,7 +45,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
                   this.totalPrice = product['product'].price;
                   this.loadingService.show();
                 }
-                this.isReservation = (this.shoppingCartService.getCartItems().filter(item => item.reservation === true).length > 0);
+                this.isReservation = (this.shoppingCartService.getCartItems()?.filter(item => item.reservation === true).length > 0) || false;
               }
 
   ngOnInit(): void {

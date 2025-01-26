@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {LoadingComponent} from "../../components/loading/loading.component";
-import {RouterService} from "../../service/router.service";
-import {LoadingService} from "../../service/loading.service";
-import {ActivatedRoute} from "@angular/router";
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { LoadingComponent } from "../../components/loading/loading.component";
+import { RouterService } from "../../service/router.service";
+import { LoadingService } from "../../service/loading.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'privacy-details',
@@ -19,7 +19,6 @@ export class PrivacyComponent implements OnInit, AfterViewInit {
   type: string | null = null;
 
   constructor(private loadingService: LoadingService, private routerService: RouterService, private route: ActivatedRoute) {}
-
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostListener, Renderer2 } from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener, OnInit, Renderer2} from '@angular/core';
 import { EmailService } from '../../service/email.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import {NavigationEnd, Router, RouterLink} from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { RouterService } from '../../service/router.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,18 +15,21 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    RouterLink
+    ReactiveFormsModule
   ]
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
   public isPhone: boolean = false;
   public isTablet: boolean = false;
   public emailForm: FormGroup;
-  public isContact = true;
   public isContactRoute: boolean = false;
 
-  constructor(private fb: FormBuilder, private emailService: EmailService, private router: Router, private routerService: RouterService , private renderer: Renderer2, private snackBar: MatSnackBar) {}
+  constructor(private fb: FormBuilder,
+              private emailService: EmailService,
+              private router: Router,
+              private routerService: RouterService,
+              private renderer: Renderer2,
+              private snackBar: MatSnackBar) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -55,11 +58,9 @@ export class FooterComponent {
   }
 
   sendEmail() {
-    console.log("STARTED");
     if (this.emailForm.valid) {
       const email = this.emailForm.get('userEmail').value;
       this.emailService.sendEmail(email).subscribe(result => {
-        console.log(result);
         this.emailForm.get('userEmail').setValue("");
         this.showCustomSnackbar("Uspjesno ste se prijavili za newsletter!");
       });

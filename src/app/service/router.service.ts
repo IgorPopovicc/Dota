@@ -30,7 +30,6 @@ export class RouterService {
         this.router.navigate([`/${path}`], { state: { body } });
     }
 
-
     routerByPathAndRequestParamWithBody(path: string, requestParam: any, body: any) {
         this.scrollToTop();
         this.router.navigate([`/${path}`, requestParam], { state: { body } });
