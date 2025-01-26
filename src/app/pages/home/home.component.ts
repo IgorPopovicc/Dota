@@ -22,11 +22,8 @@ import { ProductsService } from '../../service/products.service';
   ]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-
-  public count = 0;
   public isPhone: boolean = false;
   public isTablet: boolean = false;
-  public isDropdownOpen: boolean = false;
   public products: Array<Product>;
 
   @HostListener('window:resize', ['$event'])
@@ -64,7 +61,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   getProductsForHomePage() {
     this.productService.getAllProducts().subscribe(products => {
       if(products) {
-        this.products = products;
+        this.products = [...products];
       }
     });
   }

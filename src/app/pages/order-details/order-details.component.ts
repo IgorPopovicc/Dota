@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { RouterService } from '../../service/router.service';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { LoadingService } from '../../service/loading.service';
-import {ProductsService} from "../../service/products.service";
+import { ProductsService } from "../../service/products.service";
 
 @Component({
   selector: 'app-order-details',
@@ -26,7 +26,6 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
 
   places: any[] = [];
   cities: any[] = [];
-  searchTerm: string = '';
   showResults: boolean = false;
   deliveryForm: FormGroup;
   shoppingCartItems: ShoppingCartItem[] = [];
@@ -44,16 +43,14 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
                   let product = this.router.getCurrentNavigation().extras.state;
                   this.shoppingCartItems.push(new ShoppingCartItem(product['product'], 1, true));
                   this.totalPrice = product['product'].price;
-                  this.isReservation = true;
                   this.loadingService.show();
                 }
+                this.isReservation = (this.shoppingCartService.getCartItems()?.filter(item => item.reservation === true).length > 0) || false;
               }
 
   ngOnInit(): void {
-    if(!this.isReservation) {
-      this.shoppingCartItems = this.shoppingCartService.getCartItems();
-      this.totalPrice = this.shoppingCartService.totalPrice.value;
-    }
+    this.shoppingCartItems = this.shoppingCartService.getCartItems();
+    this.totalPrice = this.shoppingCartService.totalPrice.value;
 
     this.http.get<any[]>('assets/json/serbia_zip_codes.json').subscribe(data => {
       this.places = data.map(item => ({ city: item.city, id: item._id }));
@@ -69,6 +66,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
       phone: ['', [Validators.required]],
       message: [''],
       contactUs: [false, [Validators.required]],
+      separateDelivery: [false],
     });
 
     this.deliveryForm.get('city')?.valueChanges.subscribe(value => {
@@ -119,11 +117,11 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
       phone: this.deliveryForm.value.phone,
       description: this.deliveryForm.value.message || '',
       totalPrice: this.totalPrice,
-      waitReserved: this.isReservation,
+      waitReserved: this.deliveryForm.value.separateDelivery,
       orderItems: this.shoppingCartItems.map(item => ({
         productDetailsId: item.product.productDetails[0].id,
         quantity: item.bagQuantity,
-        isAvailable: item.reservation
+        isAvailable: !item.reservation
     }))
     };
 
@@ -133,6 +131,8 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
       next: (response) => {
         if (!this.isReservation) {
           this.routerService.routerWithBody('order-message', { isError: false, isReservation: false });
+        } else {
+          this.routerService.routerWithBody('order-message', { isError: false, isReservation: true });
         }
         this.shoppingCartService.clearShoppingCart();
       },
@@ -145,7 +145,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit {
 
   onReservationSubmit() {
     this.onSubmit();
-    this.routerService.routerWithBody('order-message', { isError: false, isReservation: true });
+    this.shoppingCartService.clearShoppingCart();
   }
 
   openShoppingCart() {

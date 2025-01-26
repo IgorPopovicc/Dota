@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as emailjs from 'emailjs-com';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -10,9 +9,7 @@ export class EmailService {
 
   private baseUrl = 'https://dota-be.onrender.com/dota';
 
-  constructor(private httpClient: HttpClient) {
-
-  }
+  constructor(private httpClient: HttpClient) {}
 
   isValidEmail(email: string): boolean {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;

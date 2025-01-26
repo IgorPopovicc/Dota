@@ -9,7 +9,7 @@
                 <div class="second title">Količina</div>
                 <div class="third title">Cena</div>
                 <div class="fourth title">Ukupno</div>
-            </div> 
+            </div>
             @for (item of cart; track $index) {
                 <div class="cart-item-product">
                     <span class="remove-item">x</span>
@@ -37,13 +37,16 @@
                     </div>
                     <div class="second">
                         <div class="cart-item-number">
-                            <svg (click)="removeItem(item)" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
-                                <image href="./../../../assets/images/icons/Minus.svg" height="40" width="40" />
+                            <svg *ngIf="item.bagQuantity <= 1" (click)="removeItem(item)" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                <image href="./../../../assets/images/icons/Remove.svg" height="20" width="20" />
                             </svg>
+                          <svg *ngIf="item.bagQuantity > 1" (click)="removeItem(item)" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                            <image href="./../../../assets/images/icons/Minus.svg" height="40" width="40" />
+                          </svg>
                             <p class="item-number">{{ item.bagQuantity }}</p>
                             <svg (click)="addItem(item)" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
                                 <image href="./../../../assets/images/icons/Plus.svg" height="40" width="40" />
-                            </svg>                                                   
+                            </svg>
                         </div>
                     </div>
                     <div class="third">
@@ -56,22 +59,22 @@
                             <p class="price">{{ item.product.price * item.bagQuantity }}<span class="value">rsd</span></p>
                         </div>
                     </div>
-                </div> 
+                </div>
             } @empty {
                 <div class="no-items-in-cart">
                     <h1 class="no-items-text">Još niste dodali ništa u korpu</h1>
                     <svg style="margin: 0px 0px 5px 5px;" xmlns="http://www.w3.org/2000/svg" width="40" height="42" viewBox="0 0 24 24" fill="#FF8438">
-                        <path stroke="#FF8438" stroke-width="0.8" d="M6 23.73l-3-2.122v-14.2l3 1.359v14.963zm2-14.855v15.125l13-1.954v-15.046l-13 
-                        1.875zm5.963-7.875c-2.097 0-3.958 2.005-3.962 4.266l-.001 1.683c0 
-                        .305.273.54.575.494.244-.037.425-.247.425-.494v-1.681c.003-1.71 1.416-3.268 2.963-3.268.537 
-                        0 1.016.195 1.384.564.422.423.654 1.035.653 1.727v1.747c0 
-                        .305.273.54.575.494.243-.037.423-.246.423-.492l.002-1.749c.002-1.904-1.32-3.291-3.037-3.291zm-6.39 
-                        5.995c.245-.037.427-.247.427-.495v-2.232c.002-1.71 1.416-3.268 2.963-3.268l.162.015c.366-.283.765-.513 
+                        <path stroke="#FF8438" stroke-width="0.8" d="M6 23.73l-3-2.122v-14.2l3 1.359v14.963zm2-14.855v15.125l13-1.954v-15.046l-13
+                        1.875zm5.963-7.875c-2.097 0-3.958 2.005-3.962 4.266l-.001 1.683c0
+                        .305.273.54.575.494.244-.037.425-.247.425-.494v-1.681c.003-1.71 1.416-3.268 2.963-3.268.537
+                        0 1.016.195 1.384.564.422.423.654 1.035.653 1.727v1.747c0
+                        .305.273.54.575.494.243-.037.423-.246.423-.492l.002-1.749c.002-1.904-1.32-3.291-3.037-3.291zm-6.39
+                        5.995c.245-.037.427-.247.427-.495v-2.232c.002-1.71 1.416-3.268 2.963-3.268l.162.015c.366-.283.765-.513
                         1.188-.683-.405-.207-.858-.332-1.35-.332-2.096 0-3.958 2.005-3.962 4.266v2.235c0 .306.272.538.572.494z"/>
                     </svg>
                 </div>
             }
-        </div>  
+        </div>
         <div class="confirm-order">
             <div class="confirm-order-section">
                 <h1 class="total">Total</h1>
@@ -81,7 +84,7 @@
                 </div>
                 <div *ngIf="cart.length === 0" class="add-to-bag-lock-button">
                     <span>Nastavi</span>
-                    <svg fill="#000000" height="20" width="25" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="XMLID_509_"> <path id="XMLID_510_" d="M65,330h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15h-15V85c0-46.869-38.131-85-85-85 S80,38.131,80,85v45H65c-8.284,0-15,6.716-15,15v170C50,323.284,56.716,330,65,330z M180,234.986V255c0,8.284-6.716,15-15,15 s-15-6.716-15-15v-20.014c-6.068-4.565-10-11.824-10-19.986c0-13.785,11.215-25,25-25s25,11.215,25,25 C190,223.162,186.068,230.421,180,234.986z M110,85c0-30.327,24.673-55,55-55s55,24.673,55,55v45H110V85z"></path> </g> </g></svg>                   
+                    <svg fill="#000000" height="20" width="25" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="XMLID_509_"> <path id="XMLID_510_" d="M65,330h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15h-15V85c0-46.869-38.131-85-85-85 S80,38.131,80,85v45H65c-8.284,0-15,6.716-15,15v170C50,323.284,56.716,330,65,330z M180,234.986V255c0,8.284-6.716,15-15,15 s-15-6.716-15-15v-20.014c-6.068-4.565-10-11.824-10-19.986c0-13.785,11.215-25,25-25s25,11.215,25,25 C190,223.162,186.068,230.421,180,234.986z M110,85c0-30.327,24.673-55,55-55s55,24.673,55,55v45H110V85z"></path> </g> </g></svg>
                 </div>
                 <div *ngIf="cart.length > 0" (click)="openOrderDetails()" class="add-to-bag-button">
                     <span>Nastavi</span>
@@ -90,13 +93,20 @@
                         <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#ffffff" stroke-width="1.5"/>
                     </svg>
                 </div>
-                <div (click)="goToShop()" class="go-back-button">
+                <div *ngIf="cart.length > 0" (click)="goToShop()" class="go-back-button">
                     <svg class="back-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
                       <path d="M17 6L2 6" stroke="#000000" stroke-width="1.5"/>
                       <path d="M7 11L2 6L7 1" stroke="#000000" stroke-width="1.5"/>
-                    </svg>            
+                    </svg>
                     <span class="back-span">Nastavi kupovinu</span>
-                </div> 
+                </div>
+                <div *ngIf="cart.length === 0" (click)="goToShop()" class="go-back-button-clear">
+                  <svg class="back-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+                    <path d="M17 6L2 6" stroke="#ffffff" stroke-width="1.5"/>
+                    <path d="M7 11L2 6L7 1" stroke="#ffffff" stroke-width="1.5"/>
+                  </svg>
+                  <span class="back-span">Nastavi kupovinu</span>
+                </div>
                 <div class="icon-info">
                     <div class="delivery-time">
                         <img src="./assets/images/icons/delivery-package.svg" alt="Delivery package">
@@ -110,5 +120,5 @@
                 </div>
             </div>
         </div>
-    </section>  
+    </section>
 </section>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterService } from '../../service/router.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { RouterService } from '../../service/router.service';
   templateUrl: './promotion-dialog.component.html',
   styleUrls: ['./promotion-dialog.component.scss']
 })
-export class PromotionDialogComponent implements OnInit {
+export class PromotionDialogComponent{
 
   @Output() closed = new EventEmitter<void>();
 
@@ -21,10 +21,6 @@ export class PromotionDialogComponent implements OnInit {
   @Input() buttonText: string;
 
   constructor(private routerService: RouterService) { }
-
-  ngOnInit() {
-
-  }
 
   checkWallets() {
     this.routerService.routerByPath('products');

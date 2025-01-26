@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { Product } from '../../model/Product';
-import { Router } from '@angular/router';
 import { RouterService } from '../../service/router.service';
 import { ProductsService } from '../../service/products.service';
 
@@ -17,9 +16,7 @@ import { ProductsService } from '../../service/products.service';
         ProductComponent
     ]
 })
-export class SpecialProductComponent {
-
-  backgroundImageUrl = 'putanja/do/slike.jpg';
+export class SpecialProductComponent implements OnInit {
   componentName = 'Naziv komponente';
   componentDescription = 'Ovde treba da stoji neki opis ili citat vezan za torbicu. Ovde treba da stoji neki opis ili citat vezan za torbicu.';
   containerHeight: number = 500;

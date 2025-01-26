@@ -1,6 +1,6 @@
 {
   "name": "dota",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/platform-server": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "@angular/service-worker": "^17.0.0",
     "@angular/ssr": "^17.0.5",
     "domino": "^2.1.6",
     "emailjs-com": "^3.2.0",

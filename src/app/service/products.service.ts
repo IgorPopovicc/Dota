@@ -1,13 +1,14 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  private baseUrl = 'https://dota-be.onrender.com/dota'
+  private baseUrl = environment.baseUrl + '/dota';
 
   private cartSIze = 0;
 
@@ -44,10 +45,8 @@ export class ProductsService {
   private handleError(error: any) {
     let errorMessage = '';
     if (error instanceof Error) {
-      // Klijentska ili mrežna greška
       errorMessage = `An error occurred: ${error.message}`;
     } else if (error instanceof HttpErrorResponse) {
-      // Server error
       errorMessage = `Server returned code: ${error.status}, error message is: ${error.message}`;
     } else {
       errorMessage = 'Unknown error';

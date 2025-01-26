@@ -34,6 +34,10 @@
         <div *ngIf="f['contactUs'].invalid && f['contactUs'].touched" class="error-message">
           Molimo označite saglasnost za primanje obaveštenja.
         </div>
+        <label *ngIf="isReservation" class="checkbox-label">
+          <input type="checkbox" formControlName="separateDelivery">
+          <span>Molimo označite ako želite da vam pošaljemo zajedno rezervisane i proizvode na stanju.</span>
+        </label>
         <section class="buttons">
           <button *ngIf="!isReservation" (click)="openShoppingCart()"  class="button go-back">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
@@ -49,16 +53,24 @@
             </svg>
             <span>Vrati se u kupovinu</span>
           </button>
-          <button *ngIf="!isReservation" type="submit" class="button make-order">
+          <button *ngIf="!isReservation" type="submit" [ngClass]="{ 'button out-of-stock': deliveryForm.invalid, 'button make-order': !deliveryForm.invalid }" [disabled]="deliveryForm.invalid">
             <span>Poruči</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+            <svg *ngIf="deliveryForm.invalid" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+              <path d="M0.000978281 6.00098H15.001" stroke="#ffffff" stroke-width="1.5"/>
+              <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#ffffff" stroke-width="1.5"/>
+            </svg>
+            <svg *ngIf="!deliveryForm.invalid" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
               <path d="M0.000978281 6.00098H15.001" stroke="#ffffff" stroke-width="1.5"/>
               <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#ffffff" stroke-width="1.5"/>
             </svg>
           </button>
-          <button *ngIf="isReservation" type="submit" class="button make-order">
+          <button *ngIf="isReservation" type="submit" [ngClass]="{ 'button out-of-stock': deliveryForm.invalid, 'button make-order': !deliveryForm.invalid }" [disabled]="deliveryForm.invalid">
             <span>Pošalji rezervaciju</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+            <svg *ngIf="deliveryForm.invalid" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+              <path d="M0.000978281 6.00098H15.001" stroke="#000000" stroke-width="1.5"/>
+              <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#000000" stroke-width="1.5"/>
+            </svg>
+            <svg *ngIf="!deliveryForm.invalid" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
               <path d="M0.000978281 6.00098H15.001" stroke="#ffffff" stroke-width="1.5"/>
               <path d="M10 0.99902L15 5.99951L10 11.001" stroke="#ffffff" stroke-width="1.5"/>
             </svg>

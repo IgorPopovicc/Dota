@@ -50,10 +50,10 @@
                 </div>
                 <div *ngIf="products && products.length > 4" class="all-bags-image">
                     <div (click)="openProductDetails(products[3])" class="all-bags-image-item">
-                        <img [src]="products[3].productDetails[0].images[0].imagePath" alt="Dota bag">
+                        <img [src]="products[3].productDetails[0].images[0].imagePath + '?width=300&height=300'" alt="Dota bag" loading="lazy" >
                     </div>
                     <div (click)="openProductDetails(products[4])" class="all-bags-image-item">
-                        <img [src]="products[4].productDetails[0].images[0].imagePath" alt="Dota bag">
+                        <img [src]="products[4].productDetails[0].images[0].imagePath + '?width=300&height=300'" alt="Dota bag" loading="lazy" >
                     </div>
                 </div>
             </div>
@@ -77,10 +77,10 @@
                 </div>
                 <div *ngIf="products && products.length > 3" class="all-bags-image">
                     <div (click)="openProductDetails(products[2])" class="all-bags-image-item">
-                        <img [src]="products[2].productDetails[0].images[0].imagePath" alt="Dota bag">
+                        <img [src]="products[2].productDetails[0].images[0].imagePath + '?width=300&height=300'" alt="Dota bag" loading="lazy" >
                     </div>
                     <div (click)="openProductDetails(products[3])" class="all-bags-image-item">
-                        <img [src]="products[3].productDetails[0].images[0].imagePath" alt="Dota bag">
+                        <img [src]="products[3].productDetails[0].images[0].imagePath + '?width=300&height=300'" alt="Dota bag" loading="lazy" >
                     </div>
                 </div>
             </div>
@@ -95,10 +95,10 @@
             <div class="all-bags">
                 <div *ngIf="products && products.length > 3" class="all-bags-image">
                     <div (click)="openProductDetails(products[2])" class="all-bags-image-item">
-                        <img [src]="products[2].productDetails[0].images[0].imagePath" alt="Dota bag">
+                        <img [src]="products[2].productDetails[0].images[0].imagePath + '?width=300&height=300'" alt="Dota bag" loading="lazy" >
                     </div>
                     <div (click)="openProductDetails(products[3])" class="all-bags-image-item">
-                        <img [src]="products[3].productDetails[0].images[0].imagePath" alt="Dota bag">
+                        <img [src]="products[3].productDetails[0].images[0].imagePath + '?width=300&height=300'" alt="Dota bag" loading="lazy" >
                     </div>
                 </div>
                 <div (click)="openProducts()" class="show-all-bags">
@@ -127,7 +127,7 @@
         <h1 class="stylish-normal">Fun</h1>
       </div>
       <div class="stylish-image">
-        <img src="./assets/images/presentation-images/mix-the-colors.png" alt="" srcset="">
+        <img src="./assets/images/presentation-images/mix-the-colors.png" alt="">
       </div>
       <div class="stylish-image">
         <img src="./assets/images/presentation-images/silver-bold.png" alt="">
@@ -149,33 +149,37 @@
     </div>
   }
 </section>
-<br><br><br><br>
+<br><br>
 <section class="container-fluid">
   <div class="end-stylish-text ">
     <h1 class="stylish-custom">#Carry style, not just stuff.</h1>
   </div>
 </section>
-<!-- OVDE IDE SLIDER -->
 <section class="container-fluid">
     <div class="image-slider">
       <div class="slide-track">
         <div class="slide">
-          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
+          <img src="./assets/images/presentation-images/slider-image-1.jpeg" alt="slider">
         </div>
         <div class="slide">
-          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
+          <img src="./assets/images/presentation-images/slider-image-2.jpeg" alt="slider">
         </div>
         <div class="slide">
-          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
+          <img src="./assets/images/presentation-images/slider-image-3.jpeg" alt="slider">
         </div>
         <div class="slide">
-          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
+          <img src="./assets/images/presentation-images/slider-image-5.jpeg" alt="slider">
         </div>
         <div class="slide">
-          <img src="./assets/images/presentation-images/vibe-image.png" alt="slider" srcset="">
+          <img src="./assets/images/presentation-images/slider-image-8.jpeg" alt="slider">
+        </div>
+        <div class="slide">
+          <img src="./assets/images/presentation-images/slider-image-7.jpeg" alt="slider">
+        </div>
+        <div class="slide">
+          <img src="./assets/images/presentation-images/slider-image-8.jpeg" alt="slider">
         </div>
       </div>
     </div>
 </section>
 <br><br><br><br>
-<!-- OVDE SE ZAVRSAVA SLIDER -->

@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
-import {Component, ElementRef, HostListener, OnDestroy, OnInit} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit} from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
 import { Product } from '../../model/Product';
-import {Observable, of, Subscription} from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { LoadingService } from '../../service/loading.service';
 import { ProductsService } from '../../service/products.service';
 import { RouterService } from '../../service/router.service';
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -20,7 +20,7 @@ import {ActivatedRoute} from "@angular/router";
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   list: any[] = [];
   sortedList: any[] = [];
   searchTerm: string = '';
@@ -52,10 +52,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.routeSub = this.route.paramMap.subscribe(params => {
       this.resetComponentState();
       const type = params.get('type');
-      this.currentType = type; // Postavi trenutni tip
+      this.currentType = type;
 
       if (!this.observer) {
-        this.initIntersectionObserver(); // Inicijalizuj posmatrača samo prvi put
+        this.initIntersectionObserver();
       }
 
       if (type) {
@@ -68,7 +68,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
 
   resetComponentState() {
-    // Resetovanje svih potrebnih varijabli
     this.list = [];
     this.sortedList = [];
     this.pageIndex = 0;

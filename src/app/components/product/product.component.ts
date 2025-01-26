@@ -12,12 +12,8 @@ import { Product } from '../../model/Product';
   styleUrl: './product.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductComponent implements OnInit { 
+export class ProductComponent {
 
   @Input() product: Product;
-
-  ngOnInit(): void {
-
-  }
 
 }

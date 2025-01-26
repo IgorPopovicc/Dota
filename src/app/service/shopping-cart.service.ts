@@ -3,7 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 import { ShoppingCartItem } from '../model/Product';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../components/snackbar/snackbar.component';
-import {isPlatformBrowser} from "@angular/common";
+import { isPlatformBrowser } from "@angular/common";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -23,25 +24,30 @@ export class ShoppingCartService {
     this.isBrowser = isPlatformBrowser(this.platformId);
     if (this.isBrowser) {
       this.loadCartFromStorage();
+      this.updateCartWithStockAvailability();
     }
   }
 
   private saveCartToStorage() {
-    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-    localStorage.setItem('totalPrice', JSON.stringify(this.totalPrice.value));
-    localStorage.setItem('totalQuantity', JSON.stringify(this.totalQuantity.value));
+    if (this.isBrowser) {
+      localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+      localStorage.setItem('totalPrice', JSON.stringify(this.totalPrice.value));
+      localStorage.setItem('totalQuantity', JSON.stringify(this.totalQuantity.value));
+    }
   }
 
   private loadCartFromStorage() {
-    const storedItems = localStorage.getItem('cartItems');
-    const storedPrice = localStorage.getItem('totalPrice');
-    const storedQuantity = localStorage.getItem('totalQuantity');
+    if (this.isBrowser) {
+      const storedItems = localStorage.getItem('cartItems');
+      const storedPrice = localStorage.getItem('totalPrice');
+      const storedQuantity = localStorage.getItem('totalQuantity');
 
-    this.cartItems = storedItems ? JSON.parse(storedItems) : [];
-    this.totalPrice.next(storedPrice ? JSON.parse(storedPrice) : 0);
-    this.totalQuantity.next(storedQuantity ? JSON.parse(storedQuantity) : 0);
+      this.cartItems = storedItems ? JSON.parse(storedItems) : [];
+      this.totalPrice.next(storedPrice ? JSON.parse(storedPrice) : 0);
+      this.totalQuantity.next(storedQuantity ? JSON.parse(storedQuantity) : 0);
 
-    this.cartItemsChanged.next([...this.cartItems]);
+      this.cartItemsChanged.next([...this.cartItems]);
+    }
   }
 
   addItemToCart(item: ShoppingCartItem) {
@@ -116,7 +122,7 @@ export class ShoppingCartService {
     const existingProductIndex = this.cartItems.findIndex(currentItem => currentItem.product.productDetails[0].id === item.product.productDetails[0].id);
 
     if (existingProductIndex !== -1) {
-      if (this.cartItems[existingProductIndex].bagQuantity === 1) {
+      if (this.cartItems[existingProductIndex].bagQuantity <= 1) {
         this.cartItems.splice(existingProductIndex, 1);
       } else {
         this.cartItems[existingProductIndex].bagQuantity--;
@@ -131,9 +137,11 @@ export class ShoppingCartService {
     this.totalPrice.next(0);
     this.totalQuantity.next(0);
     this.cartItemsChanged.next([]);
-    localStorage.removeItem('cartItems');
-    localStorage.removeItem('totalPrice');
-    localStorage.removeItem('totalQuantity');
+    if (this.isBrowser) {
+      localStorage.removeItem('cartItems');
+      localStorage.removeItem('totalPrice');
+      localStorage.removeItem('totalQuantity');
+    }
   }
 
   showCustomSnackbar(message: string) {
@@ -143,6 +151,69 @@ export class ShoppingCartService {
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
+  }
+
+  updateCartWithStockAvailability(): void {
+    const productDetailIds = this.cartItems.map(item => String(item.product.productDetails[0].id));
+
+    if (productDetailIds.length === 0) {
+      return;
+    }
+
+    fetch(environment.baseUrl + '/dota/products/details/availability', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ productDetailIds }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Greška pri komunikaciji sa serverom: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then(stockData => {
+        if (!stockData || stockData.length === 0) {
+          this.showCustomSnackbar('Podaci o stanju proizvoda nisu dostupni.');
+          return;
+        }
+
+        let changesMade = false;
+
+        this.cartItems.forEach(cartItem => {
+          stockData.forEach((stock: any) => {
+            if (stock.id === String(cartItem.product.productDetails[0].id)) {
+              if (stock.quantity === 0 && !cartItem.reservation) {
+                cartItem.reservation = true;
+                changesMade = true;
+                this.showCustomSnackbar(`Proizvod ${cartItem.product.name} je prebačen na rezervaciju.`);
+              } else if (cartItem.bagQuantity > stock.quantity && !cartItem.reservation) {
+                cartItem.product.productDetails[0].quantity = stock.quantity;
+                cartItem.bagQuantity = stock.quantity;
+                changesMade = true;
+                this.showCustomSnackbar(`Količina proizvoda ${cartItem.product.name} je smanjena na ${stock.quantity}.`);
+              } else if (stock.quantity > 0 && cartItem.reservation) {
+                cartItem.product.productDetails[0].quantity = stock.quantity;
+                cartItem.bagQuantity = cartItem.bagQuantity <= stock.quantity ? cartItem.bagQuantity : stock.quantity;
+                cartItem.reservation = false;
+                changesMade = true;
+                this.showCustomSnackbar(`Količina proizvoda ${cartItem.product.name} je prebačena na ${cartItem.bagQuantity}.`);
+              }
+            }
+          });
+        });
+
+        if (changesMade) {
+          this.computeCartTotals();
+          this.saveCartToStorage();
+          this.cartItemsChanged.next([...this.cartItems]);
+        }
+      })
+      .catch(error => {
+        console.error('Greška prilikom provjere stanja proizvoda:', error.message || error);
+        this.showCustomSnackbar('Došlo je do greške prilikom provjere stanja proizvoda.');
+      });
   }
 
 }
